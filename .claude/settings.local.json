@@ -6,7 +6,9 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8099/index.html)",
       "Bash(mv docs *)",
       "Bash(sed -i 's#docs/#wissen/#g' CLAUDE.md .claude/rules/components-design.md .claude/rules/seo-performance.md)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8099/website/index.html)",
+      "Bash(git add *)"
     ]
   }
 }
