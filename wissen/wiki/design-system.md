@@ -22,7 +22,7 @@
 | `--color-badge-bg` | `#E6EEF7` | Badge-BG, Icon-Tile-BG |
 | `--color-border` | `#DADDE6` | Card-Border, Trennlinien (1–1.5px) |
 
-**Hero:** dunkler Radial-Gradient `#597AAB → #1C2B41`, Eyebrow darauf in Accent-Orange, Headline weiß.
+**Hero:** dunkler Radial-Gradient `#597AAB → #1C2B41` (ohne Animation), Eyebrow in Accent-Orange, restlicher Text (Headline, Absatz, Reassurance-Punkte + Check-Icons) komplett **weiß**.
 
 ## Typografie
 - **Schrift:** Inter (400/500/600/700/800) — eine Schrift für alles, keine Serifen.
@@ -37,8 +37,12 @@
 Skala: `4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48 · 64` px.
 Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 
+## Layout
+- Content-Breite: **max. 1300px, zentriert** (`--container-max`) — einheitlich für Header, Body, Footer.
+- Sektions-Hintergründe laufen vollflächig (Divi-Prinzip „Section voll / Row 1300").
+
 ## Radien
-- Buttons `5px` · Badges `6px` · Cards `10px` · Icon-Tiles `14px`.
+- Buttons **`2px`** (seit 12.07.2026, vorher 5px) · Badges `6px` · Cards `10px` · Icon-Tiles `14px`.
 - Nichts pill-förmig, nichts scharfkantig.
 
 ## Komponenten
