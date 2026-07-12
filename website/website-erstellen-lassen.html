@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website erstellen lassen — schlüsselfertig mit Design, Texten &amp; SEO | Hiacynta Hess</title>
+  <meta name="description" content="Du schickst mir deine Infos, ich mache daraus eine fertige Website — Design, Texte und SEO aus einer Hand, zum Festpreis, fertig in 4–8 Wochen.">
+  <link rel="icon" href="assets/logos/hiacynta-hess-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- ===== Header / Nav ===== -->
+  <header class="site-header">
+    <a href="index.html"><img class="logo" src="assets/logos/hiacynta-hess-logo.svg" alt="Hiacynta Hess"></a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <nav class="main-nav">
+      <a href="index.html">Start</a>
+      <a href="website-erstellen-lassen.html">Service</a>
+      <a href="index.html#gratis">Gratis lernen</a>
+      <a href="#">Shop</a>
+      <a href="index.html#kundenstimmen">Kundenstimmen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="hh-btn hh-btn--primary" href="#kontakt">Website erstellen lassen</a>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero hero--centered">
+    <div class="container">
+      <span class="eyebrow">Schlüsselfertig</span>
+      <h1>Ich will eine schlüsselfertige Website erstellen lassen mit Texten, Design und SEO</h1>
+      <p class="hero__lead">Du schickst mir deine Infos, ich mache daraus eine fertige Website. Dein Aufwand? Nur 3–8 Stunden über das gesamte Projekt.</p>
+      <div class="hero__cta">
+        <a class="hh-btn hh-btn--primary" href="#kontakt">Website erstellen lassen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon-tile"><i class="fa-light fa-palette"></i></div>
+          <h3>Design, Texte &amp; SEO aus einer Hand</h3>
+          <p>Alles aus einer Hand — kein Koordinieren mit mehreren Dienstleistern.</p>
+        </article>
+        <article class="card">
+          <div class="icon-tile"><i class="fa-light fa-tag"></i></div>
+          <h3>Zum Festpreis</h3>
+          <p>Klare Kosten von Anfang an, keine Überraschungen.</p>
+        </article>
+        <article class="card">
+          <div class="icon-tile"><i class="fa-light fa-clock"></i></div>
+          <h3>Fertig in 4–8 Wochen</h3>
+          <p>Planbarer Zeitrahmen für dein gesamtes Projekt.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Process ===== -->
+  <section class="section section--page">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Ablauf</span>
+        <h2>So läuft dein Projekt ab</h2>
+      </div>
+      <div class="grid-4">
+        <div class="step">
+          <div class="step__num">1</div>
+          <h3>Briefing</h3>
+          <p>Du schickst mir deine Infos, Texte und Wünsche.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <h3>Design &amp; Texte</h3>
+          <p>Ich erstelle Design, finalisiere Texte und SEO-Struktur.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <h3>Review</h3>
+          <p>Du gibst Feedback, ich setze Anpassungen um.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <h3>Launch</h3>
+          <p>Deine fertige Website geht live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta" id="kontakt">
+    <div class="container">
+      <h2>Bereit für deine neue Website?</h2>
+      <p>Schick mir deine Infos — ich melde mich mit den nächsten Schritten.</p>
+      <div class="cta__buttons">
+        <a class="hh-btn hh-btn--primary" href="mailto:accounts@hhess.de">Website erstellen lassen</a>
+        <a class="hh-btn hh-btn--secondary" href="mailto:accounts@hhess.de">Fragen stellen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer site-footer--centered">
+    © 2026 Hiacynta Hess. Alle Rechte vorbehalten.
+  </footer>
+
+  <script>
+    var toggle = document.querySelector('.nav-toggle');
+    var nav = document.querySelector('.main-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  </script>
+</body>
+</html>

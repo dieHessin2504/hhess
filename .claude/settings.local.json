@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py --version)",
+      "Bash(npx --yes http-server -p 8099 -a 127.0.0.1 -c-1)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8099/index.html)",
+      "Bash(mv docs *)",
+      "Bash(sed -i 's#docs/#wissen/#g' CLAUDE.md .claude/rules/components-design.md .claude/rules/seo-performance.md)",
+      "Bash(git --version)"
+    ]
+  }
+}
