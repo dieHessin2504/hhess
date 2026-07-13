@@ -55,7 +55,7 @@
   --text-eyebrow-on-dark: var(--color-accent);
 
   /* Typography scale */
-  --eyebrow-size: 11px;
+  --eyebrow-size: 0.6875rem;
   --eyebrow-weight: 600;
   --eyebrow-transform: uppercase;
   --eyebrow-tracking: 0.08em;
@@ -76,9 +76,9 @@
   --body-weight: 400;
   --body-line: 1.6;
 
-  --label-size: 15px;
+  --label-size: 0.9375rem;
   --label-weight: 600;
-  --badge-size: 14px;
+  --badge-size: 0.875rem;
   --badge-weight: 600;
 
   /* Spacing scale */
@@ -108,7 +108,8 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Layout */
-  --container-max: 1300px;
+  --container-max: 1300px;    /* Standardbreite */
+  --container-narrow: 800px;  /* schmale Version (textlastige Seiten) */
   --section-x: 48px;
 }
 
@@ -157,7 +158,7 @@ img { max-width: 100%; }
   border-radius: var(--radius-sm);
   padding: var(--button-padding);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.2;
   cursor: pointer;
@@ -212,7 +213,7 @@ img { max-width: 100%; }
 }
 .card:hover { border-color: var(--color-ink); }
 .card h3 { margin: 0; }
-.card p { margin: 0; font-size: 16px; line-height: var(--body-line); color: var(--text-body); }
+.card p { margin: 0; font-size: 1rem; line-height: var(--body-line); color: var(--text-body); }
 
 /* ---- Components: IconTile ----------------------------------- */
 .icon-tile {
@@ -226,10 +227,27 @@ img { max-width: 100%; }
   color: var(--icon-stroke);
   flex-shrink: 0;
 }
-.icon-tile i { font-size: 22px; }
+.icon-tile i { font-size: 1.375rem; }
+
+/* ---- Seiten-Typen (Layout-Konvention) -----------------------
+   .page-hero     = Header + blaue Hero-Section (Startseite, Landingpages)
+   .page-standard = ohne Hero, Header direkt auf Inhalt (Impressum, Datenschutz, …)
+   Marker am <body>; aktuell rein semantisch (Hook für spätere typspezifische Styles).
+   ------------------------------------------------------------- */
 
 /* ---- Layout helpers ----------------------------------------- */
 .container { max-width: var(--container-max); margin: 0 auto; }
+/* Schmale Version: an jedem .container zuschaltbar (class="container container--narrow") */
+.container--narrow { max-width: var(--container-narrow); }
+
+/* Fließ-/Rechtstexte auf Standardseiten (Impressum, Datenschutz, …) */
+.legal h1 { font-size: clamp(1.9rem, 3vw + 1rem, 2.4rem); margin-bottom: var(--space-4); }
+.legal h2 { font-size: 1.5rem; margin-top: var(--space-10); }
+.legal p { margin-top: var(--space-2); }
+.legal p + p { margin-top: var(--space-3); }
+.legal address { font-style: normal; line-height: 1.7; }
+.legal a { color: var(--color-primary); }
+.legal a:hover { color: var(--color-accent); }
 
 .section { padding: var(--space-16) var(--section-x); }
 .section--page { background: var(--surface-page); }
@@ -262,7 +280,7 @@ img { max-width: 100%; }
 .main-nav {
   display: flex;
   gap: 30px;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-ink);
 }
@@ -319,7 +337,7 @@ img { max-width: 100%; }
 }
 .has-dropdown:hover > .dropdown,
 .has-dropdown:focus-within > .dropdown { display: block; }
-.dropdown a { display: block; padding: 8px; font-size: 14px; font-weight: 500; }
+.dropdown a { display: block; padding: 8px; font-size: 0.875rem; font-weight: 500; }
 
 .nav-toggle { display: none; }
 
@@ -339,9 +357,9 @@ img { max-width: 100%; }
 .hero__lead { margin-top: 16px; max-width: 520px; color: #fff; }
 .hero__cta { display: flex; gap: 12px; margin-top: 24px; }
 .hero .hh-btn { padding: 16px 26px; }
-.hero__reassure { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; font-size: 13px; color: #fff; }
+.hero__reassure { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; font-size: 0.8125rem; color: #fff; }
 .hero__reassure span { display: inline-flex; align-items: center; gap: 7px; }
-.hero__reassure i { color: #fff; font-size: 12px; }
+.hero__reassure i { color: #fff; font-size: 0.75rem; }
 .hero__media {
   background: #fff;
   border-radius: 14px;
@@ -351,7 +369,7 @@ img { max-width: 100%; }
   align-items: center;
   justify-content: center;
   color: #98a2b3;
-  font-size: 14px;
+  font-size: 0.875rem;
   overflow: hidden;
   text-align: center;
 }
@@ -362,9 +380,9 @@ img { max-width: 100%; }
 
 /* ---- Stats -------------------------------------------------- */
 .stats { padding: var(--space-12) var(--section-x); background: #fff; }
-.stat__num { font-size: 40px; font-weight: 800; color: var(--color-primary); line-height: 1; }
+.stat__num { font-size: 2.5rem; font-weight: 800; color: var(--color-primary); line-height: 1; }
 .stat__title { font-weight: 700; margin-top: 4px; }
-.stat__desc { color: #5b6b80; font-size: 14px; margin-top: 4px; }
+.stat__desc { color: #5b6b80; font-size: 0.875rem; margin-top: 4px; }
 
 /* ---- Testimonials ------------------------------------------- */
 .quote {
@@ -375,7 +393,7 @@ img { max-width: 100%; }
 }
 .quote p { font-size: 0.95rem; }
 .quote__name { font-weight: 700; margin-top: 12px; }
-.quote__role { font-size: 13px; color: #5b6b80; }
+.quote__role { font-size: 0.8125rem; color: #5b6b80; }
 
 /* ---- About -------------------------------------------------- */
 .about {
@@ -397,7 +415,7 @@ img { max-width: 100%; }
   align-items: center;
   justify-content: center;
   color: #98a2b3;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .about__badges { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
 .about p { margin-top: 12px; }
@@ -429,12 +447,13 @@ img { max-width: 100%; }
 .cta__buttons { margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 /* ---- Footer ------------------------------------------------- */
-.site-footer {
-  padding: var(--space-12) var(--section-x);
+/* Teil 1: Haupt-Footer (Logo, Text, Social) */
+.footer-main {
   background: #fff;
   border-top: 1px solid var(--border-card);
+  padding: var(--space-12) var(--section-x);
 }
-.site-footer__inner {
+.footer-main__inner {
   max-width: var(--container-max);
   margin: 0 auto;
   display: flex;
@@ -443,22 +462,37 @@ img { max-width: 100%; }
   gap: var(--space-8);
   flex-wrap: wrap;
 }
-.site-footer .logo { height: 26px; }
-.site-footer p { margin-top: 12px; max-width: 320px; font-size: 14px; }
-.footer-social { display: flex; gap: 16px; margin-top: 16px; font-size: 20px; color: var(--color-primary); }
+.footer-main .logo { height: 26px; }
+.footer-main p { margin-top: 12px; max-width: 320px; font-size: 0.875rem; }
+.footer-social { display: flex; gap: 16px; margin-top: 16px; font-size: 1.25rem; color: var(--color-primary); }
 .footer-social a { color: inherit; }
 .footer-social a:hover { color: var(--color-accent); }
-.footer-copy { font-size: 14px; color: #5b6b80; }
 
-.site-footer--centered {
-  background: var(--surface-page);
-  color: #5b6b80;
-  font-size: 14px;
+/* Teil 2: Abschlussleiste (dunkel, zweispaltig) */
+.footer-bottom {
+  background: #20395B;
+  color: #d7dfec;
 }
-.site-footer--centered .site-footer__inner {
-  display: block;
-  text-align: center;
+.footer-bottom__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 18px var(--section-x);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: 0.875rem;
 }
+.footer-bottom__copy { color: #d7dfec; }
+.footer-bottom__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+}
+.footer-bottom a { color: #fff; }
+.footer-bottom a:hover { color: var(--color-accent); }
 
 /* ---- Responsive --------------------------------------------- */
 @media (max-width: 960px) {
@@ -483,7 +517,7 @@ img { max-width: 100%; }
     display: inline-flex;
     background: transparent;
     border: none;
-    font-size: 22px;
+    font-size: 1.375rem;
     color: var(--color-ink);
     cursor: pointer;
   }
@@ -491,5 +525,7 @@ img { max-width: 100%; }
   .grid-4 { grid-template-columns: 1fr; }
   .stats { display: block; }
   .stats .grid-3 > * + * { margin-top: var(--space-8); }
-  .site-footer__inner { flex-direction: column; }
+  .footer-main__inner { flex-direction: column; }
+  .footer-bottom__inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-bottom__legal { justify-content: flex-start; gap: 16px; }
 }

@@ -25,6 +25,7 @@
 **Hero:** dunkler Radial-Gradient `#597AAB → #1C2B41` (ohne Animation), Eyebrow in Accent-Orange, restlicher Text (Headline, Absatz, Reassurance-Punkte + Check-Icons) komplett **weiß**.
 
 ## Typografie
+- **Einheit:** Schriftgrößen **immer in `rem`** (Basis 16px = 1rem, z. B. 18px → 1.125rem). px nur für Layout-Maße (Border, Radius, Kachelgröße). Nennt der User px, wird umgerechnet.
 - **Schrift:** Inter (400/500/600/700/800) — eine Schrift für alles, keine Serifen.
 - **Eyebrow:** 11px, 600, uppercase, letter-spacing 0.08em, Farbe `--color-eyebrow-blue`.
 - **H1:** clamp(2rem → 3rem), 800, line-height 1.2
@@ -38,8 +39,12 @@ Skala: `4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48 · 64` px.
 Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 
 ## Layout
-- Content-Breite: **max. 1300px, zentriert** (`--container-max`) — einheitlich für Header, Body, Footer.
-- Sektions-Hintergründe laufen vollflächig (Divi-Prinzip „Section voll / Row 1300").
+- **Zwei Content-Breiten** (zentriert). Header & Footer bleiben immer 1300px — nur die Content-Spalte variiert:
+  - **Standardbreite: 1300px** (`--container-max`, `.container`) — Standard, v. a. für Hero-Seiten.
+  - **Schmale Breite: 800px** (`--container-narrow`, `.container--narrow`) — für textlastige Standardseiten (Impressum, Datenschutz, Blog); bessere Lesbarkeit (~70–75 Zeichen/Zeile).
+  - Anwendung: `class="container container--narrow"`.
+- Sektions-Hintergründe laufen vollflächig (Divi-Prinzip „Section voll / Row").
+- Seiten-Typen (Hero-Seite / Standardseite): siehe `components.md`.
 
 ## Radien
 - Buttons **`2px`** (seit 12.07.2026, vorher 5px) · Badges `6px` · Cards `10px` · Icon-Tiles `14px`.

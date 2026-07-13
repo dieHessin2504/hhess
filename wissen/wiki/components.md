@@ -4,6 +4,12 @@ Pro Komponente: Zweck - Varianten - wo verwendet - Besonderheiten (A11y/SEO).
 Hinweis: Aktuell statisches HTML/CSS (keine echten Komponenten/Props). Die in `CLAUDE.md`
 genannten `default`/`reduced`-Varianten sind Ziel für den späteren Next.js-Umbau, noch nicht gebaut.
 
+## Seiten-Typen (Layout-Konvention)
+Feste Benennung, damit klar ist, wovon wir sprechen:
+- **Hero-Seite** (`<body class="page-hero">`): Header **+ blaue Hero-Section** darunter. Für Startseite, Landingpages, Haupt-Angebotsseiten. Nutzt i. d. R. den vollen Footer (Teil 1 + Abschlussleiste).
+- **Standardseite** (`<body class="page-standard">`): Header direkt auf den Inhalt, **keine** blaue Hero. Für Impressum, Datenschutz, Blog, Text-/Rechts-Unterseiten. Nutzt i. d. R. nur die Abschlussleiste (reduzierter Footer).
+- Stand: Homepage & Service sind Hero-Seiten; `impressum.html` ist Standardseite; Datenschutz folgt als Standardseite.
+
 ## Header (`.site-header`)
 - Zweck: Sticky-Kopf mit Logo, Hauptnavigation, primärem CTA.
 - Aufbau: vollflächige weiße Leiste + Border; Inhalt in `.site-header__inner` auf **max. 1300px** zentriert.
@@ -17,8 +23,10 @@ genannten `default`/`reduced`-Varianten sind Ziel für den späteren Next.js-Umb
 - Verwendet in: `index.html`, `website-erstellen-lassen.html`.
 
 ## Footer (`.site-footer`)
-- Zwei Ausprägungen: Standard (Logo + Text + Social-Icons, Homepage) und `--centered` (nur Copyright-Zeile, Service-Seite).
-- Inhalt in `.site-footer__inner` auf max. 1300px.
+- **Zweiteilig:** Teil 1 (`.footer-main`) hell mit Logo/Text/Social-Icons; Teil 2 (`.footer-bottom`) dunkle Abschlussleiste `#20395B`, zweispaltig.
+- Abschlussleiste: links Copyright (`.footer-bottom__copy`), rechts rechtsbündig die Rechtslinks (`.footer-bottom__legal`) — Kunden-Login (extern, ThriveCart), Impressum, Datenschutzhinweise.
+- Hero-Seiten (z. B. Homepage): beide Teile. Standardseiten (z. B. Service-Seite): nur Teil 2 (Abschlussleiste).
+- Inhalt je Teil auf max. 1300px (`.footer-main__inner`, `.footer-bottom__inner`).
 
 ## Button (`.hh-btn`)
 - Varianten: `--primary` (solid Orange, Text weiß) / `--secondary` (Outline Blau).

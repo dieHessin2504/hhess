@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum | Hiacynta Hess</title>
+  <meta name="description" content="Impressum von Hiacynta Hess — Anbieterkennzeichnung, Kontakt und rechtliche Angaben gemäß § 5 TMG.">
+  <link rel="icon" href="assets/logos/hiacynta-hess-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="page-standard">
+
+  <!-- ===== Header / Nav ===== -->
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a href="index.html"><img class="logo" src="assets/logos/hiacynta-hess-logo.svg" alt="Hiacynta Hess"></a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <nav class="main-nav">
+      <a href="index.html">Start</a>
+      <a href="website-erstellen-lassen.html">Service</a>
+      <a href="index.html#gratis">Gratis lernen</a>
+      <a href="#">Shop</a>
+      <a href="index.html#kundenstimmen">Kundenstimmen</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="hh-btn hh-btn--primary" href="index.html#newsletter">Newsletter abonnieren</a>
+    </div>
+  </header>
+
+  <!-- ===== Inhalt ===== -->
+  <main class="section section--page">
+    <div class="container legal">
+      <h1>Impressum</h1>
+
+      <address>
+        Hiacynta Hess<br>
+        Hauptstr. 20<br>
+        69117 Heidelberg
+      </address>
+      <p>Bitte keine Warensendungen an diese Adresse. Verwende stattdessen die Adresse aus meiner letzten Rechnung.</p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: <a href="tel:+4915678219140">015678 21 91 40</a><br>
+        E-Mail: <a href="mailto:website@hhess.de">website@hhess.de</a>
+      </p>
+      <p>Bitte kontaktiere mich zunächst per E-Mail bzw. über das Kontaktformular. Telefonisch bin ich oft schwer erreichbar.</p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+        DE338447931</p>
+
+      <h2>Redaktionell verantwortlich</h2>
+      <address>
+        Hiacynta Hess<br>
+        Hauptstr. 20<br>
+        69117 Heidelberg
+      </address>
+
+      <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+      <h2>Verwendete Bilder und Medien</h2>
+      <p>Unter anderem von depositphotos.</p>
+    </div>
+  </main>
+
+  <!-- ===== Footer (nur Abschlussleiste — Standardseite) ===== -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-bottom__inner">
+        <div class="footer-bottom__copy">© 2026 Hiacynta Hess. Alle Rechte vorbehalten.</div>
+        <div class="footer-bottom__legal">
+          <a href="https://hiacyntahess.thrivecart.com/signin/" target="_blank" rel="noopener">Kunden-Login</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutzhinweise</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var toggle = document.querySelector('.nav-toggle');
+    var nav = document.querySelector('.main-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  </script>
+</body>
+</html>

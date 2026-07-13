@@ -26,3 +26,13 @@ Betrifft: `website/css/styles.css` (`.hero`)
 Entscheidung: Alle Buttons mit 2px Eckenradius über zentrales Token `--radius-sm`.
 Begruendung: gewünschte, klarere Optik; zentrale Steuerung statt Einzelwerte.
 Betrifft: `website/css/styles.css`
+
+## 2026-07-13 - Seiten-Typen & zwei Content-Breiten
+Entscheidung: Zwei Seiten-Typen — **Hero-Seite** (mit blauer Hero, `.page-hero`) / **Standardseite** (ohne, `.page-standard`). Zwei Content-Breiten — **Standard 1300px** / **schmal 800px** (`.container--narrow`).
+Begruendung: klares gemeinsames Vokabular; schmale Breite für Lesbarkeit textlastiger Seiten. Header/Footer bleiben immer 1300px.
+Betrifft: `website/css/styles.css`, Seiten-`<body>`, `wissen/wiki/`
+
+## 2026-07-13 - Schriftgrößen in rem
+Entscheidung: Alle CSS-Schriftgrößen in **rem** (Basis 16px = 1rem); px-Wünsche werden umgerechnet. Layout-Maße bleiben px.
+Begruendung: Konsistenz + Barrierefreiheit (skaliert mit Nutzer-Grundschrift).
+Betrifft: `website/css/styles.css`

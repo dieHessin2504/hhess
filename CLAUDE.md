@@ -33,6 +33,12 @@ Du liest Gedaechtnis und Wiki **immer** (siehe Arbeitsablauf Schritt 2), aber du
 Trigger-Befehle von mir:
 - "merke dir das" / "ins Gedaechtnis" -> Eintrag in `wissen/memory/` (decisions/changelog/learnings passend).
 - "ins Wiki" / "dokumentiere das" -> Eintrag/Update in `wissen/wiki/`.
+
+Wohin was gehoert (Routing beim Dokumentieren):
+- **Allgemeines Wissen / Konventionen / Fakten** -> `wissen/wiki/` (z. B. SEO-Regel „Meta-Title max. 60 Zeichen" -> `seo.md`).
+- **Aussehen/Design der Website** (Buttons, Farben, Abstaende, Typografie) -> `wissen/wiki/design-system.md` (Design-Richtlinien); die zugehoerige Entscheidung zusaetzlich in `wissen/memory/` (decisions/changelog).
+- **Entscheidungen, Verlauf, Learnings** -> `wissen/memory/` (decisions/changelog/learnings).
+
 Ohne einen solchen Befehl aenderst du diese Dateien nicht - auch nicht ungefragt am Ende einer Aufgabe. Bei jeder Aenderung: `wissen/memory/INDEX.md` aktuell halten (unter 200 Zeilen).
 
 ## Ordnerstruktur

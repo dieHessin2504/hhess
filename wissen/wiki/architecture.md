@@ -3,7 +3,8 @@
 ## Projektstruktur (wo liegt was)
 - `website/` — die ausgelieferte Website (statisches HTML/CSS)
   - `index.html` — Homepage
-  - `website-erstellen-lassen.html` — Service-Seite
+  - `website-erstellen-lassen.html` — Service-Seite (Hero-Seite)
+  - `impressum.html` — Impressum (Standardseite)
   - `css/styles.css` — komplettes Stylesheet (Tokens + Komponenten + Layout)
   - `assets/logos/hiacynta-hess-logo.svg` — Logo
 - `wissen/` — Projektwissen

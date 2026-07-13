@@ -6,12 +6,17 @@
 - `changelog.md` - was wann gebaut/geaendert wurde
 - `learnings.md` - geloeste Probleme, Fehler die nicht wiederkommen sollen
 
-## Offene Punkte / aktueller Fokus (Stand 2026-07-12)
-- Website ist **live** (GitHub `dieHessin2504/hhess` → Vercel, Root Directory `website`).
-- Ist-Stand: statisches HTML/CSS, 2 Seiten (Homepage, Website erstellen lassen).
-- Feinschliff erledigt: 1300px-Layout, Header-Menü (Slide-Linie, aktiver Punkt), Hero (radialer Verlauf ohne Animation, weißer Text, Check-Icons), Buttons 2px Radius.
-- Nächste sinnvolle Schritte:
-  - Echte Fotos + finale Texte/Links einsetzen (aktuell Platzhalter).
-  - Domain `hhess.de` anbinden (erst wenn Inhalte final).
-  - Repo ggf. auf Private stellen.
+## Konventionen (Kurzform)
+- **Seiten-Typen:** Hero-Seite (`.page-hero`, mit blauer Hero) / Standardseite (`.page-standard`, ohne). Details: `wiki/components.md`.
+- **Content-Breiten:** Standard 1300px / schmal 800px (`.container--narrow`). Details: `wiki/design-system.md`.
+- **Schriftgrößen:** immer rem (Basis 16px = 1rem). Details: `wiki/design-system.md`.
+- **Doku-Routing:** Wissen/Konventionen → `wiki/`; Aussehen/Design → `wiki/design-system.md`; Entscheidungen/Verlauf → `memory/`. (siehe `CLAUDE.md`)
+
+## Offene Punkte / aktueller Fokus (Stand 2026-07-13)
+- Website **live** (GitHub `dieHessin2504/hhess` → Vercel, Root Directory `website`).
+- Seiten: Homepage + Service (Hero-Seiten), Impressum (Standardseite). Datenschutz offen.
+- Nächste Schritte:
+  - `datenschutz.html` als Standardseite anlegen (zweiter Rechtslink).
+  - Echte Fotos + finale Texte/Links (aktuell Platzhalter).
+  - Domain `hhess.de` anbinden (wenn Inhalte final).
   - Später: Umbau auf Ziel-Stack Next.js (dann Supabase möglich).
