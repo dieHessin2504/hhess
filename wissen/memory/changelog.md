@@ -38,3 +38,11 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - Normaler Footer (Teil 1 + Abschlussleiste) jetzt auf ALLEN Seiten (auch Impressum/Datenschutz/Service).
 - `fa-light` → `fa-solid` site-weit (fa-light ist FA-Pro und rendert in der kostenlosen CDN nicht).
 - Betrifft: `website/**`, `wissen/**`
+
+## 2026-07-13 - Kundenstimmen-Hero mit Foto+Siegel, Seite entschlackt, Filter-Sprung gefixt
+- Kundenstimmen-Hero auf zweispaltiges Layout umgestellt: Text links, rundes Foto rechts, kompaktes ratedo-Badge leicht versetzt auf dem Foto (siehe decisions.md).
+- Großes ratedo-Widget (Widget2), Hero-Lead-Text, Gruppen-Eyebrows + Icons, "Kundenstimmen im Überblick" und die YouTube-/Shop-CTA-Bänder entfernt (siehe decisions.md).
+- Bug behoben: Beim Filter-Wechsel sprang der Inhalt, weil `.ks-panel + .ks-panel { margin-top }` auch bei `hidden`-Panels griff (CSS-Sibling-Selektor ignoriert Sichtbarkeit) — siehe learnings.md.
+- Testimonial-Karten: mehr Abstand zwischen Zitat-Text und Trennlinie, Hover mit abgeschwächter blauer Rahmenfarbe + leichtem Schatten.
+- Lokaler Vorschau-Server `.claude/launch.json` ergänzt (`npx serve`, da kein Python installiert ist).
+- Betrifft: `website/kundenstimmen.html`, `website/index.html`, `website/css/styles.css`, `.claude/launch.json`, `wissen/**`

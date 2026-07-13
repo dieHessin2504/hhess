@@ -63,6 +63,11 @@ Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 - Farbe: Primary-Blau auf pale-blue Tile.
 - System: **Font Awesome (Light)** via CDN als Substitution — bei Produktion ggf. ersetzen.
 
+## Hover-Konventionen (Cards)
+- Standard-Card (`.card`, z. B. "Drei Lösungswege"): Hover-Rahmen wird `--color-ink` (volle Stärke), kein Schatten.
+- Testimonial-Card (`.testimonial`, Kundenstimmen): bewusst **schwächerer** Effekt — Hover-Rahmen `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`, nicht das volle `--color-ink`) **plus** leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)`.
+- Faustregel: je "ruhiger"/dichter der Content (viele Karten nebeneinander wie Testimonials), desto dezenter der Hover-Effekt.
+
 ## Offene Punkte
 - Echte Fotos fehlen (Hero/About sind Platzhalter-Boxen).
 - Font Awesome ist eine Substitution — finales Icon-Set bestätigen.

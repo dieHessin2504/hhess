@@ -48,6 +48,14 @@
   --button-secondary-border: var(--color-primary);
   --button-secondary-hover-bg: var(--color-badge-bg);
 
+  /* ratedo.de Widget — Theming */
+  --ratedo-color-font: #121212;
+  --ratedo-color-head: linear-gradient(to left, #dfeaf4, #e4daec);
+  --ratedo-color-background: #ffffff;
+  --ratedo-color-shadow: rgba(0, 0, 0, 0.12);
+  --ratedo-size-border: 1px;
+  --ratedo-color-border: #d3d3d3;
+
   /* Hero section — dark radial gradient */
   --hero-gradient-outer: #1C2B41;
   --hero-gradient-inner: #597AAB;
@@ -282,11 +290,16 @@ img { max-width: 100%; }
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.testimonial:hover {
+  border-color: rgba(43, 96, 157, 0.7);
+  box-shadow: 0 8px 24px rgba(20, 47, 78, 0.08);
 }
 .testimonial__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: var(--space-4); }
 .testimonial__stars { color: var(--color-accent); font-size: 0.9375rem; letter-spacing: 3px; }
 .testimonial__quote { color: #c3d2e6; font-size: 2rem; line-height: 1; flex-shrink: 0; }
-.testimonial__text { font-size: 1rem; line-height: 1.6; }
+.testimonial__text { font-size: 1rem; line-height: 1.6; margin-bottom: var(--space-5); }
 .testimonial__footer {
   margin-top: auto;
   padding-top: var(--space-5);
@@ -311,32 +324,30 @@ img { max-width: 100%; }
 .testimonial__author { font-weight: 700; color: var(--color-ink); }
 .testimonial__role { font-size: 0.875rem; color: #5b6b80; font-style: italic; margin-top: 1px; }
 
-/* Gruppen-Kopf (Icon + Kicker + Titel + Lead) */
-.group-head { display: flex; gap: var(--space-5); align-items: flex-start; margin-bottom: var(--space-8); }
-.group-head__icon {
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0;
-  border-radius: var(--radius-xl);
-  background: var(--surface-badge);
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-}
-.group-head__eyebrow {
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-eyebrow-blue);
-  margin-bottom: var(--space-2);
-}
+/* Gruppen-Kopf (Titel + Lead) */
+.group-head { margin-bottom: var(--space-8); }
 .group-head h2 { margin: 0; }
 .group-head__lead { margin-top: var(--space-3); color: #5b6b80; max-width: 760px; }
-.ks-panel + .ks-panel { margin-top: var(--space-16); }
+/* Nur Abstand, wenn das vorherige Panel ebenfalls sichtbar ist — sonst hätte ein
+   ausgeblendetes Panel (hidden) weiterhin unsichtbaren Einfluss auf den Abstand
+   und die Überschrift würde je nach Filter unterschiedlich hoch stehen. */
+.ks-panel:not([hidden]) ~ .ks-panel:not([hidden]) { margin-top: var(--space-16); }
+
+/* Slide-Effekt beim Filter-Wechsel */
+.ks-panels { overflow: hidden; }
+.ks-slide-right { animation: ks-slide-in-right 0.35s ease both; }
+.ks-slide-left { animation: ks-slide-in-left 0.35s ease both; }
+@keyframes ks-slide-in-right {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes ks-slide-in-left {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ks-slide-right, .ks-slide-left { animation: none; }
+}
 .attribution { margin-top: var(--space-8); font-size: 0.875rem; color: #5b6b80; }
 .attribution a { color: var(--color-primary); text-decoration: underline; }
 
@@ -348,20 +359,34 @@ img { max-width: 100%; }
 .cta-band .hh-btn { margin-top: var(--space-6); }
 
 /* Kundenstimmen-Filter (Tabs) */
-.ks-filter { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: var(--space-6); }
+.ks-filter {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: var(--space-6);
+  max-width: 100%;
+  padding: 6px;
+  background: var(--surface-badge);
+  border-radius: 999px;
+}
 .ks-filter__btn {
   font-size: 0.9375rem;
   font-weight: 600;
-  padding: 13px 22px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--border-card);
-  background: var(--surface-card);
-  color: var(--text-heading);
+  padding: 11px 24px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink);
   cursor: pointer;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  transition: background var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
 }
-.ks-filter__btn:hover { border-color: var(--color-primary); }
-.ks-filter__btn.is-active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.ks-filter__btn:hover { color: var(--color-primary); }
+.ks-filter__btn.is-active {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(20, 47, 78, 0.18);
+}
 .ks-panel[hidden] { display: none; }
 .ratedo-seal { margin-top: var(--space-10); display: flex; justify-content: center; }
 
@@ -477,10 +502,28 @@ img { max-width: 100%; }
 .hero__reassure span { display: inline-flex; align-items: center; gap: 7px; }
 .hero__reassure i { color: #fff; font-size: 0.75rem; }
 .hero__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+.hero__media--box {
   background: #fff;
   border-radius: 14px;
   border: 1px solid var(--border-card);
-  min-height: 320px;
+  color: #98a2b3;
+  font-size: 0.875rem;
+  text-align: center;
+  overflow: hidden;
+}
+.hero__photo {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1.05;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--border-card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -488,6 +531,14 @@ img { max-width: 100%; }
   font-size: 0.875rem;
   overflow: hidden;
   text-align: center;
+}
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero__seal {
+  position: absolute;
+  left: -20px;
+  bottom: 18%;
+  z-index: 2;
+  max-width: 200px;
 }
 .hero--centered { text-align: center; }
 .hero--centered h1 { max-width: 780px; margin-left: auto; margin-right: auto; }
@@ -651,6 +702,8 @@ img { max-width: 100%; }
 @media (max-width: 960px) {
   :root { --section-x: 28px; }
   .hero__grid { grid-template-columns: 1fr; }
+  .hero__media { margin-top: var(--space-10); }
+  .hero__seal { left: 0; max-width: 170px; }
   .about__grid { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-main__inner { grid-template-columns: 1fr 1fr; }

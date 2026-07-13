@@ -15,7 +15,7 @@
 ## Offene Punkte / aktueller Fokus (Stand 2026-07-13)
 - Website **live** (GitHub `dieHessin2504/hhess` → Vercel, Root Directory `website`).
 - Seiten: Homepage + Service + Kundenstimmen (Hero-Seiten), Impressum + Datenschutz (Standardseiten). Alle mit normalem Footer.
-- Kundenstimmen: Filter-Tabs (Community/Onlinekurse/1:1), ratedo-Siegel eingebunden (berechtigtes Interesse, siehe decisions).
+- Kundenstimmen: Filter-Tabs (Community/Onlinekurse/1:1), zweispaltiger Hero mit Foto + kompaktem ratedo-Siegel (berechtigtes Interesse, siehe decisions). Lokale Vorschau: `npx serve` via `.claude/launch.json` (kein Python vorhanden).
 - Nächste Schritte:
   - Consent-/Content-Blocker-Lösung vor Launch (ratedo lädt externes JS ohne Consent).
   - Echte Fotos + finale Texte/Links (aktuell Platzhalter).

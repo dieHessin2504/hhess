@@ -52,5 +52,24 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 ## Hero (`.hero`)
 - Vollflächiger **radialer Verlauf** (hell-blau innen → dunkel außen), keine Animation.
 - Text komplett weiß; Eyebrow in Accent-Orange.
-- Zwei Layouts: 2-spaltig mit Foto-Box (Homepage) / zentriert (`--centered`, Service-Seite).
+- Drei Layouts:
+  - **2-spaltig, einfache Foto-Box** (Homepage `index.html`): `.hero__grid` + `.hero__media.hero__media--box` (weiße Box mit Border, Platzhalter-Text bis echtes Foto da ist).
+  - **2-spaltig, rundes Foto + versetztes Siegel** (Kundenstimmen `kundenstimmen.html`): `.hero__grid` + `.hero__media` → darin `.hero__photo` (rundes Foto, `border-radius:50%`) und `.hero__seal` (absolut positioniert, `left:-20px`, `bottom:18%`, leicht über den linken Rand des Fotos versetzt — enthält das ratedo-Badge, siehe unten).
+  - **Zentriert** (`--centered`, Service-Seite): kein Media-Element.
 - Reassurance-Zeile (`.hero__reassure`): Punkte mit `fa-check`-Icon, alles weiß.
+
+## ratedo.de-Einbindungen (zwei verschiedene, nicht verwechseln!)
+- **Siegel/Badge** (`ratedo_badge`, `data-type="deluxe2"`, Script `ratedo-badge.min.js`): kompakt (max. 180px), zeigt nur Sterne + Gesamtnote. Verwendet im Kundenstimmen-Hero (`.hero__seal`), leicht versetzt auf dem Foto.
+- **Widget 2** (`ratedo-w2`, Script `ratedo-widget2.min.js`): große Promo-Karte (~700px breit) mit Kopfzeile, Siegel-Medaille, Kategorie-Bewertungen, "Bewertungen ansehen"-Link. **Nicht mehr auf der Website verwendet** (war im Filter-Abschnitt von Kundenstimmen, wurde entfernt — sprengt als kleines Badge das Layout).
+- Theming-Variablen (`--ratedo-color-*`) liegen zentral in `styles.css` `:root`, nicht pro Seite inline duplizieren.
+- DSGVO-Einordnung (berechtigtes Interesse, ohne Consent-Gate): siehe `memory/decisions.md`.
+
+## Testimonial-Card (`.testimonial`, Kundenstimmen-Seite)
+- Aufbau: Sterne + Zitat-Icon → Zitat-Text → Trennlinie → Avatar-Kreis + Name + kursive Rolle.
+- `.testimonial__text` hat festes `margin-bottom` (nicht nur `margin-top: auto` auf dem Footer), damit der Abstand zur Trennlinie **nie** zusammenfällt, egal wie lang der Zitat-Text ist.
+- Hover: siehe `design-system.md` Abschnitt "Hover-Konventionen" (schwächer als Standard-Card).
+
+## Kundenstimmen-Filter (`.ks-filter`, `.ks-panel`)
+- Drei Buttons (Allgemeines/Onlinekurse/1:1 Beratung). "Allgemeines" zeigt alle drei Panels gestapelt, die anderen zeigen nur ihr Panel (`hidden`-Attribut).
+- **Wichtig:** Abstands-Selektoren zwischen Panels müssen `:not([hidden])` verwenden (`.ks-panel:not([hidden]) ~ .ks-panel:not([hidden])`), sonst springt der Inhalt beim Filtern — siehe `memory/learnings.md`.
+- Nach jedem Filter-Klick scrollt die Seite per JS sanft zum Anfang von `.ks-panels` (unterhalb des Sticky-Headers), falls weiter unten gescrollt war.

@@ -29,58 +29,47 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero hero--centered">
-    <div class="container">
-      <span class="eyebrow">Kundenstimmen &amp; Erfahrungen</span>
-      <h1>Echte Rückmeldungen aus Kursen, 1:1-Beratungen und meiner Community</h1>
-      <p class="hero__lead">Wähle unten den Bereich, der dich interessiert — Community, Kurse oder 1:1-Beratung.</p>
+  <section class="hero">
+    <div class="hero__grid container">
+      <div>
+        <span class="eyebrow">Kundenstimmen &amp; Erfahrungen</span>
+        <h1>Echte Rückmeldungen aus Kursen, 1:1-Beratungen und meiner Community</h1>
+      </div>
+      <div class="hero__media">
+        <div class="hero__photo">[ Foto: Hiacynta Hess — bitte ersetzen ]</div>
+        <div class="hero__seal">
+          <!-- ratedo.de Siegel -->
+          <div style="max-width: 180px; margin: 0 auto;" class="ratedo_badge" data-ratedo_id="db8dc2b7a3bb754178d96fe9b4e434d0c017825b" data-type="deluxe2"></div>
+          <!-- ratedo.de Siegel -->
+        </div>
+      </div>
     </div>
   </section>
+
+  <script src="https://www.ratedo.de/js/widgets/ratedo-badge.min.js" async></script>
 
   <!-- ===== Filter + Überblick ===== -->
   <section class="section section--page">
     <div class="container" style="text-align:center;">
-      <span class="eyebrow">Kundenstimmen im Überblick</span>
-      <h2 style="margin-top:8px;">Wähle den Bereich, der dich interessiert</h2>
+      <h2>Wähle den Bereich, der dich interessiert</h2>
       <p class="section-lead" style="margin-left:auto;margin-right:auto;">Entscheide selbst, ob du Feedback aus der Community, aus Kursen oder aus 1:1-Beratungen sehen möchtest.</p>
       <div class="ks-filter" role="group" aria-label="Kundenstimmen filtern">
-        <button type="button" class="ks-filter__btn" data-target="allgemeines" aria-pressed="false">Allgemeines</button>
+        <button type="button" class="ks-filter__btn is-active" data-target="allgemeines" aria-pressed="true">Allgemeines</button>
         <button type="button" class="ks-filter__btn" data-target="onlinekurse" aria-pressed="false">Onlinekurse</button>
         <button type="button" class="ks-filter__btn" data-target="beratung" aria-pressed="false">1:1 Beratung</button>
       </div>
-
-      <!-- ratedo.de Widget -->
-      <style>
-        :root {
-          --ratedo-color-font: #121212;
-          --ratedo-color-head: linear-gradient(to left, #dfeaf4, #e4daec);
-          --ratedo-color-background: #ffffff;
-          --ratedo-color-shadow: rgba(0, 0, 0, 0.12);
-          --ratedo-size-border: 1px;
-          --ratedo-color-border: #d3d3d3;
-        }
-      </style>
-      <div class="ratedo-seal">
-        <div class="ratedo-w2" data-ratedo_id="db8dc2b7a3bb754178d96fe9b4e434d0c017825b"></div>
-      </div>
-      <script type="text/javascript" src="https://www.ratedo.de/js/widgets/ratedo-widget2.min.js" async></script>
-      <!-- /ratedo.de Widget -->
     </div>
   </section>
 
   <!-- ===== Testimonial-Panels ===== -->
-  <section class="section section--page">
+  <section class="section section--page ks-panels">
     <div class="container">
 
       <!-- Panel: Community -->
       <div class="ks-panel" data-group="allgemeines">
         <div class="group-head">
-          <div class="group-head__icon"><i class="fa-regular fa-comment"></i></div>
-          <div>
-            <span class="group-head__eyebrow">Community-Feedback</span>
-            <h2>Stimmen aus der Community</h2>
-            <p class="group-head__lead">Hier findest du Feedback aus der Community, das sich vor allem auf meine kostenlosen YouTube-Inhalte bezieht.</p>
-          </div>
+          <h2>Stimmen aus der Community</h2>
+          <p class="group-head__lead">Hier findest du Feedback aus der Community, das sich vor allem auf meine kostenlosen YouTube-Inhalte bezieht.</p>
         </div>
         <div class="testimonial-grid">
           <article class="testimonial">
@@ -134,12 +123,8 @@
       <!-- Panel: Onlinekurse -->
       <div class="ks-panel" data-group="onlinekurse">
         <div class="group-head">
-          <div class="group-head__icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <div>
-            <span class="group-head__eyebrow">Kurs-Feedback</span>
-            <h2>Onlinekurse, Masterclasses, Workshops</h2>
-            <p class="group-head__lead">Rückmeldungen von Teilnehmenden, die an meinen Onlinekursen, Masterclasses und Workshops teilgenommen haben.</p>
-          </div>
+          <h2>Onlinekurse, Masterclasses, Workshops</h2>
+          <p class="group-head__lead">Rückmeldungen von Teilnehmenden, die an meinen Onlinekursen, Masterclasses und Workshops teilgenommen haben.</p>
         </div>
         <div class="testimonial-grid">
           <article class="testimonial">
@@ -184,12 +169,8 @@
       <!-- Panel: 1:1 Beratung -->
       <div class="ks-panel" data-group="beratung">
         <div class="group-head">
-          <div class="group-head__icon"><i class="fa-solid fa-user-group"></i></div>
-          <div>
-            <span class="group-head__eyebrow">1:1 Feedback</span>
-            <h2>1:1 Beratung und Coaching</h2>
-            <p class="group-head__lead">Erfahre, wie andere die persönliche Zusammenarbeit mit mir erlebt haben.</p>
-          </div>
+          <h2>1:1 Beratung und Coaching</h2>
+          <p class="group-head__lead">Erfahre, wie andere die persönliche Zusammenarbeit mit mir erlebt haben.</p>
         </div>
         <div class="testimonial-grid">
           <article class="testimonial">
@@ -246,26 +227,6 @@
         <p class="attribution">Die hier gezeigten Rückmeldungen stammen aus Bewertungen, die über die Plattform <a href="https://www.ratedo.de/profil/hiacynta-hess" target="_blank" rel="noopener">ratedo.de</a> abgegeben wurden.</p>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ===== CTA: YouTube ===== -->
-  <section class="cta-band">
-    <div class="cta-band__inner">
-      <h2>Über 3.400 Selbstständige lernen schon mit meinen YouTube-Videos</h2>
-      <p>Auf meinem YouTube-Kanal findest du praxisnahe Anleitungen zu WordPress, Divi und Online-Business-Tools. Jede Woche neue Tipps, die dir helfen, deine Website Schritt für Schritt selbst aufzubauen – verständlich, klar und ohne Technikfrust.</p>
-      <a class="hh-btn hh-btn--primary" href="https://link.hhess.de/youtube" target="_blank" rel="noopener">Zum YouTube-Kanal</a>
-    </div>
-  </section>
-
-  <!-- ===== CTA: Shop ===== -->
-  <section class="section section--white">
-    <div class="container cta">
-      <h2>Alles für eine erfolgreiche Website</h2>
-      <p>In meinem Shop findest du Kurse, Masterclasses und Vorlagen, mit denen du deine Website selbstsicher weiterentwickelst – Schritt für Schritt zu mehr Reichweite und Anfragen.</p>
-      <div class="cta__buttons">
-        <a class="hh-btn hh-btn--secondary" href="https://www.hhess.de/shop/" target="_blank" rel="noopener">Jetzt Shop entdecken</a>
-      </div>
     </div>
   </section>
 
@@ -368,20 +329,38 @@
     // Kundenstimmen-Filter: Standard = alle sichtbar; Klick filtert, erneuter Klick zeigt wieder alle
     var filterBtns = document.querySelectorAll('.ks-filter__btn');
     var panels = document.querySelectorAll('.ks-panel');
+    var panelsSection = document.querySelector('.ks-panels');
+    var siteHeader = document.querySelector('.site-header');
+    var order = ['allgemeines', 'onlinekurse', 'beratung'];
+    var currentIndex = 0;
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var target = btn.getAttribute('data-target');
-        var wasActive = btn.classList.contains('is-active');
+        var newIndex = order.indexOf(target);
+        var dir = newIndex < currentIndex ? 'left' : 'right';
+        currentIndex = newIndex;
         filterBtns.forEach(function (b) {
-          b.classList.remove('is-active');
-          b.setAttribute('aria-pressed', 'false');
+          var active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
-        if (wasActive) {
-          panels.forEach(function (p) { p.hidden = false; });
-        } else {
-          btn.classList.add('is-active');
-          btn.setAttribute('aria-pressed', 'true');
-          panels.forEach(function (p) { p.hidden = p.getAttribute('data-group') !== target; });
+        panels.forEach(function (p) {
+          // "Allgemeines" = alle Bereiche anzeigen; sonst nur der passende
+          p.hidden = (target !== 'allgemeines') && (p.getAttribute('data-group') !== target);
+          if (!p.hidden) {
+            p.classList.remove('ks-slide-left', 'ks-slide-right');
+            void p.offsetWidth; // Reflow -> Animation startet neu
+            p.classList.add(dir === 'left' ? 'ks-slide-left' : 'ks-slide-right');
+          }
+        });
+        // Sanft zum Panel-Anfang scrollen, damit die Überschrift nicht springt,
+        // wenn sich die Seitenlänge durch das Ein-/Ausblenden der Panels ändert.
+        if (panelsSection) {
+          var headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
+          var top = panelsSection.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+          if (window.scrollY > top) {
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
         }
       });
     });

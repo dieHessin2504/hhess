@@ -38,7 +38,23 @@ Begruendung: Konsistenz + Barrierefreiheit (skaliert mit Nutzer-Grundschrift).
 Betrifft: `website/css/styles.css`
 
 ## 2026-07-13 - ratedo-Siegel ohne Consent (berechtigtes Interesse)
-Entscheidung: Das ratedo-Bewertungs-Widget (`ratedo-w2`) auf `kundenstimmen.html` bleibt eingebunden und lädt OHNE Consent-Gate.
+Entscheidung: Das ratedo-Bewertungs-Widget auf `kundenstimmen.html` bleibt eingebunden und lädt OHNE Consent-Gate.
 Begruendung: Nutzung auf Grundlage **berechtigten Interesses** (Art. 6 Abs. 1 lit. f DSGVO) — Darstellung/Sammlung von Kundenbewertungen. Vom User ausdrücklich so entschieden.
 Betrifft: `website/kundenstimmen.html`.
 Hinweis: Lädt externes JS von ratedo.de. Newsletter (Encharge) ist davon getrennt und auf **Einwilligung** (Art. 6 Abs. 1 lit. a) gestützt. Für den Launch unter hhess.de ggf. Consent-/Content-Blocker-Lösung mitdenken.
+
+## 2026-07-13 - Kundenstimmen-Hero: zweispaltig mit Foto + kompaktem ratedo-Siegel
+Entscheidung: Hero von `kundenstimmen.html` von zentriert auf zweispaltig umgestellt (Text links, rundes Foto rechts). Auf dem Foto liegt leicht versetzt (unten links, `left:-20px`) das kompakte ratedo-**Badge** (`ratedo_badge`, `data-type="deluxe2"`, `ratedo-badge.min.js`, max. 180px) — NICHT das große `ratedo-w2`-Widget (das ist eine große Promo-Karte mit Siegel-Medaille, ca. 700px breit, passt nicht als kleines Badge).
+Begruendung: Nutzer wollte ein Layout wie ein Referenzbeispiel (Foto + leicht versetztes Bewertungs-Siegel); das kleine Badge-Embed liefert die passende kompakte Optik, das große Widget2 wurde getestet und verworfen (sprengte das Layout).
+Betrifft: `website/kundenstimmen.html`, `website/css/styles.css` (`.hero__media`, `.hero__photo`, `.hero__seal`, `.hero__media--box`). Die ratedo-Theming-Variablen (`--ratedo-color-*`) liegen zentral in `:root`, nicht mehr pro Seite inline.
+Hinweis: `index.html`-Hero bleibt unverändert (einfache Foto-Box `.hero__media--box`, kein Siegel) — das zweispaltige Foto+Siegel-Layout ist bewusst nur für `kundenstimmen.html`.
+
+## 2026-07-13 - Kundenstimmen-Seite entschlackt
+Entscheidung: Auf `kundenstimmen.html` entfernt: das große `ratedo-w2`-Widget im Filter-Abschnitt, der Hero-Lead-Text, die Eyebrows "Community-Feedback"/"Kurs-Feedback"/"1:1 Feedback" samt Icon-Kacheln vor den drei Gruppen-Überschriften, die Eyebrow "Kundenstimmen im Überblick" sowie die YouTube- und Shop-CTA-Bänder am Seitenende.
+Begruendung: Vom User ausdrücklich so gewünscht — schlankere, weniger werbliche Seite. Ungenutzte CSS-Klassen (`.group-head__icon`, `.group-head__eyebrow`) wurden mitentfernt.
+Betrifft: `website/kundenstimmen.html`, `website/css/styles.css`.
+
+## 2026-07-13 - Testimonial-Karten: Hover-Farbe & Schatten
+Entscheidung: Hover-Effekt der Testimonial-Karten (`.testimonial:hover`) nutzt `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`) als Rahmenfarbe statt vollem `--color-ink` (wie bei `.card:hover`) — bewusst schwächer/weicher. Zusätzlich leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)` (gleicher Wert wie beim Nav-Dropdown).
+Begruendung: User wollte den gleichen Hover-Effekt wie bei den "Drei Lösungswege"-Karten, aber abgeschwächt; mehrere Abstufungen (100% `--color-primary`, `#E6EEF7`, 45%, 70% Deckkraft) live getestet, 70% war der gewünschte Kompromiss.
+Betrifft: `website/css/styles.css` (`.testimonial`, `.testimonial:hover`, `.testimonial__text` margin-bottom für konsistenten Abstand zur Trennlinie).
