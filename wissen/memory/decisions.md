@@ -36,3 +36,9 @@ Betrifft: `website/css/styles.css`, Seiten-`<body>`, `wissen/wiki/`
 Entscheidung: Alle CSS-Schriftgrößen in **rem** (Basis 16px = 1rem); px-Wünsche werden umgerechnet. Layout-Maße bleiben px.
 Begruendung: Konsistenz + Barrierefreiheit (skaliert mit Nutzer-Grundschrift).
 Betrifft: `website/css/styles.css`
+
+## 2026-07-13 - ratedo-Siegel ohne Consent (berechtigtes Interesse)
+Entscheidung: Das ratedo-Bewertungs-Widget (`ratedo-w2`) auf `kundenstimmen.html` bleibt eingebunden und lädt OHNE Consent-Gate.
+Begruendung: Nutzung auf Grundlage **berechtigten Interesses** (Art. 6 Abs. 1 lit. f DSGVO) — Darstellung/Sammlung von Kundenbewertungen. Vom User ausdrücklich so entschieden.
+Betrifft: `website/kundenstimmen.html`.
+Hinweis: Lädt externes JS von ratedo.de. Newsletter (Encharge) ist davon getrennt und auf **Einwilligung** (Art. 6 Abs. 1 lit. a) gestützt. Für den Launch unter hhess.de ggf. Consent-/Content-Blocker-Lösung mitdenken.

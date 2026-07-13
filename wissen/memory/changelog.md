@@ -29,3 +29,12 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - Alle CSS-Schriftgrößen von px auf **rem** umgestellt (Tokens + Regeln).
 - Doku-Routing-Regel in `CLAUDE.md` verankert; erste `seo.md`-Regel (Meta-Title ≤ 60 Zeichen).
 - Betrifft: `website/**`, `CLAUDE.md`, `wissen/**`
+
+## 2026-07-13 - Kundenstimmen-Seite, Footer site-weit, Icons
+- Neue Seite `kundenstimmen.html` (Hero-Seite): Filter-Header (Community/Onlinekurse/1:1). Filter startet AUS (alle Bereiche sichtbar), Klick filtert auf einen, erneuter Klick zeigt wieder alle.
+- Gruppen-Köpfe mit Icon-Kachel + Kicker-Zeile; Testimonial-Karten mit 5 Sternen, Zitat-Icon, Trennlinie, Avatar-Kreis + „von …" + kursiver Rolle. 26 Testimonials in 3 Gruppen.
+- ratedo-Siegel eingebunden (berechtigtes Interesse, siehe decisions.md).
+- „Kundenstimmen" site-weit in Menü + Footer auf `kundenstimmen.html` verlinkt.
+- Normaler Footer (Teil 1 + Abschlussleiste) jetzt auf ALLEN Seiten (auch Impressum/Datenschutz/Service).
+- `fa-light` → `fa-solid` site-weit (fa-light ist FA-Pro und rendert in der kostenlosen CDN nicht).
+- Betrifft: `website/**`, `wissen/**`

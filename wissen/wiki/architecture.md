@@ -5,6 +5,8 @@
   - `index.html` — Homepage
   - `website-erstellen-lassen.html` — Service-Seite (Hero-Seite)
   - `impressum.html` — Impressum (Standardseite)
+  - `datenschutz.html` — Datenschutzhinweise (Standardseite)
+  - `kundenstimmen.html` — Kundenstimmen mit Filter-Tabs (Hero-Seite)
   - `css/styles.css` — komplettes Stylesheet (Tokens + Komponenten + Layout)
   - `assets/logos/hiacynta-hess-logo.svg` — Logo
 - `wissen/` — Projektwissen

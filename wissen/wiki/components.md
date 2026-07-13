@@ -6,9 +6,10 @@ genannten `default`/`reduced`-Varianten sind Ziel für den späteren Next.js-Umb
 
 ## Seiten-Typen (Layout-Konvention)
 Feste Benennung, damit klar ist, wovon wir sprechen:
-- **Hero-Seite** (`<body class="page-hero">`): Header **+ blaue Hero-Section** darunter. Für Startseite, Landingpages, Haupt-Angebotsseiten. Nutzt i. d. R. den vollen Footer (Teil 1 + Abschlussleiste).
-- **Standardseite** (`<body class="page-standard">`): Header direkt auf den Inhalt, **keine** blaue Hero. Für Impressum, Datenschutz, Blog, Text-/Rechts-Unterseiten. Nutzt i. d. R. nur die Abschlussleiste (reduzierter Footer).
-- Stand: Homepage & Service sind Hero-Seiten; `impressum.html` ist Standardseite; Datenschutz folgt als Standardseite.
+- **Hero-Seite** (`<body class="page-hero">`): Header **+ blaue Hero-Section** darunter. Für Startseite, Landingpages, Haupt-Angebotsseiten.
+- **Standardseite** (`<body class="page-standard">`): Header direkt auf den Inhalt, **keine** blaue Hero. Für Impressum, Datenschutz, Blog, Text-/Rechts-Unterseiten.
+- **Footer:** Alle Seiten nutzen den gleichen „normalen" Footer (siehe unten) — unabhängig vom Seiten-Typ.
+- Stand: Homepage & Service sind Hero-Seiten; `impressum.html` und `datenschutz.html` sind Standardseiten.
 
 ## Header (`.site-header`)
 - Zweck: Sticky-Kopf mit Logo, Hauptnavigation, primärem CTA.
@@ -22,11 +23,16 @@ Feste Benennung, damit klar ist, wovon wir sprechen:
 - Mobil (≤760px): Hamburger-Button (`.nav-toggle`) toggelt `.main-nav.open` (kleiner Inline-JS).
 - Verwendet in: `index.html`, `website-erstellen-lassen.html`.
 
-## Footer (`.site-footer`)
-- **Zweiteilig:** Teil 1 (`.footer-main`) hell mit Logo/Text/Social-Icons; Teil 2 (`.footer-bottom`) dunkle Abschlussleiste `#20395B`, zweispaltig.
-- Abschlussleiste: links Copyright (`.footer-bottom__copy`), rechts rechtsbündig die Rechtslinks (`.footer-bottom__legal`) — Kunden-Login (extern, ThriveCart), Impressum, Datenschutzhinweise.
-- Hero-Seiten (z. B. Homepage): beide Teile. Standardseiten (z. B. Service-Seite): nur Teil 2 (Abschlussleiste).
-- Inhalt je Teil auf max. 1300px (`.footer-main__inner`, `.footer-bottom__inner`).
+## Footer (`.site-footer`) — der „normale Footer"
+Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Seiten** verwendet (Hero-Seiten wie Standardseiten). Zweiteilig:
+- **Teil 1 – Haupt-Footer** (`.footer-main`, off-white `#F9F9F7`): 4 Spalten
+  1. **Marke** (`.footer-brand`): Logo, Kurztext, Social-Icons (dunkel), „100% Empfehlungen auf ratedo.de" (→ `link.hhess.de/ratedo`, neuer Tab), „Kundenstimmen →" (→ `index.html#kundenstimmen`).
+  2. **Wissen & Impulse**: Blog, YouTube, Podcast.
+  3. **Gratis Starthilfen**: Image Size Helper (Titel + Untertitel).
+  4. **Shop & Beratung**: Divi Masterclass, 1:1 Online-Meeting (je mit 40px-Icon-Tile).
+  - Spaltentitel: `.footer-col__title` (uppercase, bold, letter-spacing).
+- **Teil 2 – Abschlussleiste** (`.footer-bottom`): blauer Streifen `#20395B` **randlos** (volle Bildschirmbreite), Inhalt auf 1300px & bündig zum Raster. Links Copyright, rechts Rechtslinks in einer Reihe (Kunden-Login extern/ThriveCart, Impressum, Datenschutzhinweise). Mobil gestapelt: Links oben, Copyright unten.
+- Inhalt je Teil zentriert auf max. 1300px (`.footer-main__inner`, `.footer-bottom__inner`).
 
 ## Button (`.hh-btn`)
 - Varianten: `--primary` (solid Orange, Text weiß) / `--secondary` (Outline Blau).
