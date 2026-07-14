@@ -129,3 +129,18 @@ Betrifft: `website/css/styles.css` (`.hero__grid`) — wirkt zentral auf alle zw
 Entscheidung: Das Encharge-Embed-Script wird nicht mehr fest im HTML eingebunden, sondern per `IntersectionObserver` erst geladen, wenn die Newsletter-Sektion sich dem Viewport nähert (`rootMargin: 600px`).
 Begruendung: User hat einen weiteren Lighthouse-Report gezeigt ("Vermeide die Verkettung kritischer Anfragen") — das Encharge-Script zog beim Seitenaufruf sofort eine Kette weiterer Requests nach sich (Formular-Daten von `forms.encharge.io`, dazu Google Fonts Open Sans/Roboto im Encharge-eigenen iFrame), obwohl die Sektion erst ganz unten auf der Seite sichtbar wird. Damit war die eigentlich schon gelöste "keine Google Fonts mehr"-Frage (siehe Eintrag oben) durch ein Drittanbieter-Embed wieder indirekt zurückgekommen.
 Betrifft: `website/youtube.html`, `website/kundenstimmen.html` (beide nutzen `.newsletter-cta`), `wiki/components.md`.
+
+## 2026-07-14 - Font Awesome komplett durch selbst gehostetes SVG-Sprite ersetzt
+Entscheidung: Font Awesome (CDN) entfernt, ersetzt durch `assets/icons/sprite.svg` mit den ~21 tatsächlich verwendeten Icons als `<symbol>`. Alle `<i class="fa-...">` in allen 6 Seiten automatisiert auf `<svg class="icon"><use href="...">` umgestellt (Rohdaten von `@fortawesome/fontawesome-free` via jsdelivr geholt, Lizenz CC BY 4.0 im Sprite vermerkt). Visuell identisch — bewusst keine neue Icon-Gestaltung, nur die Hosting-Art geändert.
+Begruendung: User zeigte einen Lighthouse-Report mit "18 KiB nicht verwendetes CSS" bei Font Awesome. Geprüft, ob ein Wechsel auf nur `solid.min.css`+`brands.min.css` hilft — bringt kaum etwas (~2 KB), weil die Icon-Glyph-Zuordnungen für ALLE Stile in einer gemeinsamen ~80 KB Basisdatei liegen, unabhängig vom gewählten Stil-Subset. Self-Hosting nur der genutzten Icons war der einzige wirksame Weg (~11 KB statt ~100+ KB, keine Drittanbieter-Requests mehr). Bewusst NICHT das in `design-system.md` als offen markierte "finales Icon-Set" entschieden — das bleibt eine separate Design-Entscheidung, hier wurden nur die bisherigen Font-Awesome-Icons technisch selbst gehostet.
+Betrifft: `website/css/styles.css` (`.icon`, `.icon-tile .icon`, `.hero__reassure .icon`), `<head>` aller 6 Seiten (kein `cdnjs.cloudflare.com` mehr), alle 6 Seiten (Icon-Markup), `website/assets/icons/sprite.svg`, `wiki/architecture.md`, `wiki/components.md`, `wiki/design-system.md`.
+
+## 2026-07-14 - CSS-Minifizierung bewusst nicht umgesetzt
+Entscheidung: Die von Lighthouse vorgeschlagene CSS-Minifizierung (2 KiB Ersparnis) wird NICHT umgesetzt.
+Begruendung: Würde einen Build-Schritt in der bisher bewusst build-losen Vercel-Deployment-Pipeline erfordern (Risiko: Deploy-Konfiguration ändern, ohne live gegen das echte Vercel-Projekt testen zu können) — Aufwand/Risiko steht in keinem Verhältnis zu 2 KiB Ersparnis. User hat dem zugestimmt.
+Betrifft: keine Code-Änderung; siehe `wiki/architecture.md` „Offene technische Punkte".
+
+## 2026-07-14 - Hero-Begleittext breiter, Button-Icon-Abstand
+Entscheidung: `.hero__lead` von `max-width: 66%` auf `90%` erhöht (Zeilen dürfen länger laufen). `.hh-btn` bekommt `gap: 10px` zwischen Icon und Text (site-weit für alle Buttons mit Icon, z. B. YouTube-Abo-Button).
+Begruendung: User fand nach dem 2:1-Spalten-Fix den Begleittext noch zu schmal und das Icon im Button zu eng am Text.
+Betrifft: `website/css/styles.css` (`.hero__lead`, `.hh-btn`).

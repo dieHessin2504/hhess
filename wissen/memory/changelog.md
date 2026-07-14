@@ -67,6 +67,13 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - Encharge-Newsletter-Formular auf `youtube.html` + `kundenstimmen.html` lädt jetzt per `IntersectionObserver` erst beim Scrollen in Viewport-Nähe, statt fest beim Seitenaufruf — entfernt eine dritte Google-Fonts-Ladekette (diesmal aus dem Encharge-iFrame selbst, Open Sans/Roboto), die im Lighthouse-Report als kritischer Ladepfad auffiel.
 - Betrifft: `website/youtube.html`, `website/kundenstimmen.html`, `website/css/styles.css`, `wissen/**`
 
+## 2026-07-14 - Font Awesome entfernt, eigenes Icon-Sprite, Feinschliff Hero/Button
+- Font Awesome CDN komplett entfernt (kein `cdnjs.cloudflare.com` mehr in irgendeinem `<head>`), ersetzt durch selbst gehostetes SVG-Sprite `assets/icons/sprite.svg` mit den 21 genutzten Icons. Alle 90 Icon-Stellen in allen 6 Seiten automatisiert umgestellt. ~100+ KB CDN-Ladung wird zu ~11 KB same-origin Datei.
+- Ein Subset-Wechsel (nur `solid`+`brands` statt `all.min.css`) wurde geprüft und verworfen — bringt kaum Ersparnis, da Font Awesome die Icon-Zuordnungen aller Stile in einer gemeinsamen Basisdatei bündelt.
+- CSS-Minifizierung (2 KiB) bewusst ausgelassen — würde einen Vercel-Build-Schritt nötig machen, Aufwand/Risiko zu hoch für den kleinen Gewinn.
+- Hero-Begleittext auf `max-width: 90%` verbreitert (vorher 66%), Button-Icon-Abstand `gap: 10px` ergänzt (site-weit).
+- Betrifft: `website/css/styles.css`, alle 6 Seiten, `website/assets/icons/sprite.svg`, `wissen/**`
+
 ## 2026-07-14 - Newsletter-CTA-Sektion auf Kundenstimmen
 - Neue wiederkehrend gedachte Sektion `.newsletter-cta` über dem Footer von `kundenstimmen.html`: linearer dunkler Verlauf, Überschrift (2 Zeilen) + Begleittext (3 Zeilen, weiß) + Encharge-Formular-Embed + Datenschutz-Hinweis (Link-Hover orange).
 - Löst das bisherige einfache `.cta`-Textband mit Link-Button ab.

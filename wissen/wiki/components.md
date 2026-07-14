@@ -34,11 +34,18 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - **Teil 2 – Abschlussleiste** (`.footer-bottom`): blauer Streifen `#20395B` **randlos** (volle Bildschirmbreite), Inhalt auf 1300px & bündig zum Raster. Links Copyright, rechts Rechtslinks in einer Reihe (Kunden-Login extern/ThriveCart, Impressum, Datenschutzhinweise). Mobil gestapelt: Links oben, Copyright unten.
 - Inhalt je Teil zentriert auf max. 1300px (`.footer-main__inner`, `.footer-bottom__inner`).
 
+## Icon (`.icon`, SVG-Sprite)
+- Seit 14.07.2026 der **einzige** Weg, Icons einzubinden — ersetzt Font Awesome komplett (siehe `architecture.md` „Tech-Stand" für die Begründung).
+- Markup: `<svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-NAME"></use></svg>`.
+- `.icon { width: 1em; height: 1em; fill: currentColor; vertical-align: -0.125em; }` — verhält sich wie vorher die Font-Awesome-Icon-Fonts: Größe über `font-size`, Farbe über `color` des umgebenden Elements vererbt. Bestehende Stellen, die früher ein bloßes `i`-Element gestylt haben (`.icon-tile i`, `.hero__reassure i`), zielen jetzt auf `.icon-tile .icon` / `.hero__reassure .icon`.
+- Sprite liegt in `assets/icons/sprite.svg`, enthält nur die ~21 tatsächlich verwendeten Icons als `<symbol id="icon-NAME">`. **Neues Icon nötig:** Roh-SVG von `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/svgs/<solid|brands>/<name>.svg` holen, als neuen `<symbol>` in die `sprite.svg` einfügen (viewBox + path übernehmen, `id="icon-<name>"`).
+
 ## Button (`.hh-btn`)
 - Varianten: `--primary` (solid Orange, Text weiß) / `--secondary` (Outline Blau).
 - Radius: **2px** (`--radius-sm`, website-weit).
 - Hover **invertiert**: primary → weißer BG + oranger Text/Border; secondary → füllt mit `#E6EEF7`.
 - Im Hero größeres vertikales Padding (`.hero .hh-btn { padding: 16px 26px; }`).
+- `gap: 10px` zwischen Icon und Text, falls ein `.icon` im Button steckt (z. B. YouTube-Icon + „Jetzt Kanal abonnieren").
 
 ## Card (`.card`)
 - Icon-Tile → Eyebrow → Titel → Body → Badge. Border-only, Hover: Border wird `--color-ink`.
@@ -47,7 +54,7 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - `standard` (pale-blue) / `--highlighted` (Accent-Orange, weißer Text).
 
 ## IconTile (`.icon-tile`)
-- 64×64px, Radius 14px, pale-blue BG, Icon in Primary-Blau (Font Awesome Light).
+- 64×64px, Radius 14px, pale-blue BG, Icon in Primary-Blau (selbst gehostetes SVG-Sprite, siehe „Icon" oben).
 
 ## Hero (`.hero`)
 - Vollflächiger **radialer Verlauf** (hell-blau innen → dunkel außen), keine Animation.
@@ -59,6 +66,7 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - Reassurance-Zeile (`.hero__reassure`): Punkte mit `fa-check`-Icon, alles weiß.
 - **Spaltenverhältnis:** `.hero__grid { grid-template-columns: 2fr 1fr; }` — Text-Spalte immer exakt doppelt so breit wie die Media-Spalte (2:1), site-weit für alle zweispaltigen Hero-Layouts.
 - **CTA-Zeile mit Zusatz-Link** (bisher nur `youtube.html`): `.hero__cta` kann neben dem `.hh-btn` noch einen `.hero__cta-link` (weißer Textlink, Hover Accent-Orange) enthalten — z. B. Abo-Button + "Beliebteste Videos ansehen →" als Anchor-Link zu einer Sektion weiter unten auf derselben Seite.
+- **Begleittext-Breite:** `.hero__lead { max-width: 90%; }` — relativ zur (bereits 2/3 breiten) Text-Spalte, nicht mehr fest in px. Zeilen dürfen ruhig lang laufen.
 
 ## ratedo.de-Einbindungen (zwei verschiedene, nicht verwechseln!)
 - **Siegel/Badge** (`ratedo_badge`, `data-type="deluxe2"`, Script `ratedo-badge.min.js`): kompakt (max. 180px), zeigt nur Sterne + Gesamtnote. Verwendet im Kundenstimmen-Hero (`.hero__seal`), leicht versetzt auf dem Foto.

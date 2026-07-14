@@ -61,6 +61,7 @@ Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 ## Komponenten
 - **Button** — `primary` (solid Orange, Text weiß) / `secondary` (Outline Blau).
   Hover **invertiert**: primary → weißer BG + oranger Text/Border; secondary → füllt mit `#E6EEF7`.
+  `gap: 10px` zwischen Icon und Text (falls ein Icon enthalten ist), site-weit über `.hh-btn`.
 - **Badge** — `standard` (pale-blue BG) / `highlighted` (Accent-Orange BG, weißer Text).
 - **Card** — Icon-Tile → Eyebrow → Titel → Body → Badge. Hover: Border wird `--color-ink`.
 - **IconTile** — 64×64px, Radius 14px, pale-blue BG, Icon in Primary-Blau.
@@ -69,7 +70,7 @@ Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 ## Iconografie
 - Stil: **Outline**, stroke-width 1.8, runde Caps/Joins.
 - Farbe: Primary-Blau auf pale-blue Tile.
-- System: **Font Awesome (Light)** via CDN als Substitution — bei Produktion ggf. ersetzen.
+- System: seit 14.07.2026 **selbst gehostetes SVG-Sprite** (`assets/icons/sprite.svg`) statt Font-Awesome-CDN — inhaltlich weiterhin die Font-Awesome-Solid/Brands-Glyphen (nur die ~21 tatsächlich genutzten, kein externer Request mehr). Bleibt weiterhin eine **Substitution** — das eigentliche finale Icon-Set (im o. g. Outline-Stil) ist noch nicht bestätigt, siehe Offene Punkte. Details/Anleitung für neue Icons: `wiki/components.md`.
 
 ## Hover-Konventionen (Cards)
 - Standard-Card (`.card`, z. B. "Drei Lösungswege", 3 Karten): Hover-Rahmen wird `--color-ink` (volle Stärke), kein Schatten.
@@ -79,4 +80,4 @@ Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 
 ## Offene Punkte
 - Echte Fotos fehlen (Hero/About sind Platzhalter-Boxen).
-- Font Awesome ist eine Substitution — finales Icon-Set bestätigen.
+- Die verwendeten Icons (jetzt selbst gehostet, aber inhaltlich noch Font-Awesome-Glyphen) sind weiterhin eine Substitution — finales Icon-Set im Outline-Stil bestätigen.
