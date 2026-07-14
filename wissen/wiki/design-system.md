@@ -6,7 +6,7 @@
 ## Marke & Prinzipien
 - Persönliche Marke & Business-Site von Hiacynta Hess — Webdesign- & SEO-Coaching für Selbstständige.
 - Sprache: **Deutsch, „du"**, warm, direkt, empathisch-expertig. Keine Emojis im Kundentext.
-- Flächen: nur **zwei Hintergründe** (Off-White-Seite + weiße Cards). Keine Verläufe (Ausnahme: Hero).
+- Flächen: nur **zwei Hintergründe** (Off-White-Seite + weiße Cards). Keine Verläufe (Ausnahme: Hero, Newsletter-CTA, Trust-Bar — je eigener, bewusst unterschiedlicher Verlauf, siehe unten).
 - Cards: flach, nur Border (keine Schatten im Ruhezustand).
 - Animation: minimal, nur Hover-Übergänge (0.2s ease).
 
@@ -26,6 +26,8 @@
 
 **Newsletter-CTA:** eigener, **linearer** Verlauf `to right, #1A293E → #234B79` (bewusst anders als der Hero-Verlauf, nicht verwechseln). Auch hier: **keine Hintergrund-Animation** (eine Wellen-Animation wurde getestet, dann verworfen — gleiche Begründung wie beim Hero, siehe unten). Details: `wiki/components.md`.
 
+**Trust-Bar:** dritter, eigener linearer Verlauf `to right, var(--color-ink), var(--color-primary)` (dunkles Navy → helleres Blau) — nicht mit Hero oder Newsletter-CTA verwechseln, alle drei Verläufe sind bewusst unterschiedlich. Details: `wiki/components.md`.
+
 ## Typografie
 - **Einheit:** Schriftgrößen **immer in `rem`** (Basis 16px = 1rem, z. B. 18px → 1.125rem). px nur für Layout-Maße (Border, Radius, Kachelgröße). Nennt der User px, wird umgerechnet.
 - **Schrift:** Inter (400/500/600/700/800) — eine Schrift für alles, keine Serifen.
@@ -37,8 +39,12 @@
 - **Badge:** 14px, 600 · **Label:** 15px, 600
 
 ## Spacing
-Skala: `4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48 · 64` px.
+Skala: `4 · 8 · 12 · 16 · 20 · 24 · 32 · 40 · 48 · 64 · 100` px (Tokens `--space-1` … `--space-20`).
 Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
+
+**Sektions-Padding:** `.section` (normale, helle Abschnitte auf Off-White/Weiß) hat oben/unten `var(--space-20)` = **100px** (seit 14.07.2026, vorher 64px — User wollte mehr Luft). Gilt **nur** für Abschnitte mit der `.section`-Klasse — **nicht** für Sektionen mit eigenem Padding wie `.trust-bar` (48px) oder `.newsletter-cta` (64px), die bewusst kompakter bleiben.
+
+**Dachzeile → Headline → Begleittext:** `.eyebrow + h1/h2` hat `margin-top: var(--space-4)` (16px), `.section-lead` hat `margin-top: var(--space-5)` (20px) — seit 14.07.2026 erhöht (User wollte mehr Luft zwischen Eyebrow/Headline/Text). Auch das gilt nur für die hellen `.section`-Abschnitte, nicht für Trust-Bar/Newsletter-CTA (eigene Klassen `.trust-bar__*`/`.newsletter-cta__*`, unberührt).
 
 ## Layout
 - **Zwei Content-Breiten** (zentriert). Header & Footer bleiben immer 1300px — nur die Content-Spalte variiert:
@@ -66,9 +72,9 @@ Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 - System: **Font Awesome (Light)** via CDN als Substitution — bei Produktion ggf. ersetzen.
 
 ## Hover-Konventionen (Cards)
-- Standard-Card (`.card`, z. B. "Drei Lösungswege"): Hover-Rahmen wird `--color-ink` (volle Stärke), kein Schatten.
-- Testimonial-Card (`.testimonial`, Kundenstimmen): bewusst **schwächerer** Effekt — Hover-Rahmen `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`, nicht das volle `--color-ink`) **plus** leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)`.
-- Faustregel: je "ruhiger"/dichter der Content (viele Karten nebeneinander wie Testimonials), desto dezenter der Hover-Effekt.
+- Standard-Card (`.card`, z. B. "Drei Lösungswege", 3 Karten): Hover-Rahmen wird `--color-ink` (volle Stärke), kein Schatten.
+- Dichtes Karten-Grid (`.testimonial` Kundenstimmen, `.step` z. B. YouTube-Themen-Grid/Service-Prozess): bewusst **schwächerer** Effekt — Hover-Rahmen `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`, nicht das volle `--color-ink`) **plus** leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)`.
+- Faustregel: je "ruhiger"/dichter der Content (viele Karten nebeneinander/im Grid), desto dezenter der Hover-Effekt. **Bei einer neuen Karten-Komponente immer zuerst prüfen, ob sie eher `.card` (wenige, lockere Karten) oder `.testimonial`/`.step` (dichtes Grid) entspricht** — nicht pauschal die starke Variante nehmen.
 
 ## Offene Punkte
 - Echte Fotos fehlen (Hero/About sind Platzhalter-Boxen).

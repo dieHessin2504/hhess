@@ -7,6 +7,7 @@
   - `impressum.html` — Impressum (Standardseite)
   - `datenschutz.html` — Datenschutzhinweise (Standardseite)
   - `kundenstimmen.html` — Kundenstimmen mit Filter-Tabs (Hero-Seite)
+  - `youtube.html` — YouTube-Kanal-Landingpage (Hero-Seite)
   - `css/styles.css` — komplettes Stylesheet (Tokens + Komponenten + Layout)
   - `assets/logos/hiacynta-hess-logo.svg` — Logo
 - `wissen/` — Projektwissen

@@ -39,6 +39,17 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - `fa-light` → `fa-solid` site-weit (fa-light ist FA-Pro und rendert in der kostenlosen CDN nicht).
 - Betrifft: `website/**`, `wissen/**`
 
+## 2026-07-14 - Neue Seite `youtube.html` + site-weite Anpassungen
+- Neue Hero-Seite `youtube.html`: Hero wie `kundenstimmen.html` ohne ratedo-Siegel, Meta-Robots/Title/Description mit User abgestimmt (`index, follow`).
+- Themen-Grid: zunächst als Klick-Slider gebaut (5 Karten, 3 sichtbar, endlose Schleife), dann auf Wunsch durch statisches 3×2-Grid ersetzt (`.step`-Komponente wiederverwendet), 6. Karte = leere CTA „Das klingt spannend?" mit Button zum Kanal.
+- Neue Trust-Bar (`.trust-bar`): 3 Kennzahlen (Abonnenten/Aufrufe/Wiedergabezeit), eigener Navy→Blau-Verlauf.
+- Neue YouTube-Kommentar-Wand (`.yt-wall`): 18 echte Kommentare als Zitat-Karten, 2 Reihen gegenläufiger CSS-Marquee-Loop, `prefers-reduced-motion` respektiert, Hover pausiert. Ein rechtsseitiger Blur-Effekt wurde gebaut, dann auf Wunsch wieder entfernt.
+- Newsletter-CTA-Sektion auf `youtube.html` ausgerollt (zweite Verwendung neben `kundenstimmen.html`).
+- Footer-Link „YouTube" site-weit (alle 5 bestehenden Seiten) von `#`-Platzhalter auf `youtube.html` umgestellt.
+- Hover-Bug gefixt: `.step:hover` fälschlich mit starkem `.card`-Hover gebaut, auf `.testimonial`-Hover (dezenter, mit Schatten) korrigiert — siehe `learnings.md`.
+- Site-weit: `.section`-Padding 64px→100px, Abstand Eyebrow→Headline→Begleittext vergrößert — nur helle `.section`-Abschnitte, Trust-Bar/Newsletter-CTA bewusst ausgenommen.
+- Betrifft: `website/youtube.html`, `website/index.html`, `website/kundenstimmen.html`, `website/impressum.html`, `website/datenschutz.html`, `website/website-erstellen-lassen.html` (Footer-Link), `website/css/styles.css`, `wissen/**`
+
 ## 2026-07-14 - Newsletter-CTA-Sektion auf Kundenstimmen
 - Neue wiederkehrend gedachte Sektion `.newsletter-cta` über dem Footer von `kundenstimmen.html`: linearer dunkler Verlauf, Überschrift (2 Zeilen) + Begleittext (3 Zeilen, weiß) + Encharge-Formular-Embed + Datenschutz-Hinweis (Link-Hover orange).
 - Löst das bisherige einfache `.cta`-Textband mit Link-Button ab.

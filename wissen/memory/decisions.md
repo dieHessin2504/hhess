@@ -65,6 +65,31 @@ Details/Nebenentscheidungen:
 - Eine dezente CSS-Wellen-Animation im Hintergrund (zwei per `translateX`-Loop bewegte SVG-Wellen, 26s Loop, `prefers-reduced-motion` respektiert) wurde gebaut, dann aber auf Wunsch komplett wieder entfernt. Konsequent zur bestehenden Hero-Linie „keine Bewegung im Hintergrund" (siehe Eintrag „Keine Hero-Animation" oben) — gilt jetzt für beide dunklen Sektionen.
 - Der Abstand zwischen Formular-Button und Datenschutz-Hinweis (`.newsletter-cta__legal`) wird zu einem erheblichen Teil vom Encharge-Formular selbst bestimmt (eigenes CSS im Cross-Origin-iFrame, für uns nicht direkt stylebar). Als Annäherung wurde `margin-top: -40px` gesetzt (User hat das Ergebnis als „passt gut" bestätigt). Sauberer wäre eine Anpassung des unteren Abstands direkt im Encharge-Formular-Editor.
 
+## 2026-07-14 - Neue Seite `youtube.html`
+Entscheidung: Neue Hero-Seite `youtube.html` gebaut (Hero wie `kundenstimmen.html`, aber ohne ratedo-Siegel), verlinkt über den Footer-Punkt „YouTube" (site-weit, vorher `#`-Platzhalter). Aufbau: Hero → Themen-Grid (3×2, `.step`) → Trust-Bar (Kennzahlen) → Kundenstimmen-Wand (YouTube-Kommentare, Marquee) → Newsletter-CTA → Footer.
+Begruendung: User wollte eine eigene Landingpage für den YouTube-Kanal mit Abo-CTA.
+Betrifft: `website/youtube.html`, `website/css/styles.css`, Footer aller Seiten (`youtube.html`-Link).
+
+## 2026-07-14 - SEO-Status/Title/Description: immer aktiv nachfragen
+Entscheidung: Vor dem Setzen von `<meta name="robots">`, Title und Description auf einer Seite wird der User **immer explizit gefragt** (Indexierung ja/nein, plus eigene Vorschläge für Title/Description) statt es selbstständig festzulegen.
+Begruendung: Ausdrücklicher User-Wunsch, bewusste Kontrolle über SEO-Indexierung pro Seite zu behalten.
+Betrifft: Workflow bei jeder neuen/bearbeiteten Seite, siehe `wiki/seo.md`.
+
+## 2026-07-14 - Themen-Grid statt Klick-Slider
+Entscheidung: Der ursprünglich gebaute Klick-Slider für die 5 Themen-Karten (3 sichtbar, Pfeil-Buttons, endlose Schleife über geklonte Karten) wurde komplett verworfen und durch ein statisches 3×2-Grid ersetzt (6. Karte = leere CTA „Das klingt spannend?" mit Button zum Kanal). Wiederverwendet wird die bestehende `.step`-Komponente (bisher nur Service-Seite) statt einer neuen Karten-Klasse.
+Begruendung: User wollte ein anderes Layout laut Referenz-Screenshot (statisches Grid statt Slider); `.step` bot bereits genau die gewünschte kompaktere Icon-/Headline-Größe.
+Betrifft: `website/youtube.html`, `website/css/styles.css` (`.step`, `.topic-grid*`).
+
+## 2026-07-14 - Trust-Bar: dritter eigener Gradient
+Entscheidung: Neue Kennzahlen-Leiste `.trust-bar` mit eigenem linearen Verlauf `var(--color-ink) → var(--color-primary)` (dunkles Navy → helleres Blau), bewusst verschieden von Hero- und Newsletter-CTA-Verlauf. Padding bewusst bei 48px belassen, von der allgemeinen Section-Padding-Erhöhung (siehe unten) ausgenommen.
+Begruendung: User wollte „dunkelblau links, hellblau rechts" — kein bereits vorhandener Verlauf passte exakt, daher neuer, aber aus bestehenden Farb-Tokens (`--color-ink`, `--color-primary`) zusammengesetzt statt neuer Hex-Werte. Ein zunächst vom Assistant erfundener eigener Beige-Ton für eine andere Sektion wurde vom User dagegen verworfen zugunsten des bestehenden `--color-bg-page` (siehe Learnings/Changelog) — Grundsatz: wo möglich bestehende Tokens kombinieren statt neue Farben erfinden.
+Betrifft: `website/css/styles.css` (`.trust-bar`).
+
+## 2026-07-14 - Site-weite Abstände erhöht (nur helle `.section`-Abschnitte)
+Entscheidung: `.section`-Padding von 64px auf 100px erhöht (`--space-20`), Abstand Eyebrow→Headline auf 16px und Headline→Begleittext auf 20px erhöht (`.eyebrow + h1/h2`, `.section-lead`). Gilt zentral über CSS für alle Seiten mit `.section`/`.section-lead`/`.eyebrow`-Klassen. Explizit **ausgenommen**: `.trust-bar` und `.newsletter-cta` (eigene Klassen, eigenes kompakteres Padding) — auf ausdrücklichen User-Wunsch.
+Begruendung: User empfand die Abstände generell als zu eng, wollte aber die beiden dunklen Kompakt-Sektionen unverändert lassen.
+Betrifft: `website/css/styles.css` (`.section`, `.eyebrow + h1/h2`, `.section-lead`, `--space-20`).
+
 ## 2026-07-13 - Testimonial-Karten: Hover-Farbe & Schatten
 Entscheidung: Hover-Effekt der Testimonial-Karten (`.testimonial:hover`) nutzt `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`) als Rahmenfarbe statt vollem `--color-ink` (wie bei `.card:hover`) — bewusst schwächer/weicher. Zusätzlich leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)` (gleicher Wert wie beim Nav-Dropdown).
 Begruendung: User wollte den gleichen Hover-Effekt wie bei den "Drei Lösungswege"-Karten, aber abgeschwächt; mehrere Abstufungen (100% `--color-primary`, `#E6EEF7`, 45%, 70% Deckkraft) live getestet, 70% war der gewünschte Kompromiss.

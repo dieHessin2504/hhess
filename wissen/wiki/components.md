@@ -9,7 +9,7 @@ Feste Benennung, damit klar ist, wovon wir sprechen:
 - **Hero-Seite** (`<body class="page-hero">`): Header **+ blaue Hero-Section** darunter. Für Startseite, Landingpages, Haupt-Angebotsseiten.
 - **Standardseite** (`<body class="page-standard">`): Header direkt auf den Inhalt, **keine** blaue Hero. Für Impressum, Datenschutz, Blog, Text-/Rechts-Unterseiten.
 - **Footer:** Alle Seiten nutzen den gleichen „normalen" Footer (siehe unten) — unabhängig vom Seiten-Typ.
-- Stand: Homepage & Service sind Hero-Seiten; `impressum.html` und `datenschutz.html` sind Standardseiten.
+- Stand: Homepage, Service, Kundenstimmen und `youtube.html` sind Hero-Seiten; `impressum.html` und `datenschutz.html` sind Standardseiten.
 
 ## Header (`.site-header`)
 - Zweck: Sticky-Kopf mit Logo, Hauptnavigation, primärem CTA.
@@ -21,13 +21,13 @@ Feste Benennung, damit klar ist, wovon wir sprechen:
   - Linien-Farbe: Marken-Orange `--color-accent`.
 - Dropdown „Service" (nur Homepage): `.has-dropdown`, öffnet bei Hover/Focus (`focus-within`).
 - Mobil (≤760px): Hamburger-Button (`.nav-toggle`) toggelt `.main-nav.open` (kleiner Inline-JS).
-- Verwendet in: `index.html`, `website-erstellen-lassen.html`.
+- Verwendet in: `index.html`, `website-erstellen-lassen.html`. (Andere Seiten haben eigene Header-Varianten ohne Dropdown, siehe jeweilige Datei.)
 
 ## Footer (`.site-footer`) — der „normale Footer"
 Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Seiten** verwendet (Hero-Seiten wie Standardseiten). Zweiteilig:
 - **Teil 1 – Haupt-Footer** (`.footer-main`, off-white `#F9F9F7`): 4 Spalten
   1. **Marke** (`.footer-brand`): Logo, Kurztext, Social-Icons (dunkel), „100% Empfehlungen auf ratedo.de" (→ `link.hhess.de/ratedo`, neuer Tab), „Kundenstimmen →" (→ `index.html#kundenstimmen`).
-  2. **Wissen & Impulse**: Blog, YouTube, Podcast.
+  2. **Wissen & Impulse**: Blog, YouTube, Podcast. „YouTube" ist site-weit auf `youtube.html` verlinkt; Blog/Podcast sind noch Platzhalter (`#`), bis diese Seiten existieren.
   3. **Gratis Starthilfen**: Image Size Helper (Titel + Untertitel).
   4. **Shop & Beratung**: Divi Masterclass, 1:1 Online-Meeting (je mit 40px-Icon-Tile).
   - Spaltentitel: `.footer-col__title` (uppercase, bold, letter-spacing).
@@ -75,9 +75,34 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - Nach jedem Filter-Klick scrollt die Seite per JS sanft zum Anfang von `.ks-panels` (unterhalb des Sticky-Headers), falls weiter unten gescrollt war.
 
 ## Newsletter-CTA (`.newsletter-cta`) — wiederkehrende Sektion über dem Footer
-- Zweck: Newsletter-Anmeldung, direkt über dem Footer. Als **wiederkehrende Komponente** gedacht (bisher nur auf `kundenstimmen.html` gebaut, Rollout auf weitere Seiten offen — siehe `memory/INDEX.md`).
+- Zweck: Newsletter-Anmeldung, direkt über dem Footer. **Wiederkehrende Komponente**, verwendet auf `kundenstimmen.html` (Anchor `#newsletter`) und `youtube.html` (Anchor `#newsletter-abonnieren` — dorthin verlinkt auch der Header-CTA-Button dieser Seite). Rollout auf Homepage/Service noch offen — siehe `memory/INDEX.md`.
 - Hintergrund: linearer Verlauf `to right, #1A293E → #234B79` (Text komplett weiß) — **anderer Verlauf als der Hero** (der ist radial, siehe oben). Bewusst kein pill-/kartenartiges Element, volle Sektionsbreite.
 - Aufbau: `.newsletter-cta__title` (H2, `max-width: 860px` → erzwingt exakt 2 Zeilen), `.newsletter-cta__lead` (`max-width: 760px` → exakt 3 Zeilen, Farbe volles Weiß), `.newsletter-cta__embed` (Formular-Einbettung), `.newsletter-cta__legal` (Datenschutz-Hinweis, Link-Hover in `--color-accent`).
 - **Formular:** eingebunden per Encharge-Embed-Script (`embed-production.min.js`) + `<div class="encharge-form-embed" data-encharge-form-id="…">`. Das Script ersetzt den Div zur Laufzeit durch ein `<iframe>` mit dem eigentlichen Formular — Höhe wird von Encharge selbst per `postMessage` gesetzt.
 - **Bekannte Einschränkung:** Der Innenabstand unterhalb des Formular-Buttons kommt aus Enchargeʼs eigenem Formular-Design (Cross-Origin-iFrame — von unserer Seite aus nicht stylebar). `.newsletter-cta__legal` nutzt aktuell einen **negativen `margin-top`** (`-40px`) als Annäherung, um den Hinweistext näher an den Button zu ziehen. Sauberer wäre, den unteren Abstand direkt im Encharge-Formular-Editor zu verkleinern. Siehe `memory/decisions.md`.
 - **Verworfen:** Eine dezente CSS-Wellen-Animation im Hintergrund (zwei SVG-Wellen, per `translateX`-Loop bewegt) wurde gebaut, aber auf Wunsch wieder entfernt — gleiche Linie wie beim Hero: **keine Bewegung im Hintergrund**, siehe `memory/decisions.md`.
+
+## Themen-Grid (`.step`, wiederverwendet für dichte Karten-Grids)
+- Herkunft: ursprünglich für den 4-Schritte-Prozess auf `website-erstellen-lassen.html` gebaut (`.step` + `.step__num` mit Zahl). Auf `youtube.html` wiederverwendet für ein **3×2-Grid** (6 Karten: 5 Themen-Karten mit Icon in `.step__num` statt Zahl + 1 leere CTA-Karte, siehe unten) — Layout einfach über `class="grid-3 topic-grid"` (bestehende `.grid-3`-Utility, kein neues Grid-CSS).
+- Aufbau je Karte: `.step__num` (40×40px, Radius 10px, pale-blue BG) → `h3` (1.1rem, kleiner/dezenter als Standard-H3) → `p` (1rem).
+- Hover: **dezent**, siehe „Hover-Konventionen" in `design-system.md` — `.step` zählt als dichtes Grid, nicht als lockere `.card`.
+- CTA-Karte (`.topic-grid__cta`): Inhalt vertikal zentriert (kein Icon, keine Beschreibung) — Headline + `.hh-btn--primary` Button, der zur externen Kanal-URL verlinkt (`link.hhess.de/youtubeabonnieren`).
+- **Verworfen:** Ursprünglich als Klick-Slider gebaut (3 von 5 Karten sichtbar, Pfeil-Button rückt eine Karte weiter, endlose Schleife über dreifach geklonte Karten). Auf Wunsch durch das statische 3×2-Grid ersetzt, kompletter Slider-Code (CSS + JS) entfernt.
+
+## Trust-Bar (`.trust-bar`) — Kennzahlen-Leiste
+- Zweck: drei Kanal-Kennzahlen nebeneinander (z. B. Abonnenten/Aufrufe/Wiedergabezeit), volle Sektionsbreite, dunkler Hintergrund.
+- Hintergrund: **eigener** linearer Verlauf `to right, var(--color-ink), var(--color-primary)` (dunkles Navy → helleres Blau) — dritter Gradient neben Hero (radial) und Newsletter-CTA (linear, andere Farben); bewusst nicht verwechseln.
+- Aufbau: `<div class="grid-3 container">` mit drei `<div>`s, je `.trust-bar__num` (2.5rem, 800, weiß) + `.trust-bar__label` (kleiner, halbtransparentes Weiß).
+- Padding **bewusst kleiner** als normale `.section` (`var(--space-12)` = 48px) — von der site-weiten Padding-Erhöhung auf 100px (siehe `design-system.md` „Spacing") explizit ausgenommen, genau wie `.newsletter-cta`.
+- Zahlenformat: Punkt als Tausendertrenner, `+` als Suffix (`3.700+`), passend zur Vorgabe des Users.
+- Verwendet in: `youtube.html`, zwischen Themen-Grid und Kundenstimmen-Wand.
+
+## YouTube-Kommentar-Wand (`.yt-wall`, Marquee, zwei Reihen)
+- Zweck: „Wall of Love" mit echten YouTube-Kommentaren als Zitat-Karten (`.yt-quote`), die endlos horizontal durchlaufen — Reihe 1 nach rechts, Reihe 2 nach links (gegenläufig), reiner CSS-Loop (keine JS-Bibliothek).
+- Technik: Kartenliste wird einmal dupliziert (`aria-hidden="true"` auf der Kopie) und per `@keyframes` zwischen `translateX(0)` und `translateX(-50%)` animiert — bei exakt doppelter Liste ist der Loop nahtlos.
+- A11y: `@media (prefers-reduced-motion: reduce)` stoppt die Animation; Hover auf einer Reihe pausiert sie (`animation-play-state: paused`) zum Lesen.
+- Karten-Aufbau: `.yt-quote__meta` (kleiner oranger Punkt + „YouTube-Kommentar" Label) → `.yt-quote__text` (Zitat in „ “-Anführungszeichen).
+- Kommentar-Texte sind **leicht bereinigt** gegenüber den Original-Kommentaren (Emoji/Slang wie „🙂", „xD" entfernt) — Begründung: Marken-Sprachregel „keine Emojis im Kundentext" (siehe `design-system.md`).
+- **Verworfen:** Ein Blur-Effekt (`backdrop-filter` + Masken-Verlauf) am rechten Rand wurde gebaut, auf Wunsch aber wieder entfernt — Karten laufen jetzt scharf bis zum Rand.
+- Abstand zum Lead-Text darüber: `margin-top: var(--space-12)` (48px), größer als der Standard-Abstand `.section-lead` → nächstes Element, weil der User hier gezielt mehr Luft wollte.
+- Verwendet in: `youtube.html`.
