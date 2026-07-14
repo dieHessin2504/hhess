@@ -24,6 +24,8 @@
 
 **Hero:** dunkler Radial-Gradient `#597AAB → #1C2B41` (ohne Animation), Eyebrow in Accent-Orange, restlicher Text (Headline, Absatz, Reassurance-Punkte + Check-Icons) komplett **weiß**.
 
+**Newsletter-CTA:** eigener, **linearer** Verlauf `to right, #1A293E → #234B79` (bewusst anders als der Hero-Verlauf, nicht verwechseln). Auch hier: **keine Hintergrund-Animation** (eine Wellen-Animation wurde getestet, dann verworfen — gleiche Begründung wie beim Hero, siehe unten). Details: `wiki/components.md`.
+
 ## Typografie
 - **Einheit:** Schriftgrößen **immer in `rem`** (Basis 16px = 1rem, z. B. 18px → 1.125rem). px nur für Layout-Maße (Border, Radius, Kachelgröße). Nennt der User px, wird umgerechnet.
 - **Schrift:** Inter (400/500/600/700/800) — eine Schrift für alles, keine Serifen.

@@ -54,6 +54,17 @@ Entscheidung: Auf `kundenstimmen.html` entfernt: das große `ratedo-w2`-Widget i
 Begruendung: Vom User ausdrücklich so gewünscht — schlankere, weniger werbliche Seite. Ungenutzte CSS-Klassen (`.group-head__icon`, `.group-head__eyebrow`) wurden mitentfernt.
 Betrifft: `website/kundenstimmen.html`, `website/css/styles.css`.
 
+## 2026-07-14 - Newsletter-CTA: neue wiederkehrende Sektion + Encharge-Formular
+Entscheidung: Über dem Footer von `kundenstimmen.html` eine neue, wiederkehrend gedachte dunkle Sektion (`.newsletter-cta`) gebaut — linearer Verlauf `to right, #1A293E → #234B79` (bewusst eigener Verlauf, nicht der Hero-Radial-Gradient). Formular per Encharge-Embed (`data-encharge-form-id`) eingebunden, ersetzt das vorherige simple `.cta`-Textband mit Link-Button.
+Begruendung: User wollte ein Referenzdesign (Screenshot) mit echtem E-Mail-Formular statt nur einem CTA-Button umsetzen; Encharge ist der vom User genutzte Formular-Anbieter.
+Betrifft: `website/kundenstimmen.html`, `website/css/styles.css` (`.newsletter-cta*`), `wissen/wiki/components.md`, `wissen/wiki/design-system.md`.
+Details/Nebenentscheidungen:
+- Überschrift (`max-width: 860px`) und Begleittext (`max-width: 760px`) sind bewusst breitenbegrenzt, damit sie exakt in 2 bzw. 3 Zeilen umbrechen (per Live-Messung im Browser ausgemessen, keine geratenen Werte).
+- Begleittext-Farbe: volles Weiß (`#fff`), nicht abgeschwächt — auf expliziten Wunsch.
+- Datenschutz-Link-Hover: `--color-accent` (Orange) statt Weiß.
+- Eine dezente CSS-Wellen-Animation im Hintergrund (zwei per `translateX`-Loop bewegte SVG-Wellen, 26s Loop, `prefers-reduced-motion` respektiert) wurde gebaut, dann aber auf Wunsch komplett wieder entfernt. Konsequent zur bestehenden Hero-Linie „keine Bewegung im Hintergrund" (siehe Eintrag „Keine Hero-Animation" oben) — gilt jetzt für beide dunklen Sektionen.
+- Der Abstand zwischen Formular-Button und Datenschutz-Hinweis (`.newsletter-cta__legal`) wird zu einem erheblichen Teil vom Encharge-Formular selbst bestimmt (eigenes CSS im Cross-Origin-iFrame, für uns nicht direkt stylebar). Als Annäherung wurde `margin-top: -40px` gesetzt (User hat das Ergebnis als „passt gut" bestätigt). Sauberer wäre eine Anpassung des unteren Abstands direkt im Encharge-Formular-Editor.
+
 ## 2026-07-13 - Testimonial-Karten: Hover-Farbe & Schatten
 Entscheidung: Hover-Effekt der Testimonial-Karten (`.testimonial:hover`) nutzt `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`) als Rahmenfarbe statt vollem `--color-ink` (wie bei `.card:hover`) — bewusst schwächer/weicher. Zusätzlich leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)` (gleicher Wert wie beim Nav-Dropdown).
 Begruendung: User wollte den gleichen Hover-Effekt wie bei den "Drei Lösungswege"-Karten, aber abgeschwächt; mehrere Abstufungen (100% `--color-primary`, `#E6EEF7`, 45%, 70% Deckkraft) live getestet, 70% war der gewünschte Kompromiss.

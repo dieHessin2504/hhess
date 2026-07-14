@@ -39,6 +39,13 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - `fa-light` → `fa-solid` site-weit (fa-light ist FA-Pro und rendert in der kostenlosen CDN nicht).
 - Betrifft: `website/**`, `wissen/**`
 
+## 2026-07-14 - Newsletter-CTA-Sektion auf Kundenstimmen
+- Neue wiederkehrend gedachte Sektion `.newsletter-cta` über dem Footer von `kundenstimmen.html`: linearer dunkler Verlauf, Überschrift (2 Zeilen) + Begleittext (3 Zeilen, weiß) + Encharge-Formular-Embed + Datenschutz-Hinweis (Link-Hover orange).
+- Löst das bisherige einfache `.cta`-Textband mit Link-Button ab.
+- Wellen-Animation im Hintergrund gebaut, dann wieder entfernt (siehe decisions.md).
+- Abstand Formular-Button → Datenschutz-Hinweis per `margin-top: -40px` angenähert (Encharge-eigenes Formular-CSS liegt in Cross-Origin-iFrame, nicht direkt stylebar).
+- Betrifft: `website/kundenstimmen.html`, `website/css/styles.css`, `wissen/**`
+
 ## 2026-07-13 - Kundenstimmen-Hero mit Foto+Siegel, Seite entschlackt, Filter-Sprung gefixt
 - Kundenstimmen-Hero auf zweispaltiges Layout umgestellt: Text links, rundes Foto rechts, kompaktes ratedo-Badge leicht versetzt auf dem Foto (siehe decisions.md).
 - Großes ratedo-Widget (Widget2), Hero-Lead-Text, Gruppen-Eyebrows + Icons, "Kundenstimmen im Überblick" und die YouTube-/Shop-CTA-Bänder entfernt (siehe decisions.md).

@@ -627,6 +627,24 @@ img { max-width: 100%; }
 .cta p { margin-top: 12px; max-width: 480px; margin-left: auto; margin-right: auto; }
 .cta__buttons { margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
+/* ---- Newsletter-CTA (dunkler Verlauf, wiederkehrend über dem Footer) ---- */
+.newsletter-cta {
+  padding: var(--space-16) var(--section-x);
+  background: linear-gradient(to right, #1A293E, #234B79);
+  text-align: center;
+}
+.newsletter-cta__inner { max-width: 960px; margin: 0 auto; }
+.newsletter-cta__title { color: #fff; max-width: 860px; margin: 0 auto; }
+.newsletter-cta__lead {
+  color: #fff;
+  margin: var(--space-3) auto 0;
+  max-width: 760px;
+}
+.newsletter-cta__embed { margin-top: var(--space-8); max-width: 420px; margin-left: auto; margin-right: auto; }
+.newsletter-cta__legal { margin-top: -40px; font-size: 0.875rem; color: rgba(255, 255, 255, 0.75); }
+.newsletter-cta__legal a { color: #fff; transition: color var(--transition-fast); }
+.newsletter-cta__legal a:hover { color: var(--color-accent); }
+
 /* ---- Footer ------------------------------------------------- */
 /* Teil 1: Haupt-Footer (4 Spalten: Marke + 3 Link-Spalten) */
 .footer-main {
