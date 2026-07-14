@@ -253,11 +253,6 @@
       <h2 class="newsletter-cta__title">Sichere dir jetzt noch mehr exklusive Website- &amp; Online-Marketing-Tipps direkt in dein Postfach!</h2>
       <p class="newsletter-cta__lead">Manche meiner wertvollsten Tipps rund um die Themen Website und Online-Marketing gibt es nur in meinem wöchentlichen Newsletter. Also, trag dich am besten jetzt ein und sichere dir exklusives Wissen, das dir sonst entgeht! Kostenlos und jederzeit abbestellbar.</p>
       <div class="newsletter-cta__embed">
-        <script
-          type="text/javascript"
-          class="encharge-form-embed-script"
-          src="https://resources-app.encharge.io/embed-production.min.js"
-        ></script>
         <div
           class="encharge-form-embed"
           data-encharge-form-id="63705e5c-2f10-4521-9fe7-9b101df4543a"
@@ -386,6 +381,36 @@
           embeds.forEach(function (other) { loadVideo(other, other === el); });
         });
       });
+    })();
+
+    // Newsletter-Formular (Encharge) erst laden, wenn der Bereich in Viewport-Nähe scrollt
+    // — vermeidet die Request-Kette (Encharge-Script -> Formular-Daten -> Google Fonts
+    // im iFrame) im kritischen Ladepfad ganz oben auf der Seite.
+    (function () {
+      var embed = document.querySelector('.newsletter-cta__embed .encharge-form-embed');
+      if (!embed) return;
+      var loaded = false;
+      function loadEncharge() {
+        if (loaded) return;
+        loaded = true;
+        var script = document.createElement('script');
+        script.className = 'encharge-form-embed-script';
+        script.src = 'https://resources-app.encharge.io/embed-production.min.js';
+        document.body.appendChild(script);
+      }
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              loadEncharge();
+              observer.disconnect();
+            }
+          });
+        }, { rootMargin: '600px' });
+        observer.observe(embed);
+      } else {
+        loadEncharge();
+      }
     })();
   </script>
 </body>

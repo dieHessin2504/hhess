@@ -119,3 +119,13 @@ Betrifft: `website/css/styles.css` (kein `@import` mehr), `<head>` aller 6 Seite
 Entscheidung: Statt Google Fonts nur async statt blockierend zu laden (siehe vorheriger Eintrag), wird Inter jetzt komplett selbst gehostet (`assets/fonts/inter-latin.woff2`, `assets/fonts/inter-latin-ext.woff2`). Google Fonts CSS2-API liefert Inter als **Variable Font** — pro angefragtem Subset genau eine Datei, die den gesamten Weight-Bereich 400–800 abdeckt (nicht 5 einzelne Dateien pro Subset). `<link rel="preconnect/preload">` für `fonts.googleapis.com`/`fonts.gstatic.com` komplett aus allen 6 `<head>`s entfernt, zwei `@font-face`-Regeln (Latin/Latin-Extended, per `unicode-range`) in `styles.css` ergänzt.
 Begruendung: User hat gezielt nachgefragt, ob man Google Fonts lokal hosten kann. Doppelter Nutzen: Performance (ein Drittanbieter-Roundtrip weniger als bei der reinen Async-Lösung) UND DSGVO (keine IP-Übertragung an Google mehr — Google Fonts extern laden war 2022 Gegenstand eines LG-München-Urteils gegen Websites ohne Consent).
 Betrifft: `website/css/styles.css` (`@font-face`), `<head>` aller 6 Seiten, `website/assets/fonts/`, `wiki/architecture.md`.
+
+## 2026-07-14 - Hero-Spaltenverhältnis fix 2:1
+Entscheidung: `.hero__grid` von `1.1fr 0.9fr` (≈55:45) auf `grid-template-columns: 2fr 1fr` (exakt 2:1) geändert.
+Begruendung: User wollte explizit ein 2/3-zu-1/3-Verhältnis zwischen Text- und Media-Spalte im Hero.
+Betrifft: `website/css/styles.css` (`.hero__grid`) — wirkt zentral auf alle zweispaltigen Hero-Layouts (Homepage, Kundenstimmen, YouTube).
+
+## 2026-07-14 - Newsletter-Formular (Encharge) lazy-loaded
+Entscheidung: Das Encharge-Embed-Script wird nicht mehr fest im HTML eingebunden, sondern per `IntersectionObserver` erst geladen, wenn die Newsletter-Sektion sich dem Viewport nähert (`rootMargin: 600px`).
+Begruendung: User hat einen weiteren Lighthouse-Report gezeigt ("Vermeide die Verkettung kritischer Anfragen") — das Encharge-Script zog beim Seitenaufruf sofort eine Kette weiterer Requests nach sich (Formular-Daten von `forms.encharge.io`, dazu Google Fonts Open Sans/Roboto im Encharge-eigenen iFrame), obwohl die Sektion erst ganz unten auf der Seite sichtbar wird. Damit war die eigentlich schon gelöste "keine Google Fonts mehr"-Frage (siehe Eintrag oben) durch ein Drittanbieter-Embed wieder indirekt zurückgekommen.
+Betrifft: `website/youtube.html`, `website/kundenstimmen.html` (beide nutzen `.newsletter-cta`), `wiki/components.md`.

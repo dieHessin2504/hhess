@@ -62,6 +62,11 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - **Inter-Schrift selbst gehostet:** kein Google-Fonts-Request mehr (weder `@import` noch `<link>`), zwei lokale `@font-face`-Regeln (`assets/fonts/inter-latin.woff2`, `inter-latin-ext.woff2`, Variable Font 400–800). Performance- UND DSGVO-Vorteil (siehe decisions.md).
 - Betrifft: `website/youtube.html`, `website/css/styles.css`, `<head>` aller 6 Seiten, `website/assets/fonts/`, `wissen/**`
 
+## 2026-07-14 - Hero-Verhältnis 2:1, Newsletter-Formular lazy-loaded
+- `.hero__grid` auf exaktes 2:1-Spaltenverhältnis (Text:Media) fixiert (vorher ≈55:45) — wirkt zentral auf alle zweispaltigen Hero-Layouts.
+- Encharge-Newsletter-Formular auf `youtube.html` + `kundenstimmen.html` lädt jetzt per `IntersectionObserver` erst beim Scrollen in Viewport-Nähe, statt fest beim Seitenaufruf — entfernt eine dritte Google-Fonts-Ladekette (diesmal aus dem Encharge-iFrame selbst, Open Sans/Roboto), die im Lighthouse-Report als kritischer Ladepfad auffiel.
+- Betrifft: `website/youtube.html`, `website/kundenstimmen.html`, `website/css/styles.css`, `wissen/**`
+
 ## 2026-07-14 - Newsletter-CTA-Sektion auf Kundenstimmen
 - Neue wiederkehrend gedachte Sektion `.newsletter-cta` über dem Footer von `kundenstimmen.html`: linearer dunkler Verlauf, Überschrift (2 Zeilen) + Begleittext (3 Zeilen, weiß) + Encharge-Formular-Embed + Datenschutz-Hinweis (Link-Hover orange).
 - Löst das bisherige einfache `.cta`-Textband mit Link-Button ab.
