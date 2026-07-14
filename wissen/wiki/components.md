@@ -106,3 +106,11 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - **Verworfen:** Ein Blur-Effekt (`backdrop-filter` + Masken-Verlauf) am rechten Rand wurde gebaut, auf Wunsch aber wieder entfernt — Karten laufen jetzt scharf bis zum Rand.
 - Abstand zum Lead-Text darüber: `margin-top: var(--space-12)` (48px), größer als der Standard-Abstand `.section-lead` → nächstes Element, weil der User hier gezielt mehr Luft wollte.
 - Verwendet in: `youtube.html`.
+
+## Video-Grid (`.video-card`) — YouTube-Videos mit Content-Blocker
+- Zweck: bis zu drei eingebettete YouTube-Videos als echte Karten (weißer BG, Border, Radius, Hover — siehe „Hover-Konventionen") in `.grid-3`.
+- Karten-Aufbau (Referenz-Layout vom User vorgegeben): **Thumbnail (randlos oben) → Titel (h3) → Begleittext (p, 1rem) → Trennlinie (`.video-card__footer`, `border-top`) → darunter links Foto+Name („Hiacynta Hess"), rechts CTA-Link „Jetzt anschauen →"**.
+- **Content-Blocker (Zwei-Klick-Lösung):** Standardmäßig lädt **kein** YouTube-iFrame — nur ein Play-Button über einem statischen Thumbnail (`i.ytimg.com`, setzt keine Cookies). Erst per Klick wird `youtube-nocookie.com` (erweiterter Datenschutzmodus, siehe `datenschutz.html`) eingebettet. Zustimmung wird in `localStorage` (`yt-embed-consent`) gemerkt — danach laden alle drei Videos beim nächsten Seitenaufruf direkt, ohne erneuten Klick. Geklickte Karte startet mit `autoplay=1`, die anderen beiden ohne Autoplay.
+- Hinweistext unter dem Grid (`.video-grid__note`) verlinkt zu den Datenschutzhinweisen.
+- ⚠️ **Platzhalter:** Alle drei `data-video-id`/Thumbnail-/Link-Werte nutzen aktuell dieselbe Demo-ID (`YE7VzlLtp-4`, Big Buck Bunny) — vor Launch durch die echten YouTube-Video-IDs ersetzen (Kommentar im HTML markiert das).
+- Verwendet in: `youtube.html`, zwischen Kundenstimmen-Wand und Newsletter-CTA.

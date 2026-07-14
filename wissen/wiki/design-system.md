@@ -73,8 +73,9 @@ Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 
 ## Hover-Konventionen (Cards)
 - Standard-Card (`.card`, z. B. "Drei Lösungswege", 3 Karten): Hover-Rahmen wird `--color-ink` (volle Stärke), kein Schatten.
-- Dichtes Karten-Grid (`.testimonial` Kundenstimmen, `.step` z. B. YouTube-Themen-Grid/Service-Prozess): bewusst **schwächerer** Effekt — Hover-Rahmen `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`, nicht das volle `--color-ink`) **plus** leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)`.
-- Faustregel: je "ruhiger"/dichter der Content (viele Karten nebeneinander/im Grid), desto dezenter der Hover-Effekt. **Bei einer neuen Karten-Komponente immer zuerst prüfen, ob sie eher `.card` (wenige, lockere Karten) oder `.testimonial`/`.step` (dichtes Grid) entspricht** — nicht pauschal die starke Variante nehmen.
+- Dichtes Karten-Grid (`.testimonial` Kundenstimmen, `.step` z. B. YouTube-Themen-Grid/Service-Prozess, `.video-card` YouTube-Videos): bewusst **schwächerer** Effekt — Hover-Rahmen `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`, nicht das volle `--color-ink`) **plus** leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)`.
+- Faustregel: je "ruhiger"/dichter der Content (viele Karten nebeneinander/im Grid), desto dezenter der Hover-Effekt. **Bei einer neuen Karten-Komponente immer zuerst prüfen, ob sie eher `.card` (wenige, lockere Karten) oder `.testimonial`/`.step`/`.video-card` (dichtes Grid) entspricht** — nicht pauschal die starke Variante nehmen. **Reine Kartenanzahl pro Reihe ist KEIN verlässliches Kriterium** (Testimonials und Video-Karten sind ebenfalls je 3 pro Reihe, gehören aber zur dezenten Kategorie) — im Zweifel den dezenten Hover als Standard wählen.
+- **Karten-Fließtext:** `<p>` innerhalb jeder Karten-Komponente ist `font-size: 1rem` (16px), nicht die globale Body-Größe 1.1rem — gilt für `.card p`, `.step p`, `.video-card__body p` und jede künftige Karte.
 
 ## Offene Punkte
 - Echte Fotos fehlen (Hero/About sind Platzhalter-Boxen).

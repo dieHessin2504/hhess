@@ -94,3 +94,23 @@ Betrifft: `website/css/styles.css` (`.section`, `.eyebrow + h1/h2`, `.section-le
 Entscheidung: Hover-Effekt der Testimonial-Karten (`.testimonial:hover`) nutzt `rgba(43, 96, 157, 0.7)` (abgeschwächtes `--color-primary`) als Rahmenfarbe statt vollem `--color-ink` (wie bei `.card:hover`) — bewusst schwächer/weicher. Zusätzlich leichter Schatten `0 8px 24px rgba(20, 47, 78, 0.08)` (gleicher Wert wie beim Nav-Dropdown).
 Begruendung: User wollte den gleichen Hover-Effekt wie bei den "Drei Lösungswege"-Karten, aber abgeschwächt; mehrere Abstufungen (100% `--color-primary`, `#E6EEF7`, 45%, 70% Deckkraft) live getestet, 70% war der gewünschte Kompromiss.
 Betrifft: `website/css/styles.css` (`.testimonial`, `.testimonial:hover`, `.testimonial__text` margin-bottom für konsistenten Abstand zur Trennlinie).
+
+## 2026-07-14 - Video-Grid mit Content-Blocker (Zwei-Klick-Lösung)
+Entscheidung: Neue Sektion „Beliebte Videos" auf `youtube.html` (zwischen Kundenstimmen-Wand und Newsletter-CTA) mit drei eingebetteten YouTube-Videos. Videos werden NICHT automatisch geladen — Content-Blocker zeigt erst ein Thumbnail + Play-Button, erst nach Klick wird `youtube-nocookie.com` eingebettet. Zustimmung wird in `localStorage` gemerkt (gilt dann für alle drei Videos, auch bei erneutem Seitenaufruf).
+Begruendung: User wollte explizit einen Content-Blocker (Datenschutz) statt der Sofort-Einbettung — passt zum bereits in `datenschutz.html` beschriebenen „erweiterten Datenschutzmodus" und war ohnehin als offener Punkt in `memory/INDEX.md` vermerkt.
+Betrifft: `website/youtube.html`, `website/css/styles.css` (`.video-card*`), `wiki/components.md`.
+
+## 2026-07-14 - Video-Karten-Layout nach User-Referenzbild
+Entscheidung: Karten-Aufbau exakt nach vorgegebenem Referenz-Screenshot umgesetzt: Thumbnail → Titel → Begleittext → Trennlinie → darunter links Foto+Name, rechts CTA-Link. Ursprünglich (vor der Referenz) war der Link noch lose unter dem Text ohne Footer-Trennlinie/Autorenzeile.
+Begruendung: User hat ein Referenzbild geliefert und "so bitte" umzusetzen verlangt.
+Betrifft: `website/youtube.html`, `website/css/styles.css` (`.video-card__footer`, `.video-card__author*`).
+
+## 2026-07-14 - Video-Karten-Hover korrigiert auf dezent
+Entscheidung: `.video-card:hover` zunächst (fälschlich) wie `.card` (starker Hover) gebaut, auf User-Hinweis auf den dezenten `.testimonial`/`.step`-Hover korrigiert.
+Begruendung: Reine Kartenanzahl pro Reihe (3 Video-Karten) ist kein verlässliches Unterscheidungskriterium — Testimonials sind ebenfalls 3 pro Reihe und dezent. Regel in `design-system.md` entsprechend präzisiert („im Zweifel dezent").
+Betrifft: `website/css/styles.css` (`.video-card:hover`), `wiki/design-system.md`.
+
+## 2026-07-14 - Performance: Google Fonts/Font Awesome async statt render-blockierend
+Entscheidung: `@import` von Google Fonts aus `styles.css` entfernt (war seriell render-blockierend: Browser musste erst `styles.css` laden, um den Import überhaupt zu entdecken). Google Fonts + Font Awesome werden jetzt in jedem `<head>` per `rel="preload" as="style" onload="this.rel='stylesheet'"` + `<noscript>`-Fallback geladen, plus `rel="preconnect"` für die drei CDN-Hosts. Musste auf ALLEN 6 Seiten umgesetzt werden (nicht nur `youtube.html`), weil der `@import`-Fix in der gemeinsamen `styles.css` sonst das Laden der Schrift auf den anderen Seiten gebrochen hätte.
+Begruendung: User hat einen eigenen Lighthouse/PageSpeed-Report gezeigt — Font Awesome (900ms) und Google Fonts (580ms) waren die größten Render-Blocker und Hauptursache für eine LCP-Render-Verzögerung von 1.760ms beim Hero-Foto. Core Web Vitals sind dem User "enorm wichtig".
+Betrifft: `website/css/styles.css` (kein `@import` mehr), `<head>` aller 6 Seiten, `wiki/architecture.md`.

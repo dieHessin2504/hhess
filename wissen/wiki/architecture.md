@@ -18,7 +18,8 @@
 ## Tech-Stand (Ist)
 - Reines statisches HTML/CSS, kein Build-Schritt, kein JS-Framework.
 - Externe Abhängigkeiten via CDN: Google Fonts (Inter), Font Awesome 6.5 (Icons).
-- Kleiner Inline-JS-Schnipsel je Seite nur für das mobile Menü.
+- Kleiner Inline-JS-Schnipsel je Seite nur für das mobile Menü (+ Themen-Grid-Interaktion, Content-Blocker für Videos, je nach Seite).
+- **Performance — CDN-Schriften/Icons laden async:** Google Fonts + Font Awesome werden NICHT render-blockierend geladen (kein `@import` mehr in `styles.css`!). Jede Seite lädt sie im `<head>` per `rel="preload" as="style" onload="this.rel='stylesheet'"` + `<noscript>`-Fallback, dazu `rel="preconnect"` für `fonts.googleapis.com`/`fonts.gstatic.com`/`cdnjs.cloudflare.com`. Grund: Lighthouse-Report zeigte ~1.500ms Render-Blocking + hohe LCP-Render-Verzögerung durch diese beiden CDN-Requests. Die eigene `styles.css` bleibt bewusst normal (render-blockierend, aber klein). Bei neuen Seiten diesen `<head>`-Block aus einer bestehenden Seite übernehmen, nicht die alten zwei einfachen `<link>`-Tags.
 
 ## Ziel-Stack (Soll, laut CLAUDE.md — noch nicht umgesetzt)
 - Next.js (App Router) + TypeScript, Tailwind, Supabase (EU), Vercel.

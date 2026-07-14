@@ -50,6 +50,12 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - Site-weit: `.section`-Padding 64px→100px, Abstand Eyebrow→Headline→Begleittext vergrößert — nur helle `.section`-Abschnitte, Trust-Bar/Newsletter-CTA bewusst ausgenommen.
 - Betrifft: `website/youtube.html`, `website/index.html`, `website/kundenstimmen.html`, `website/impressum.html`, `website/datenschutz.html`, `website/website-erstellen-lassen.html` (Footer-Link), `website/css/styles.css`, `wissen/**`
 
+## 2026-07-14 - Video-Grid mit Content-Blocker + Performance-Fix (async CDN-Laden)
+- Neue Sektion „Beliebte Videos" auf `youtube.html`: drei `.video-card`-Karten (Thumbnail → Titel → Text → Trennlinie → Foto+Name links/CTA rechts, nach User-Referenzbild), Content-Blocker (Klick-zum-Laden, `youtube-nocookie.com`, Zustimmung per `localStorage` gemerkt). Video-IDs sind aktuell Platzhalter (Big Buck Bunny), im Code markiert.
+- Karten-Fließtext auf 1rem/16px korrigiert (`.video-card__body p`), Hover von zunächst starkem `.card`-Stil auf den korrekten dezenten `.testimonial`/`.step`-Stil korrigiert.
+- **Performance:** `@import` von Google Fonts aus `styles.css` entfernt (war render-blockierend/seriell). Google Fonts + Font Awesome laden jetzt async (`preload` + `onload`-Swap + `noscript`-Fallback) mit `preconnect`-Hints — auf allen 6 Seiten umgesetzt, ausgelöst durch einen vom User gezeigten Lighthouse-Report (Font Awesome 900ms + Google Fonts 580ms Render-Blocking, LCP-Render-Verzögerung 1.760ms).
+- Betrifft: `website/youtube.html`, `website/css/styles.css`, `<head>` aller 6 Seiten, `wissen/**`
+
 ## 2026-07-14 - Newsletter-CTA-Sektion auf Kundenstimmen
 - Neue wiederkehrend gedachte Sektion `.newsletter-cta` über dem Footer von `kundenstimmen.html`: linearer dunkler Verlauf, Überschrift (2 Zeilen) + Begleittext (3 Zeilen, weiß) + Encharge-Formular-Embed + Datenschutz-Hinweis (Link-Hover orange).
 - Löst das bisherige einfache `.cta`-Textband mit Link-Button ab.

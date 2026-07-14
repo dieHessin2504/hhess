@@ -7,8 +7,14 @@
   <meta name="description" content="Kostenlose Videos zu WordPress, Divi und SEO — abonniere meinen YouTube-Kanal für praxisnahe Tipps rund um deine Website, jede Woche neu.">
   <meta name="robots" content="index, follow">
   <link rel="icon" href="assets/logos/hiacynta-hess-logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 </head>
 <body class="page-hero">
 
@@ -165,7 +171,80 @@
     </div>
   </section>
 
-  <!-- ===== TODO: weitere Sektionen folgen laut Design ===== -->
+  <!-- ===== Beliebte Videos (Content-Blocker: Klick-zum-Laden) ===== -->
+  <!-- PLATZHALTER: data-video-id + Links nutzen aktuell dieselbe Demo-Video-ID (YE7VzlLtp-4) -
+       vor Launch durch die echten YouTube-Video-IDs ersetzen. -->
+  <section class="section section--white">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow">Beliebte Videos</span>
+      <h2>Drei Videos, die besonders gut ankommen</h2>
+      <p class="section-lead" style="max-width:700px;margin-left:auto;margin-right:auto;">Ein kurzer Einblick in meine beliebtesten Tutorials — für die ganze Anleitung geht's direkt weiter zu YouTube.</p>
+    </div>
+
+    <div class="container grid-3 video-grid">
+      <article class="video-card">
+        <div class="video-card__embed" data-video-id="YE7VzlLtp-4" data-title="Mailerlite: Schritt für Schritt zum Newsletter">
+          <button type="button" class="video-card__play" aria-label="Video laden und abspielen: Mailerlite: Schritt für Schritt zum Newsletter">
+            <img class="video-card__thumb" src="https://i.ytimg.com/vi/YE7VzlLtp-4/hqdefault.jpg" alt="" loading="lazy">
+            <span class="video-card__play-icon"><i class="fa-solid fa-play"></i></span>
+          </button>
+        </div>
+        <div class="video-card__body">
+          <h3>Mailerlite: Schritt für Schritt zum Newsletter</h3>
+          <p>In dieser Schritt-für-Schritt-Anleitung lernst du Mailerlite etwas näher kennen. Du erfährst, wie du ein Anmeldeformular erstellst, es auf deiner Website einfügst und eine Automation aufsetzt.</p>
+          <div class="video-card__footer">
+            <div class="video-card__author">
+              <img class="video-card__avatar" src="assets/fotos/hiacynta-hess.avif" alt="">
+              <span class="video-card__author-name">Hiacynta Hess</span>
+            </div>
+            <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card">
+        <div class="video-card__embed" data-video-id="YE7VzlLtp-4" data-title="10 versteckte Divi-Funktionen um Zeit zu sparen">
+          <button type="button" class="video-card__play" aria-label="Video laden und abspielen: 10 versteckte Divi-Funktionen um Zeit zu sparen">
+            <img class="video-card__thumb" src="https://i.ytimg.com/vi/YE7VzlLtp-4/hqdefault.jpg" alt="" loading="lazy">
+            <span class="video-card__play-icon"><i class="fa-solid fa-play"></i></span>
+          </button>
+        </div>
+        <div class="video-card__body">
+          <h3>10 versteckte Divi-Funktionen um Zeit zu sparen</h3>
+          <p>Das Divi-Theme ist ein wunderbares Theme, mit dem du auch als Einsteiger in relativ kurzer Zeit deine Website erstellen kannst. Mit diesen 10 versteckten Tipps &amp; Tricks kannst du noch mehr Zeit sparen und deine Website noch schneller gestalten.</p>
+          <div class="video-card__footer">
+            <div class="video-card__author">
+              <img class="video-card__avatar" src="assets/fotos/hiacynta-hess.avif" alt="">
+              <span class="video-card__author-name">Hiacynta Hess</span>
+            </div>
+            <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="video-card">
+        <div class="video-card__embed" data-video-id="YE7VzlLtp-4" data-title="Die richtigen Rank Math SEO Einstellungen">
+          <button type="button" class="video-card__play" aria-label="Video laden und abspielen: Die richtigen Rank Math SEO Einstellungen">
+            <img class="video-card__thumb" src="https://i.ytimg.com/vi/YE7VzlLtp-4/hqdefault.jpg" alt="" loading="lazy">
+            <span class="video-card__play-icon"><i class="fa-solid fa-play"></i></span>
+          </button>
+        </div>
+        <div class="video-card__body">
+          <h3>Die richtigen Rank Math SEO Einstellungen</h3>
+          <p>Rank Math SEO ist ein Freemium-Plugin für WordPress und gehört auf jede WordPress-Website. Insbesondere, wenn du dich mit Suchmaschinenoptimierung (SEO) befassen willst, brauchst du ein SEO-Plugin.</p>
+          <div class="video-card__footer">
+            <div class="video-card__author">
+              <img class="video-card__avatar" src="assets/fotos/hiacynta-hess.avif" alt="">
+              <span class="video-card__author-name">Hiacynta Hess</span>
+            </div>
+            <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="video-grid__note">Beim Klick auf ein Video wird eine Verbindung zu YouTube hergestellt. Mehr dazu in den <a href="datenschutz.html">Datenschutzhinweisen</a>.</p>
+  </section>
 
   <!-- ===== Newsletter-CTA ===== -->
   <section class="newsletter-cta" id="newsletter-abonnieren">
@@ -270,6 +349,43 @@
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
+
+    // Video-Content-Blocker: YouTube-iFrames erst nach Klick laden (Zwei-Klick-Lösung)
+    (function () {
+      var CONSENT_KEY = 'yt-embed-consent';
+      var embeds = document.querySelectorAll('.video-card__embed');
+      if (!embeds.length) return;
+
+      function loadVideo(el, autoplay) {
+        var id = el.getAttribute('data-video-id');
+        var title = el.getAttribute('data-title') || 'YouTube-Video';
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + (autoplay ? '?autoplay=1' : '');
+        iframe.title = title;
+        iframe.loading = 'lazy';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        el.innerHTML = '';
+        el.appendChild(iframe);
+      }
+
+      var hasConsent = false;
+      try { hasConsent = localStorage.getItem(CONSENT_KEY) === '1'; } catch (e) {}
+
+      if (hasConsent) {
+        embeds.forEach(function (el) { loadVideo(el, false); });
+        return;
+      }
+
+      embeds.forEach(function (el) {
+        var btn = el.querySelector('.video-card__play');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          try { localStorage.setItem(CONSENT_KEY, '1'); } catch (e) {}
+          embeds.forEach(function (other) { loadVideo(other, other === el); });
+        });
+      });
+    })();
   </script>
 </body>
 </html>
