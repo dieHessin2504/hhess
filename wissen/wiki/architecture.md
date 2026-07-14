@@ -10,6 +10,7 @@
   - `youtube.html` — YouTube-Kanal-Landingpage (Hero-Seite)
   - `css/styles.css` — komplettes Stylesheet (Tokens + Komponenten + Layout)
   - `assets/logos/hiacynta-hess-logo.svg` — Logo
+  - `assets/fonts/inter-latin.woff2`, `assets/fonts/inter-latin-ext.woff2` — selbst gehostete Inter-Schrift (Variable Font, Weight 400–800, siehe Tech-Stand)
 - `wissen/` — Projektwissen
   - `memory/` — Gedächtnis (INDEX, decisions, changelog, learnings)
   - `wiki/` — Wiki (design-system, components, seo, architecture)
@@ -17,9 +18,10 @@
 
 ## Tech-Stand (Ist)
 - Reines statisches HTML/CSS, kein Build-Schritt, kein JS-Framework.
-- Externe Abhängigkeiten via CDN: Google Fonts (Inter), Font Awesome 6.5 (Icons).
+- Externe Abhängigkeit via CDN: nur noch Font Awesome 6.5 (Icons). Google Fonts (Inter) wird seit 14.07.2026 **selbst gehostet**, siehe unten.
 - Kleiner Inline-JS-Schnipsel je Seite nur für das mobile Menü (+ Themen-Grid-Interaktion, Content-Blocker für Videos, je nach Seite).
-- **Performance — CDN-Schriften/Icons laden async:** Google Fonts + Font Awesome werden NICHT render-blockierend geladen (kein `@import` mehr in `styles.css`!). Jede Seite lädt sie im `<head>` per `rel="preload" as="style" onload="this.rel='stylesheet'"` + `<noscript>`-Fallback, dazu `rel="preconnect"` für `fonts.googleapis.com`/`fonts.gstatic.com`/`cdnjs.cloudflare.com`. Grund: Lighthouse-Report zeigte ~1.500ms Render-Blocking + hohe LCP-Render-Verzögerung durch diese beiden CDN-Requests. Die eigene `styles.css` bleibt bewusst normal (render-blockierend, aber klein). Bei neuen Seiten diesen `<head>`-Block aus einer bestehenden Seite übernehmen, nicht die alten zwei einfachen `<link>`-Tags.
+- **Inter selbst gehostet (`assets/fonts/`):** kein `@import`/Google-Request mehr, kein `fonts.googleapis.com`/`fonts.gstatic.com` im `<head>`. Zwei `@font-face`-Regeln in `styles.css` (Latin + Latin-Extended, per `unicode-range` getrennt, Browser lädt nur das tatsächlich gebrauchte Subset). Es sind **Variable-Font-Dateien** — eine Datei pro Subset deckt `font-weight: 400 800` komplett ab, deshalb genügen 2 Dateien statt (Subsets × Weights). Grund: Performance (ein Drittanbieter-Roundtrip weniger) UND DSGVO (keine IP-Übertragung an Google beim Seitenaufruf — Google Fonts extern laden war 2022 Gegenstand eines LG-München-Urteils). Bei neuen Font-Gewichten/-Schriften: Dateien lokal ablegen, nicht wieder auf Google-Fonts-`<link>`/`@import` zurückfallen.
+- **Font Awesome lädt async:** NICHT render-blockierend (kein normaler `<link rel="stylesheet">`). Jede Seite lädt es im `<head>` per `rel="preload" as="style" onload="this.rel='stylesheet'"` + `<noscript>`-Fallback, dazu `rel="preconnect"` für `cdnjs.cloudflare.com`. Grund: Lighthouse-Report zeigte ~900ms Render-Blocking allein durch Font Awesome. Die eigene `styles.css` bleibt bewusst normal (render-blockierend, aber klein). Bei neuen Seiten diesen `<head>`-Block aus einer bestehenden Seite übernehmen, nicht wieder einfache `<link>`-Tags.
 
 ## Ziel-Stack (Soll, laut CLAUDE.md — noch nicht umgesetzt)
 - Next.js (App Router) + TypeScript, Tailwind, Supabase (EU), Vercel.

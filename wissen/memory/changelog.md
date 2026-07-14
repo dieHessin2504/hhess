@@ -56,6 +56,12 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - **Performance:** `@import` von Google Fonts aus `styles.css` entfernt (war render-blockierend/seriell). Google Fonts + Font Awesome laden jetzt async (`preload` + `onload`-Swap + `noscript`-Fallback) mit `preconnect`-Hints — auf allen 6 Seiten umgesetzt, ausgelöst durch einen vom User gezeigten Lighthouse-Report (Font Awesome 900ms + Google Fonts 580ms Render-Blocking, LCP-Render-Verzögerung 1.760ms).
 - Betrifft: `website/youtube.html`, `website/css/styles.css`, `<head>` aller 6 Seiten, `wissen/**`
 
+## 2026-07-14 - Hero-CTA auf youtube.html, Video-Grid schmaler, Inter selbst gehostet
+- Hero von `youtube.html` erweitert: Begleittext, CTA-Button „Jetzt Kanal abonnieren" (mit YouTube-Icon, verlinkt zum Kanal) + Textlink „Beliebteste Videos ansehen →" (Anchor zu `#beliebte-videos`). Ein roter pulsierender Punkt vor der Dachzeile wurde gebaut, auf Wunsch aber wieder entfernt (samt CSS).
+- Video-Grid auf `max-width: 1000px` begrenzt (vorher volle 1300px-Containerbreite) — Karten wirkten zu groß.
+- **Inter-Schrift selbst gehostet:** kein Google-Fonts-Request mehr (weder `@import` noch `<link>`), zwei lokale `@font-face`-Regeln (`assets/fonts/inter-latin.woff2`, `inter-latin-ext.woff2`, Variable Font 400–800). Performance- UND DSGVO-Vorteil (siehe decisions.md).
+- Betrifft: `website/youtube.html`, `website/css/styles.css`, `<head>` aller 6 Seiten, `website/assets/fonts/`, `wissen/**`
+
 ## 2026-07-14 - Newsletter-CTA-Sektion auf Kundenstimmen
 - Neue wiederkehrend gedachte Sektion `.newsletter-cta` über dem Footer von `kundenstimmen.html`: linearer dunkler Verlauf, Überschrift (2 Zeilen) + Begleittext (3 Zeilen, weiß) + Encharge-Formular-Embed + Datenschutz-Hinweis (Link-Hover orange).
 - Löst das bisherige einfache `.cta`-Textband mit Link-Button ab.

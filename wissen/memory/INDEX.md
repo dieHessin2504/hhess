@@ -14,7 +14,7 @@
 - **Card-Hover:** wenige lockere Karten (`.card`) = starker Hover; dichtes Grid (`.testimonial`, `.step`) = dezenter Hover. Details: `wiki/design-system.md` „Hover-Konventionen".
 - **SEO pro Seite:** vor Robots/Title/Description IMMER den User aktiv fragen (mit Vorschlägen). Details: `wiki/seo.md`.
 - **Karten-Fließtext:** `<p>` in jeder Karten-Komponente ist 1rem/16px, nie die Standard-Body-Größe. Details: `wiki/design-system.md`.
-- **Performance:** Google Fonts/Font Awesome NIE per `@import` oder blockierendem `<link>` — immer der async `preload`+`onload`-Block im `<head>` (aus bestehender Seite kopieren). Details: `wiki/architecture.md`.
+- **Performance:** Inter ist selbst gehostet (`assets/fonts/`, NIE wieder Google-Fonts-`<link>`/`@import`). Font Awesome NIE per blockierendem `<link>` — immer der async `preload`+`onload`-Block im `<head>` (aus bestehender Seite kopieren). Details: `wiki/architecture.md`.
 - **Doku-Routing:** Wissen/Konventionen → `wiki/`; Aussehen/Design → `wiki/design-system.md`; Entscheidungen/Verlauf → `memory/`. (siehe `CLAUDE.md`)
 
 ## Offene Punkte / aktueller Fokus (Stand 2026-07-14)

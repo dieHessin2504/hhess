@@ -5,10 +5,28 @@
    ============================================================ */
 
 /* ---- Fonts ------------------------------------------------------
-   Absichtlich KEIN @import hier — @import blockiert seriell (erst
-   styles.css laden, dann erst die Google-Fonts-CSS entdecken/laden).
-   Stattdessen wird die Google-Fonts-URL im <head> jeder Seite per
-   preload+onload asynchron geladen, siehe Kommentar dort. */
+   Inter wird selbst gehostet (assets/fonts/), nicht mehr von Google
+   Fonts geladen — kein Drittanbieter-Request mehr (Performance +
+   DSGVO: keine IP-Übertragung an Google beim Seitenaufruf). Es sind
+   Variable-Font-Dateien (eine Datei deckt Weight 400-800 ab), daher
+   genügen zwei @font-face-Regeln (Latin + Latin-Extended) statt
+   fünf pro Subset. Font Awesome bleibt CDN (siehe <head>). */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../assets/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../assets/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
 /* ---- Design tokens ------------------------------------------- */
 :root {
@@ -546,8 +564,10 @@ img { max-width: 100%; }
 .hero .eyebrow { color: var(--text-eyebrow-on-dark); }
 .hero h1 { margin-top: var(--space-4); color: #fff; }
 .hero__lead { margin-top: var(--space-5); max-width: 520px; color: #fff; }
-.hero__cta { display: flex; gap: 12px; margin-top: 24px; }
+.hero__cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 24px; }
 .hero .hh-btn { padding: 16px 26px; }
+.hero__cta-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: #fff; }
+.hero__cta-link:hover { color: var(--color-accent); }
 .hero__reassure { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; font-size: 0.8125rem; color: #fff; }
 .hero__reassure span { display: inline-flex; align-items: center; gap: 7px; }
 .hero__reassure i { color: #fff; font-size: 0.75rem; }
@@ -619,7 +639,7 @@ img { max-width: 100%; }
 .trust-bar__label { margin-top: 4px; font-weight: 600; font-size: 0.9375rem; color: rgba(255, 255, 255, 0.85); }
 
 /* ---- Video-Grid (YouTube, Content-Blocker "Klick zum Laden") - */
-.video-grid { margin-top: var(--space-10); }
+.video-grid { max-width: 1000px; margin: var(--space-10) auto 0; }
 .video-card {
   display: flex;
   flex-direction: column;
