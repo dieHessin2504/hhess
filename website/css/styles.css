@@ -776,7 +776,7 @@ img { max-width: 100%; }
   margin: var(--space-3) auto 0;
   max-width: 760px;
 }
-.newsletter-cta__embed { margin-top: var(--space-8); max-width: 420px; margin-left: auto; margin-right: auto; }
+.newsletter-cta__embed { margin-top: var(--space-8); max-width: 420px; min-height: 154px; margin-left: auto; margin-right: auto; }
 .newsletter-cta__legal { margin-top: -40px; font-size: 0.875rem; color: rgba(255, 255, 255, 0.75); }
 .newsletter-cta__legal a { color: #fff; transition: color var(--transition-fast); }
 .newsletter-cta__legal a:hover { color: var(--color-accent); }

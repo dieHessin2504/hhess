@@ -150,6 +150,11 @@ Entscheidung: Dezente vertikale 1px-Trennlinien zwischen den drei `.trust-bar__i
 Begruendung: User wollte mehr visuelle Struktur zwischen den Kennzahlen; linksbündige Labels wirkten im Vergleich zu den zentrierten Zahlen unruhig, zentriert war die bessere Optik.
 Betrifft: `website/css/styles.css` (`.trust-bar*`).
 
+## 2026-07-15 - Clean URLs (kein `.html` mehr in Live-URLs)
+Entscheidung: `website/vercel.json` mit `{ "cleanUrls": true }` angelegt. Alle internen Links in allen 6 Seiten von `xyz.html` auf wurzelrelative, endungslose Pfade umgestellt (`/kundenstimmen`, `/youtube`, `/impressum`, `/datenschutz`, `/website-erstellen-lassen`, Startseite `/`), inkl. Anker-Links (`/#gratis`, `/#kontakt`, `/#newsletter`).
+Begruendung: User wollte, dass in der Browserleiste z. B. `hhess.de/youtube` statt `hhess.de/youtube.html` steht. Vercels eingebautes `cleanUrls` löst das ohne Framework-Wechsel; `/xyz.html`-Aufrufe (z. B. alte Bookmarks/Backlinks) leitet Vercel automatisch per 301 auf `/xyz` um, SEO-Signale bleiben erhalten.
+Betrifft: `website/vercel.json` (neu), alle 6 Seiten (interne `href`-Attribute), `wiki/architecture.md`. **Wichtig für künftige Seiten/Links:** immer ohne `.html` und mit führendem `/` verlinken.
+
 ## 2026-07-15 - Video-Grid: von 3-Spalten-Kartenraster auf horizontale Ein-Spalten-Karten umgebaut
 Entscheidung: Das Video-Grid auf `youtube.html` komplett neu layoutet: statt drei nebeneinander stehender Karten (Thumbnail oben, Text unten, Foto+Name-Fußzeile) jetzt volle Breite, Karten untereinander gestapelt, je Karte Video links (16:9, 42% Breite) und Text rechts (Themen-Badge → Titel → Text → „Jetzt anschauen"-Link). Karten-Border/Hover entfernt, dafür dünne Trennlinien zwischen den Karten und vor dem Datenschutz-Hinweis ergänzt (Radius/Overflow-Clipping dafür vom Karten-Container auf den Video-Container verschoben, sonst rundeten sich die Trennlinien an den Kartenecken mit). Unter dem Datenschutz-Hinweis zusätzlich ein zentrierter Abschluss-CTA (identischer Button wie im Hero, mehr vertikales Padding) ergänzt.
 Begruendung: User hat ein Referenzbild mit genau diesem horizontalen Karten-Layout (Video links, Badge+Titel+Text+Link rechts) vorgegeben und iterativ Breite (950px → 1100px → wieder volle Standardbreite), Abstände und Trennlinien nachjustiert.

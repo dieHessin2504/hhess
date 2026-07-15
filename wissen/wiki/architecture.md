@@ -38,7 +38,8 @@
 - **Quelle:** GitHub-Repo `dieHessin2504/hhess` (Branch `main`), aktuell öffentlich.
 - **Hosting:** Vercel, verbunden mit dem GitHub-Repo → **Auto-Deploy bei jedem `git push`**.
 - **Wichtig:** Vercel **Root Directory = `website`** (Seite liegt im Unterordner), Framework Preset „Other", kein Build Command.
-- **Lokale Vorschau:** `npx http-server` im Projektordner → `http://127.0.0.1:8099/website/index.html`.
+- **Clean URLs:** `website/vercel.json` (`{ "cleanUrls": true }`) — Vercel liefert `xyz.html` unter `/xyz` aus (ohne Endung) und leitet `/xyz.html`-Aufrufe per 301 auf `/xyz` um. Alle internen Links in allen 6 Seiten sind entsprechend site-weit auf endungslose, wurzelrelative Pfade umgestellt (`href="/kundenstimmen"` statt `href="kundenstimmen.html"`, Startseite `href="/"`). **Bei jeder neuen Seite/jedem neuen internen Link:** immer ohne `.html` und mit führendem `/` verlinken.
+- **Lokale Vorschau:** `npx serve website -l 8080` über `.claude/launch.json` (kein Python vorhanden) — unterstützt Clean URLs ebenfalls, verhält sich also wie Vercel.
 - **Domain hhess.de:** noch nicht angebunden (erst wenn Inhalte final; Vercel → Settings → Domains).
 
 ## Offene technische Punkte

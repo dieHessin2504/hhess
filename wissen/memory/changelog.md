@@ -81,6 +81,11 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - Abstand Formular-Button → Datenschutz-Hinweis per `margin-top: -40px` angenähert (Encharge-eigenes Formular-CSS liegt in Cross-Origin-iFrame, nicht direkt stylebar).
 - Betrifft: `website/kundenstimmen.html`, `website/css/styles.css`, `wissen/**`
 
+## 2026-07-15 - CLS-Fix (Logo-Dimensionen, Newsletter-Formular) + Clean URLs
+- CLS-Ursachen auf `youtube.html` gefunden und site-weit gefixt: `<img class="logo">` hatte keine `width`/`height`-Attribute (nur CSS-`height`), Browser musste nach SVG-Laden das Header-Layout neu berechnen — jetzt `width="182" height="38"` auf allen 6 Seiten (Header + Footer). `.newsletter-cta__embed` hatte keinen reservierten Platz, wodurch beim Nachladen des Encharge-Formulars Datenschutz-Text und Footer sichtbar nach unten sprangen — jetzt `min-height: 154px`. Lokal gemessen (PerformanceObserver `layout-shift`): CLS von 0,023 auf 0.
+- **Clean URLs:** `website/vercel.json` (`cleanUrls: true`) ergänzt, alle internen Links in allen 6 Seiten von `xyz.html` auf endungslose, wurzelrelative Pfade umgestellt (z. B. `/youtube` statt `youtube.html`). Live-URLs zeigen jetzt z. B. `hhess-ki-website.vercel.app/youtube` statt `/youtube.html`.
+- Betrifft: `website/*.html`, `website/css/styles.css`, `website/vercel.json` (neu), `wissen/**`
+
 ## 2026-07-15 - Trust-Bar-Trennlinien, Video-Grid komplett neu layoutet
 - Trust-Bar: dezente vertikale Trennlinien zwischen den drei Kennzahlen ergänzt (nur Desktop, auf Mobil ausgeblendet). Zweite Zeile (Labels) testweise linksbündig gesetzt, dann auf Wunsch wieder zentriert.
 - Video-Grid auf `youtube.html` von 3-spaltigem Kartenraster auf volle Breite, horizontale Ein-Spalten-Karten umgebaut: Video links (16:9, 42%) + Text rechts (Themen-Badge → Titel → Text → „Jetzt anschauen"-Link) statt Thumbnail oben + Foto/Name-Fußzeile. Kartenbreite iterativ getestet (950px → 1100px → wieder volle Standardbreite), Karten-Border/Hover entfernt, dünne Trennlinien zwischen Karten und vor dem Datenschutz-Hinweis ergänzt, Gaps (Video↔Text, Karte↔Karte, Mobil-Gap Video↔Headline) mehrfach nachjustiert.
