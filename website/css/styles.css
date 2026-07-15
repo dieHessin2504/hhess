@@ -272,6 +272,16 @@ img { max-width: 100%; }
    Marker am <body>; aktuell rein semantisch (Hook für spätere typspezifische Styles).
    ------------------------------------------------------------- */
 
+/* Seiten mit wenig Inhalt: Body auf volle Bildschirmhöhe strecken, damit der
+   Footer immer am unteren Bildschirmrand bleibt statt mittig zu "schweben".
+   Reduzierter Header wird dabei per CSS-order visuell ans Ende (neben den
+   Footer) verschoben — DOM-Reihenfolge (Screenreader/SEO) bleibt Header→Main→Footer,
+   bewusst kein position: sticky/fixed. */
+.page-fill-height { display: flex; flex-direction: column; min-height: 100vh; }
+.page-fill-height > main { order: 1; flex: 1 0 auto; }
+.page-fill-height > .site-header--reduced { order: 2; position: static; }
+.page-fill-height > .site-footer--reduced { order: 3; }
+
 /* ---- Layout helpers ----------------------------------------- */
 .container { max-width: var(--container-max); margin: 0 auto; }
 /* Schmale Version: an jedem .container zuschaltbar (class="container container--narrow") */
@@ -472,6 +482,11 @@ img { max-width: 100%; }
 .section-head { margin-bottom: var(--space-8); }
 .section-head h2 { margin-top: var(--space-4); }
 
+/* Zentrierte Variante (z. B. Bestätigungsseiten ohne Zwei-Spalten-Hero) */
+.section-head--center { text-align: center; max-width: 640px; margin-left: auto; margin-right: auto; }
+.section-head--center .hero__photo-wrap { max-width: 200px; margin: 0 auto var(--space-6); }
+.section-head--center .section-lead { margin-left: auto; margin-right: auto; }
+
 /* ---- Header / Nav ------------------------------------------- */
 .site-header {
   padding: 16px var(--section-x);
@@ -553,6 +568,15 @@ img { max-width: 100%; }
 .dropdown a { display: block; padding: 8px; font-size: 0.875rem; font-weight: 500; }
 
 .nav-toggle { display: none; }
+
+/* Reduzierter Header: gleiche Leiste, ohne Menü — statt Button ein Textlink zurück zur Startseite */
+.site-header__link {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  transition: color var(--transition-fast);
+}
+.site-header__link:hover { color: var(--color-accent); }
 
 /* ---- Hero --------------------------------------------------- */
 .hero {
