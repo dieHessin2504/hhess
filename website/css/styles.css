@@ -472,6 +472,11 @@ img { max-width: 100%; }
 .section-head { margin-bottom: var(--space-8); }
 .section-head h2 { margin-top: var(--space-4); }
 
+/* Zentrierte Variante (z. B. Bestätigungsseiten ohne Zwei-Spalten-Hero) */
+.section-head--center { text-align: center; max-width: 640px; margin-left: auto; margin-right: auto; }
+.section-head--center .hero__photo-wrap { max-width: 200px; margin: 0 auto var(--space-6); }
+.section-head--center .section-lead { margin-left: auto; margin-right: auto; }
+
 /* ---- Header / Nav ------------------------------------------- */
 .site-header {
   padding: 16px var(--section-x);
@@ -553,6 +558,15 @@ img { max-width: 100%; }
 .dropdown a { display: block; padding: 8px; font-size: 0.875rem; font-weight: 500; }
 
 .nav-toggle { display: none; }
+
+/* Reduzierter Header: gleiche Leiste, ohne Menü — statt Button ein Textlink zurück zur Startseite */
+.site-header__link {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  transition: color var(--transition-fast);
+}
+.site-header__link:hover { color: var(--color-accent); }
 
 /* ---- Hero --------------------------------------------------- */
 .hero {
