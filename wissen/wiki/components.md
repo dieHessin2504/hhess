@@ -2,14 +2,18 @@
 
 Pro Komponente: Zweck - Varianten - wo verwendet - Besonderheiten (A11y/SEO).
 Hinweis: Aktuell statisches HTML/CSS (keine echten Komponenten/Props). Die in `CLAUDE.md`
-genannten `default`/`reduced`-Varianten sind Ziel für den späteren Next.js-Umbau, noch nicht gebaut.
+genannten `default`/`reduced`-Varianten für Header/Footer sind seit 15.07.2026 als erste
+Markup-Muster gebaut (siehe unten) — echte Next.js-Komponenten/Props sind weiterhin Ziel
+des späteren Umbaus.
 
 ## Seiten-Typen (Layout-Konvention)
 Feste Benennung, damit klar ist, wovon wir sprechen:
 - **Hero-Seite** (`<body class="page-hero">`): Header **+ blaue Hero-Section** darunter. Für Startseite, Landingpages, Haupt-Angebotsseiten.
 - **Standardseite** (`<body class="page-standard">`): Header direkt auf den Inhalt, **keine** blaue Hero. Für Impressum, Datenschutz, Blog, Text-/Rechts-Unterseiten.
-- **Footer:** Alle Seiten nutzen den gleichen „normalen" Footer (siehe unten) — unabhängig vom Seiten-Typ.
-- Stand: Homepage, Service, Kundenstimmen und `youtube.html` sind Hero-Seiten; `impressum.html` und `datenschutz.html` sind Standardseiten.
+- **Pre-Confirmation-Seite** (`<body class="page-standard page-fill-height">`): Standardseite mit **reduziertem Header** (`.site-header--reduced`) und **reduziertem Footer** (`.site-footer--reduced`), `noindex, nofollow`. Für den Schritt **vor** der Double-Opt-in-Bestätigung (Hinweis „bitte E-Mail bestätigen"), nicht zu verwechseln mit einer Dankeseite **nach** der Bestätigung. Details zu den reduzierten Komponenten und `.page-fill-height` unten.
+- **Dankeseite** (`<body class="page-standard page-fill-height">`): gleicher Aufbau wie die Pre-Confirmation-Seite (reduzierter Header/Footer, `noindex, nofollow`) — aber für **nach** der Double-Opt-in-Bestätigung: Foto + Erfolgs-Headline + Fließtext-Absätze (`section-lead`, mehrfach verwendet), **keine** Schritt-Karten mehr.
+- **Footer:** Hero-/Standardseiten nutzen den gleichen „normalen" Footer (siehe unten); Pre-Confirmation- und Dankeseiten den reduzierten.
+- Stand: Homepage, Service, Kundenstimmen und `youtube.html` sind Hero-Seiten; `impressum.html` und `datenschutz.html` sind Standardseiten; `du-bist-fast-fertig.html`, `du-bist-fast-fertig-yt.html` und `lead-magnet-landingpage-vorlagen-fast-fertig.html` sind Pre-Confirmation-Seiten (inhaltlich identische 1:1-Kopien für unterschiedliche Anmelde-Flows); `danke-newsletter.html` ist die erste Dankeseite.
 
 ## Header (`.site-header`)
 - Zweck: Sticky-Kopf mit Logo, Hauptnavigation, primärem CTA.
@@ -23,6 +27,11 @@ Feste Benennung, damit klar ist, wovon wir sprechen:
 - Mobil (≤760px): Hamburger-Button (`.nav-toggle`) toggelt `.main-nav.open` (kleiner Inline-JS).
 - Verwendet in: `index.html`, `website-erstellen-lassen.html`. (Andere Seiten haben eigene Header-Varianten ohne Dropdown, siehe jeweilige Datei.)
 
+### Header reduziert (`.site-header.site-header--reduced`)
+- Seit 15.07.2026 erste gebaute `reduced`-Variante (siehe `CLAUDE.md`). Gleiche Leiste wie oben, aber **ohne** `.main-nav`/Hamburger — statt des primären CTA-Buttons steht rechts ein Textlink zurück zur Startseite: `.site-header__link` (700, Farbe `--color-ink`, Hover `--color-accent`), Text „« Zur Startseite" (Zeichen **«**, kein Pfeil-Icon).
+- Bleibt wie der normale Header `position: sticky; top: 0`.
+- Verwendet in: allen Pre-Confirmation-Seiten (siehe oben).
+
 ## Footer (`.site-footer`) — der „normale Footer"
 Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Seiten** verwendet (Hero-Seiten wie Standardseiten). Zweiteilig:
 - **Teil 1 – Haupt-Footer** (`.footer-main`, off-white `#F9F9F7`): 4 Spalten
@@ -33,6 +42,15 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
   - Spaltentitel: `.footer-col__title` (uppercase, bold, letter-spacing).
 - **Teil 2 – Abschlussleiste** (`.footer-bottom`): blauer Streifen `#20395B` **randlos** (volle Bildschirmbreite), Inhalt auf 1300px & bündig zum Raster. Links Copyright, rechts Rechtslinks in einer Reihe (Kunden-Login extern/ThriveCart, Impressum, Datenschutzhinweise). Mobil gestapelt: Links oben, Copyright unten.
 - Inhalt je Teil zentriert auf max. 1300px (`.footer-main__inner`, `.footer-bottom__inner`).
+
+### Footer reduziert (`.site-footer.site-footer--reduced`)
+- Seit 15.07.2026 erste gebaute `reduced`-Variante (siehe `CLAUDE.md`): **nur** Teil 2 (`.footer-bottom`, die blaue Abschlussleiste mit Copyright + Rechtslinks) — kein `.footer-main` (kein Logo, keine Spalten, keine Social-Icons).
+- Verwendet in: allen Pre-Confirmation-Seiten (siehe oben).
+
+### `.page-fill-height` — Footer bei wenig Inhalt am Bildschirmrand halten
+- Body-Utility-Klasse (zusätzlich zu `page-standard`/`page-hero`): `display: flex; flex-direction: column; min-height: 100vh;`, `main` bekommt `flex: 1 0 auto`.
+- Zweck: Bei kurzen Seiten (z. B. Pre-Confirmation-Seiten) bleibt der Footer auf **jeder** Bildschirmhöhe (auch 4K) am unteren Rand, statt bei viel Restplatz mittig zu „schweben". Header-Position/-Reihenfolge bleibt unangetastet (steht normal oben, sticky) — **kein** `position: sticky/fixed` am Footer, rein Flexbox-Wachstum von `main`.
+- Verwendet in: allen Pre-Confirmation-Seiten (siehe oben).
 
 ## Icon (`.icon`, SVG-Sprite)
 - Seit 14.07.2026 der **einzige** Weg, Icons einzubinden — ersetzt Font Awesome komplett (siehe `architecture.md` „Tech-Stand" für die Begründung).
