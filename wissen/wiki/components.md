@@ -103,7 +103,8 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 ## Trust-Bar (`.trust-bar`) — Kennzahlen-Leiste
 - Zweck: drei Kanal-Kennzahlen nebeneinander (z. B. Abonnenten/Aufrufe/Wiedergabezeit), volle Sektionsbreite, dunkler Hintergrund.
 - Hintergrund: **eigener** linearer Verlauf `to right, var(--color-ink), var(--color-primary)` (dunkles Navy → helleres Blau) — dritter Gradient neben Hero (radial) und Newsletter-CTA (linear, andere Farben); bewusst nicht verwechseln.
-- Aufbau: `<div class="grid-3 container">` mit drei `<div>`s, je `.trust-bar__num` (2.5rem, 800, weiß) + `.trust-bar__label` (kleiner, halbtransparentes Weiß).
+- Aufbau: `<div class="grid-3 container trust-bar__grid">` mit drei `.trust-bar__item`-`<div>`s, je `.trust-bar__num` (2.5rem, 800, weiß) + `.trust-bar__label` (kleiner, halbtransparentes Weiß, zentriert).
+- **Trennlinien:** dezente 1px-Linie (`rgba(255,255,255,0.25)`) zwischen den drei Items, per `::before` auf `.trust-bar__item + .trust-bar__item`, mittig im Grid-Gap positioniert. **Nur Desktop** — im Mobile-Breakpoint (≤760px, Items stapeln sich untereinander) wird die Linie ausgeblendet (`display:none`), sonst erscheint sie als sinnloser kurzer Strich zwischen den gestapelten Zahlen.
 - Padding **bewusst kleiner** als normale `.section` (`var(--space-12)` = 48px) — von der site-weiten Padding-Erhöhung auf 100px (siehe `design-system.md` „Spacing") explizit ausgenommen, genau wie `.newsletter-cta`.
 - Zahlenformat: Punkt als Tausendertrenner, `+` als Suffix (`3.700+`), passend zur Vorgabe des Users.
 - Verwendet in: `youtube.html`, zwischen Themen-Grid und Kundenstimmen-Wand.
@@ -119,9 +120,14 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - Verwendet in: `youtube.html`.
 
 ## Video-Grid (`.video-card`) — YouTube-Videos mit Content-Blocker
-- Zweck: bis zu drei eingebettete YouTube-Videos als echte Karten (weißer BG, Border, Radius, Hover — siehe „Hover-Konventionen") in `.grid-3`.
-- Karten-Aufbau (Referenz-Layout vom User vorgegeben): **Thumbnail (randlos oben) → Titel (h3) → Begleittext (p, 1rem) → Trennlinie (`.video-card__footer`, `border-top`) → darunter links Foto+Name („Hiacynta Hess"), rechts CTA-Link „Jetzt anschauen →"**.
+- Zweck: bis zu drei eingebettete YouTube-Videos, als **volle Container-Breite, horizontale Karten untereinander gestapelt** (kein Kartenraster mehr — siehe „Verworfen" unten).
+- Karten-Aufbau (Stand 2026-07-15): **Video links (`.video-card__embed`, 42% Breite, festes `aspect-ratio: 16/9`, eigene abgerundete Ecken) → Text rechts (`.video-card__body`): Themen-Badge (`.badge`, z. B. „SEO"/„Divi") → Titel (h3) → Begleittext (p, 1rem) → „Jetzt anschauen →"-Link (`margin-top` für Extra-Abstand zum Text).**
+- Karten selbst sind **randlos, ohne Hover-Effekt** (kein `.video-card`-Border/Box-Shadow mehr) — nur das Video-Thumbnail hat eigene Radius+Overflow-Clipping, damit eine Trennlinie zwischen Karten (siehe unten) eckig bleibt statt an den Kartenecken mitzurunden.
+- **Trennlinien:** dünne `border-top` auf `.video-card + .video-card` (zwischen den Karten) sowie auf `.video-grid__note` (vor dem Datenschutz-Hinweis) — gleiches Muster wie die Trust-Bar-Trennlinien, aus `var(--color-border)`.
+- Abstände: großzügiger Gap zwischen Video und Text (`gap: var(--space-12)` = 48px) sowie zwischen den gestapelten Karten (`var(--space-8)`, plus Trennlinie).
+- **Mobil (≤760px):** Karten stapeln sich (Video oben, Text darunter, `.video-card__body` ohne linkes/rechtes Padding, damit Text linksbündig mit der Videokante abschließt), kleinerer Gap zwischen Video und Badge/Titel (`var(--space-3)` statt Desktop-`var(--space-12)`). Bugfix: `.video-card` erbt `align-items:center` vom Desktop, das kollabiert im gestapelten Modus die Videobreite auf 0 — Mobile-Override braucht `align-items: stretch`.
+- **Abschluss-CTA (`.video-grid__cta`):** unter dem Datenschutz-Hinweis, zentriert, identischer Button wie im Hero (`.hh-btn--primary` + YouTube-Icon, „Jetzt Kanal abonnieren", verlinkt auf `link.hhess.de/youtubeabonnieren`) — bekommt zusätzlich mehr vertikales Padding (`16px` statt der Standard-`10px` aus `--button-padding`) für mehr Präsenz am Sektionsende.
 - **Content-Blocker (Zwei-Klick-Lösung):** Standardmäßig lädt **kein** YouTube-iFrame — nur ein Play-Button über einem statischen Thumbnail (`i.ytimg.com`, setzt keine Cookies). Erst per Klick wird `youtube-nocookie.com` (erweiterter Datenschutzmodus, siehe `datenschutz.html`) eingebettet. Zustimmung wird in `localStorage` (`yt-embed-consent`) gemerkt — danach laden alle drei Videos beim nächsten Seitenaufruf direkt, ohne erneuten Klick. Geklickte Karte startet mit `autoplay=1`, die anderen beiden ohne Autoplay.
-- Hinweistext unter dem Grid (`.video-grid__note`) verlinkt zu den Datenschutzhinweisen.
 - ⚠️ **Platzhalter:** Alle drei `data-video-id`/Thumbnail-/Link-Werte nutzen aktuell dieselbe Demo-ID (`YE7VzlLtp-4`, Big Buck Bunny) — vor Launch durch die echten YouTube-Video-IDs ersetzen (Kommentar im HTML markiert das).
+- **Verworfen:** Das ursprüngliche 3-spaltige Karten-Raster (Thumbnail randlos oben → Titel → Text → Trennlinie → Foto+Name links/CTA-Link rechts, mit Border+Hover je Karte) wurde auf User-Wunsch durch das obige horizontale Ein-Spalten-Layout ersetzt (Autor-Zeile mit Foto+Name entfällt dabei komplett zugunsten des Themen-Badges).
 - Verwendet in: `youtube.html`, zwischen Kundenstimmen-Wand und Newsletter-CTA.

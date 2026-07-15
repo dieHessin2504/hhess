@@ -92,16 +92,16 @@
 
   <!-- ===== Trust-Bar (Kanal-Zahlen) ===== -->
   <section class="trust-bar">
-    <div class="grid-3 container" style="text-align:center;">
-      <div>
+    <div class="grid-3 container trust-bar__grid">
+      <div class="trust-bar__item">
         <div class="trust-bar__num">3.700+</div>
         <div class="trust-bar__label">Abonnenten</div>
       </div>
-      <div>
+      <div class="trust-bar__item">
         <div class="trust-bar__num">261.000+</div>
         <div class="trust-bar__label">Aufrufe</div>
       </div>
-      <div>
+      <div class="trust-bar__item">
         <div class="trust-bar__num">20.400+</div>
         <div class="trust-bar__label">Stunden Wiedergabezeit</div>
       </div>
@@ -179,7 +179,7 @@
       <p class="section-lead" style="max-width:700px;margin-left:auto;margin-right:auto;">Ein kurzer Einblick in meine beliebtesten Tutorials — für die ganze Anleitung geht's direkt weiter zu YouTube.</p>
     </div>
 
-    <div class="container grid-3 video-grid">
+    <div class="container video-grid">
       <article class="video-card">
         <div class="video-card__embed" data-video-id="YE7VzlLtp-4" data-title="Mailerlite: Schritt für Schritt zum Newsletter">
           <button type="button" class="video-card__play" aria-label="Video laden und abspielen: Mailerlite: Schritt für Schritt zum Newsletter">
@@ -188,15 +188,10 @@
           </button>
         </div>
         <div class="video-card__body">
+          <span class="badge">E-Mail-Marketing</span>
           <h3>Mailerlite: Schritt für Schritt zum Newsletter</h3>
           <p>In dieser Schritt-für-Schritt-Anleitung lernst du Mailerlite etwas näher kennen. Du erfährst, wie du ein Anmeldeformular erstellst, es auf deiner Website einfügst und eine Automation aufsetzt.</p>
-          <div class="video-card__footer">
-            <div class="video-card__author">
-              <img class="video-card__avatar" src="assets/fotos/hiacynta-hess.avif" alt="">
-              <span class="video-card__author-name">Hiacynta Hess</span>
-            </div>
-            <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></a>
-          </div>
+          <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></a>
         </div>
       </article>
 
@@ -208,15 +203,10 @@
           </button>
         </div>
         <div class="video-card__body">
+          <span class="badge">Divi</span>
           <h3>10 versteckte Divi-Funktionen um Zeit zu sparen</h3>
           <p>Das Divi-Theme ist ein wunderbares Theme, mit dem du auch als Einsteiger in relativ kurzer Zeit deine Website erstellen kannst. Mit diesen 10 versteckten Tipps &amp; Tricks kannst du noch mehr Zeit sparen und deine Website noch schneller gestalten.</p>
-          <div class="video-card__footer">
-            <div class="video-card__author">
-              <img class="video-card__avatar" src="assets/fotos/hiacynta-hess.avif" alt="">
-              <span class="video-card__author-name">Hiacynta Hess</span>
-            </div>
-            <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></a>
-          </div>
+          <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></a>
         </div>
       </article>
 
@@ -228,20 +218,18 @@
           </button>
         </div>
         <div class="video-card__body">
+          <span class="badge">SEO</span>
           <h3>Die richtigen Rank Math SEO Einstellungen</h3>
           <p>Rank Math SEO ist ein Freemium-Plugin für WordPress und gehört auf jede WordPress-Website. Insbesondere, wenn du dich mit Suchmaschinenoptimierung (SEO) befassen willst, brauchst du ein SEO-Plugin.</p>
-          <div class="video-card__footer">
-            <div class="video-card__author">
-              <img class="video-card__avatar" src="assets/fotos/hiacynta-hess.avif" alt="">
-              <span class="video-card__author-name">Hiacynta Hess</span>
-            </div>
-            <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></a>
-          </div>
+          <a class="video-card__link" href="https://www.youtube.com/watch?v=YE7VzlLtp-4" target="_blank" rel="noopener">Jetzt anschauen <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></a>
         </div>
       </article>
     </div>
 
     <p class="video-grid__note">Beim Klick auf ein Video wird eine Verbindung zu YouTube hergestellt. Mehr dazu in den <a href="datenschutz.html">Datenschutzhinweisen</a>.</p>
+    <div class="video-grid__cta">
+      <a class="hh-btn hh-btn--primary" href="https://link.hhess.de/youtubeabonnieren" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-youtube"></use></svg> Jetzt Kanal abonnieren</a>
+    </div>
   </section>
 
   <!-- ===== Newsletter-CTA ===== -->

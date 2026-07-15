@@ -81,6 +81,13 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - Abstand Formular-Button → Datenschutz-Hinweis per `margin-top: -40px` angenähert (Encharge-eigenes Formular-CSS liegt in Cross-Origin-iFrame, nicht direkt stylebar).
 - Betrifft: `website/kundenstimmen.html`, `website/css/styles.css`, `wissen/**`
 
+## 2026-07-15 - Trust-Bar-Trennlinien, Video-Grid komplett neu layoutet
+- Trust-Bar: dezente vertikale Trennlinien zwischen den drei Kennzahlen ergänzt (nur Desktop, auf Mobil ausgeblendet). Zweite Zeile (Labels) testweise linksbündig gesetzt, dann auf Wunsch wieder zentriert.
+- Video-Grid auf `youtube.html` von 3-spaltigem Kartenraster auf volle Breite, horizontale Ein-Spalten-Karten umgebaut: Video links (16:9, 42%) + Text rechts (Themen-Badge → Titel → Text → „Jetzt anschauen"-Link) statt Thumbnail oben + Foto/Name-Fußzeile. Kartenbreite iterativ getestet (950px → 1100px → wieder volle Standardbreite), Karten-Border/Hover entfernt, dünne Trennlinien zwischen Karten und vor dem Datenschutz-Hinweis ergänzt, Gaps (Video↔Text, Karte↔Karte, Mobil-Gap Video↔Headline) mehrfach nachjustiert.
+- Mobile-Bugfix: gestapelte Video-Karten kollabierten auf 0×0px (`align-items:center` vom Desktop verhinderte das Stretchen der Videobreite) — Mobile-Override mit `align-items:stretch` ergänzt. Mobil zusätzlich kein linkes/rechtes Padding mehr im Textblock, damit Text bündig mit der Videokante abschließt.
+- Neuer zentrierter Abschluss-CTA unter dem Datenschutz-Hinweis (`.video-grid__cta`): identischer Button wie im Hero, mit mehr vertikalem Padding.
+- Betrifft: `website/youtube.html`, `website/css/styles.css`, `wissen/**`
+
 ## 2026-07-13 - Kundenstimmen-Hero mit Foto+Siegel, Seite entschlackt, Filter-Sprung gefixt
 - Kundenstimmen-Hero auf zweispaltiges Layout umgestellt: Text links, rundes Foto rechts, kompaktes ratedo-Badge leicht versetzt auf dem Foto (siehe decisions.md).
 - Großes ratedo-Widget (Widget2), Hero-Lead-Text, Gruppen-Eyebrows + Icons, "Kundenstimmen im Überblick" und die YouTube-/Shop-CTA-Bänder entfernt (siehe decisions.md).

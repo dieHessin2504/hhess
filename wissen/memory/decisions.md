@@ -144,3 +144,13 @@ Betrifft: keine Code-Änderung; siehe `wiki/architecture.md` „Offene technisch
 Entscheidung: `.hero__lead` von `max-width: 66%` auf `90%` erhöht (Zeilen dürfen länger laufen). `.hh-btn` bekommt `gap: 10px` zwischen Icon und Text (site-weit für alle Buttons mit Icon, z. B. YouTube-Abo-Button).
 Begruendung: User fand nach dem 2:1-Spalten-Fix den Begleittext noch zu schmal und das Icon im Button zu eng am Text.
 Betrifft: `website/css/styles.css` (`.hero__lead`, `.hh-btn`).
+
+## 2026-07-15 - Trust-Bar: Trennlinien zwischen Kennzahlen (nur Desktop)
+Entscheidung: Dezente vertikale 1px-Trennlinien zwischen den drei `.trust-bar__item`s ergänzt (`::before`, `rgba(255,255,255,0.25)`). Auf Mobil (Items stapeln sich) wird die Linie ausgeblendet. Ein Zwischenschritt (zweite Zeile/Label linksbündig statt zentriert) wurde getestet und auf Wunsch wieder auf zentriert zurückgesetzt.
+Begruendung: User wollte mehr visuelle Struktur zwischen den Kennzahlen; linksbündige Labels wirkten im Vergleich zu den zentrierten Zahlen unruhig, zentriert war die bessere Optik.
+Betrifft: `website/css/styles.css` (`.trust-bar*`).
+
+## 2026-07-15 - Video-Grid: von 3-Spalten-Kartenraster auf horizontale Ein-Spalten-Karten umgebaut
+Entscheidung: Das Video-Grid auf `youtube.html` komplett neu layoutet: statt drei nebeneinander stehender Karten (Thumbnail oben, Text unten, Foto+Name-Fußzeile) jetzt volle Breite, Karten untereinander gestapelt, je Karte Video links (16:9, 42% Breite) und Text rechts (Themen-Badge → Titel → Text → „Jetzt anschauen"-Link). Karten-Border/Hover entfernt, dafür dünne Trennlinien zwischen den Karten und vor dem Datenschutz-Hinweis ergänzt (Radius/Overflow-Clipping dafür vom Karten-Container auf den Video-Container verschoben, sonst rundeten sich die Trennlinien an den Kartenecken mit). Unter dem Datenschutz-Hinweis zusätzlich ein zentrierter Abschluss-CTA (identischer Button wie im Hero, mehr vertikales Padding) ergänzt.
+Begruendung: User hat ein Referenzbild mit genau diesem horizontalen Karten-Layout (Video links, Badge+Titel+Text+Link rechts) vorgegeben und iterativ Breite (950px → 1100px → wieder volle Standardbreite), Abstände und Trennlinien nachjustiert.
+Betrifft: `website/youtube.html`, `website/css/styles.css` (`.video-card*`, `.video-grid*`), `wiki/components.md`. Löst den Eintrag „Video-Karten-Layout nach User-Referenzbild" vom 2026-07-14 ab (dort noch das inzwischen verworfene Karten-Raster-Layout).
