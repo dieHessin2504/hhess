@@ -212,6 +212,31 @@ img { max-width: 100%; }
   color: var(--button-primary-hover-fg);
   border-color: var(--button-primary-hover-border);
 }
+/* Dezente Inszenierung für einzelne CTAs: weicher Schatten + langsamer Glanz-Sweep (z. B. "Jetzt Newsletter abonnieren" auf newsletter.html) */
+.hh-btn--shine {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(255, 162, 42, 0.35);
+}
+.hh-btn--shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  animation: hh-btn-shine 3.2s ease-in-out infinite;
+}
+@keyframes hh-btn-shine {
+  0% { left: -75%; }
+  35%, 100% { left: 125%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hh-btn--shine::after { animation: none; display: none; }
+}
+
 .hh-btn--secondary {
   background: transparent;
   color: var(--button-secondary-fg);
@@ -425,7 +450,7 @@ img { max-width: 100%; }
 .yt-quote__text { font-size: 0.9375rem; line-height: 1.6; color: var(--color-ink); }
 
 /* ---- Themen-Grid (YouTube), 3x2, wiederverwendet .step / .step__num --- */
-.topic-grid { margin-top: var(--space-10); }
+.topic-grid { margin-top: var(--space-12); }
 .topic-grid__cta { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: var(--space-4); }
 .topic-grid__cta h3 { margin-top: 0; }
 .topic-grid__cta .hh-btn { margin-top: var(--space-2); }
@@ -774,6 +799,8 @@ img { max-width: 100%; }
   border-color: rgba(43, 96, 157, 0.7);
   box-shadow: 0 8px 24px rgba(20, 47, 78, 0.08);
 }
+/* Test (newsletter.html): blauer Top-Rahmen auf den Karten, nur zur Ansicht */
+.step--top-accent { border-top: 2px solid var(--color-primary); }
 .step__num {
   width: 40px;
   height: 40px;
@@ -810,6 +837,34 @@ img { max-width: 100%; }
 .newsletter-cta__legal { margin-top: -40px; font-size: 0.875rem; color: rgba(255, 255, 255, 0.75); }
 .newsletter-cta__legal a { color: #fff; transition: color var(--transition-fast); }
 .newsletter-cta__legal a:hover { color: var(--color-accent); }
+
+/* Kleiner Datenschutz-Hinweis direkt unter einem Hero-Formular (heller/dunkler Hero-Text) */
+.hero__legal { margin-top: var(--space-3); font-size: 0.8125rem; color: rgba(255, 255, 255, 0.65); }
+.hero__legal a { color: rgba(255, 255, 255, 0.9); transition: color var(--transition-fast); }
+.hero__legal a:hover { color: var(--color-accent); }
+
+/* ---- FAQ-Akkordeon (native <details>/<summary>) -------------- */
+.faq-list { max-width: 760px; margin: var(--space-8) auto 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.faq-item { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--card-padding); background: var(--surface-card); }
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-heading);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--color-primary); flex-shrink: 0; }
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item p { margin-top: var(--space-3); font-size: 1rem; color: var(--text-body); }
+
+/* ---- Beispiel-Newsletter-Screenshot (Bestätigungsseite eines echten Newsletters) ---- */
+.newsletter-example { max-width: 420px; margin: var(--space-8) auto 0; border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; background: #fff; }
+.newsletter-example img { width: 100%; height: auto; display: block; }
 
 /* ---- Footer ------------------------------------------------- */
 /* Teil 1: Haupt-Footer (4 Spalten: Marke + 3 Link-Spalten) */
