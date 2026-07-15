@@ -483,9 +483,11 @@ img { max-width: 100%; }
 .section-head--center { text-align: center; max-width: 640px; margin-left: auto; margin-right: auto; }
 .section-head--center .hero__photo-wrap { max-width: 200px; margin: 0 auto var(--space-6); }
 .section-head--center .section-lead { margin-left: auto; margin-right: auto; }
+/* Breitere Variante für textlastigere Bestätigungsseiten (z. B. danke-newsletter*) */
+.section-head--center.section-head--wide { max-width: 820px; }
 
 /* Breiteres Produkt-/Mockup-Bild vor einer .section-head--center (statt Foto-Kreis), z. B. Dankeseite eines Freebies */
-.confirm-visual { display: block; max-width: 900px; width: 100%; height: auto; margin: 0 auto var(--space-8); }
+.confirm-visual { display: block; max-width: 640px; width: 100%; height: auto; margin: 0 auto var(--space-8); }
 
 /* ---- Header / Nav ------------------------------------------- */
 .site-header {
