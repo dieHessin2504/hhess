@@ -1091,22 +1091,32 @@ img { max-width: 100%; }
 .about-dark__media { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
 .about-dark__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Paket-Box (dunkle Karte "im Paket enthalten" + weiße Preis-Karte) */
-.package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: stretch; margin-top: var(--space-10); }
-.package-box { background: var(--gradient-dark-band); border-radius: var(--radius-lg); padding: var(--space-8); color: #fff; }
-.package-box h3 { color: #fff; font-size: 1.5rem; }
-.package-box ul { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.package-box li { padding-left: 1.2em; position: relative; font-size: 0.9375rem; }
-.package-box li::before { content: "•"; position: absolute; left: 0; color: var(--color-accent); }
-.package-box p { margin-top: var(--space-5); font-size: 0.9375rem; color: rgba(255, 255, 255, 0.75); }
-.pricing-card { background: #fff; border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: var(--space-8); display: flex; flex-direction: column; }
-.pricing-card__label { font-size: var(--eyebrow-size); font-weight: 700; letter-spacing: var(--eyebrow-tracking); text-transform: uppercase; color: var(--text-eyebrow); }
-.pricing-card__price { font-size: 2.25rem; font-weight: 800; color: var(--color-ink); margin-top: 8px; }
-.pricing-card__sub { font-size: 0.875rem; color: #5b6b80; margin-top: 4px; }
-.pricing-card ul { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.pricing-card li { display: flex; gap: 8px; font-size: 0.9375rem; }
-.pricing-card li .icon { color: var(--color-primary); flex-shrink: 0; margin-top: 3px; }
-.pricing-card .hh-btn { margin-top: var(--space-6); align-self: flex-start; }
+/* Paket-Band: EINE dunkle Karte über volle Container-Breite (radialer Verlauf
+   wie der Hero), links Inhalt, rechts schwebt die weiße Preis-Karte darin. */
+.package-band { margin-top: var(--space-10); background: var(--hero-bg); border-radius: var(--radius-xl); padding: var(--space-16) var(--space-12); display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-16); align-items: start; }
+.package-band__content .eyebrow { color: var(--color-accent); }
+.package-band__content h3 { color: #fff; font-size: clamp(1.5rem, 2vw + 1rem, 1.9rem); line-height: 1.3; margin-top: var(--space-4); }
+.package-band__list { list-style: none; margin: var(--space-8) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1.2fr; gap: 18px 40px; }
+.package-band__list li { position: relative; padding-left: 1.1em; color: #fff; font-size: 1.1rem; }
+.package-band__list li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); }
+.package-band__content p { margin-top: var(--space-6); color: rgba(255, 255, 255, 0.88); font-size: 1rem; line-height: 1.7; }
+.pricing-card { background: #fff; border-radius: var(--radius-xl); padding: var(--space-8); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; }
+.pricing-card__label { display: block; text-align: center; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5b7cae; }
+.pricing-card__price { text-align: center; font-size: 2.75rem; font-weight: 800; color: var(--color-ink); line-height: 1.1; margin-top: var(--space-3); }
+.pricing-card__price sub { font-weight: 800; line-height: 1; }
+.pricing-card__sub { text-align: center; font-size: 0.9375rem; color: #5b6b80; margin-top: 6px; }
+.pricing-card ul { list-style: none; margin: var(--space-6) 0 0; padding: 0; }
+.pricing-card li { display: flex; gap: 12px; align-items: flex-start; font-size: 1.0625rem; padding: 12px 0; }
+.pricing-card li:not(:last-child) { border-bottom: 1px solid var(--border-card); }
+.pricing-card li .icon { color: var(--color-ink); flex-shrink: 0; margin-top: 6px; font-size: 0.8125rem; }
+/* min-width:0 auf den Grid-Kindern, sonst drückt der nowrap-Button die Preis-Karte
+   auf Mobile breiter als das dunkle Band (Grid-Items schrumpfen nicht unter min-content) */
+.package-band > * { min-width: 0; }
+.pricing-card .hh-btn { margin-top: var(--space-6); width: 100%; border-radius: 8px; padding: 14px 24px; font-size: 1.0625rem; white-space: normal; }
+
+/* Blauer Solid-Button (Muster von der Live-Seite, z. B. Preis-Karte) */
+.hh-btn--blue { background: var(--color-eyebrow-blue); color: #fff; border: 1.5px solid var(--color-eyebrow-blue); }
+.hh-btn--blue:hover { background: #1F4A7C; border-color: #1F4A7C; color: #fff; }
 
 /* Prozess-Timeline (vertikal, nummerierte Kreise + Verbindungslinie + Zeit-Badge) */
 .process-line { position: relative; max-width: 760px; margin-top: var(--space-10); }
@@ -1194,7 +1204,7 @@ img { max-width: 100%; }
   .process-example__arrow-wrap { flex-direction: row; justify-content: center; }
   .about-dark__grid { grid-template-columns: 1fr; }
   .about-dark__media-wrap { order: -1; max-width: 320px; margin: 0 auto; }
-  .package-grid { grid-template-columns: 1fr; }
+  .package-band { grid-template-columns: 1fr; gap: var(--space-10); padding: var(--space-12) var(--space-8); }
   .compare-grid { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .faq-list--grid { grid-template-columns: 1fr; }
@@ -1236,7 +1246,8 @@ img { max-width: 100%; }
   .pain-grid { grid-template-columns: 1fr; }
   .fit-grid { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: 1fr; }
-  .package-box ul { grid-template-columns: 1fr; }
+  .package-band__list { grid-template-columns: 1fr; }
+  .package-band { padding: var(--space-10) var(--space-6); }
   .footer-main__inner { grid-template-columns: 1fr; }
   .testimonial-grid { grid-template-columns: 1fr; }
   .footer-bottom__inner { flex-direction: column; align-items: flex-start; gap: 24px; }
