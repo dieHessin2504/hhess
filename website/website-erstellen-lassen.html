@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website erstellen lassen — schlüsselfertig mit Design, Texten &amp; SEO | Hiacynta Hess</title>
-  <meta name="description" content="Du schickst mir deine Infos, ich mache daraus eine fertige Website — Design, Texte und SEO aus einer Hand, zum Festpreis, fertig in 4–8 Wochen.">
+  <meta name="description" content="Du schickst mir deine Infos, ich mache daraus eine fertige Website — Design, Texte und SEO aus einer Hand, ab 3.475 €, fertig in 4–8 Wochen.">
+  <meta name="robots" content="index, follow">
   <link rel="icon" href="assets/logos/hiacynta-hess-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -17,13 +18,19 @@
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-bars"></use></svg></button>
     <nav class="main-nav">
       <a href="/">Start</a>
-      <a href="/website-erstellen-lassen" class="is-active" aria-current="page">Service</a>
+      <span class="has-dropdown" tabindex="0">
+        <a href="/website-erstellen-lassen" class="is-active" aria-current="page">Service</a>
+        <span class="dropdown">
+          <a href="/website-erstellen-lassen">Website erstellen lassen</a>
+          <a href="#">Website Audit</a>
+        </span>
+      </span>
       <a href="/#gratis">Gratis lernen</a>
       <a href="#">Shop</a>
       <a href="/kundenstimmen">Kundenstimmen</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="hh-btn hh-btn--primary" href="#kontakt">Website erstellen lassen</a>
+    <a class="hh-btn hh-btn--primary" href="/newsletter">Newsletter abonnieren</a>
     </div>
   </header>
 
@@ -31,78 +38,595 @@
   <section class="hero hero--centered">
     <div class="container">
       <span class="eyebrow">Schlüsselfertig</span>
-      <h1>Ich will eine schlüsselfertige Website erstellen lassen mit Texten, Design und SEO</h1>
-      <p class="hero__lead">Du schickst mir deine Infos, ich mache daraus eine fertige Website. Dein Aufwand? Nur 3–8 Stunden über das gesamte Projekt.</p>
+      <h1>Du schickst mir deine Infos. Ich erstelle deine Website.</h1>
+      <p class="hero__lead">Lass deine WordPress-Website erstellen und bekomme am Launch-Tag eine fertige Website: mit echtem Design, fertigen Texten und Basis-SEO. Zum Festpreis. Ohne Überraschungen.</p>
+      <ul class="hero__reassure hero__reassure--stacked">
+        <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Komplett schlüsselfertig: Design, Texte &amp; SEO aus einer Hand</li>
+        <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Dein Aufwand: ca. 3–8 Stunden</li>
+        <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Festpreis ab 3.475 € · Ratenzahlung möglich</li>
+      </ul>
       <div class="hero__cta">
-        <a class="hh-btn hh-btn--primary" href="#kontakt">Website erstellen lassen</a>
+        <a class="hh-btn hh-btn--primary hh-btn--shine" href="/website-anfrage">Projekt anfragen →</a>
+        <a class="hh-btn hh-btn--secondary" href="#paket">Zum Paket</a>
       </div>
+      <p class="hero__legal">Limitierte Plätze · Nächster freier Slot: <strong style="color:var(--color-accent)">September 2026</strong></p>
+      <p class="hero__legal" style="margin-top:var(--space-5);">
+        <span style="color:var(--color-accent);letter-spacing:2px;">★★★★★</span>
+        5/5 · SEHR GUT · 90 Bewertungen auf <a href="https://link.hhess.de/ratedo" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">ratedo.de</a>
+      </p>
     </div>
   </section>
 
-  <!-- ===== Features ===== -->
+  <!-- ===== Empathy / Pain ===== -->
   <section class="section section--white">
     <div class="container">
-      <div class="grid-3">
-        <article class="card">
-          <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-palette"></use></svg></div>
-          <h3>Design, Texte &amp; SEO aus einer Hand</h3>
-          <p>Alles aus einer Hand — kein Koordinieren mit mehreren Dienstleistern.</p>
-        </article>
-        <article class="card">
-          <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-tag"></use></svg></div>
-          <h3>Zum Festpreis</h3>
-          <p>Klare Kosten von Anfang an, keine Überraschungen.</p>
-        </article>
-        <article class="card">
-          <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg></div>
-          <h3>Fertig in 4–8 Wochen</h3>
-          <p>Planbarer Zeitrahmen für dein gesamtes Projekt.</p>
-        </article>
+      <div class="section-head section-head--center" style="max-width:820px;">
+        <p class="section-lead" style="font-size:1.375rem;font-weight:600;font-style:italic;color:var(--color-ink);margin-top:0;">„Ich weiß was ich will, aber ich hab weder die Zeit noch das Auge dafür.“</p>
+      </div>
+      <div class="section-head--center" style="max-width:760px;margin-top:var(--space-6);">
+        <p>Wer seine Website erstellen lassen möchte, hört diesen Satz in fast jedem Erstgespräch. Der Kern ist immer derselbe: „Ich könnte das theoretisch selbst machen. Aber es würde ewig dauern, und am Ende sieht es trotzdem nicht so aus, wie ich es mir vorstelle.“</p>
+        <p style="margin-top:var(--space-4);">Vollkommen nachvollziehbar, denn hinter einer professionellen Website steckt weit mehr als einfach nur ein Theme installieren:</p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-item">
+          <div class="pain-item__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg></div>
+          <div>
+            <h3>Die Zeit fehlt</h3>
+            <p>Du bist selbstständig. Deine Energie gehört deinem Business, nicht wochenlangen WordPress-Tutorials.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-item__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-palette"></use></svg></div>
+          <div>
+            <h3>Das Designer-Auge fehlt</h3>
+            <p>Wie man das visuell professionell und stimmig aufbaut, das ist ein eigenes Handwerk.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-item__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-pen"></use></svg></div>
+          <div>
+            <h3>Die Texte bleiben hängen</h3>
+            <p>Die meisten Webdesigner liefern das Webdesign. Dann wartest du auf dich selbst, weil die Texte noch fehlen.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-item__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-magnifying-glass-chart"></use></svg></div>
+          <div>
+            <h3>SEO ist ein Buch mit sieben Siegeln</h3>
+            <p>Du weißt, dass es wichtig ist, aber wann und wie es eingebaut werden soll, bleibt unklar.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Process ===== -->
+  <!-- ===== So funktioniert's ===== -->
   <section class="section section--page">
+    <div class="container">
+      <div class="section-head section-head--center" style="max-width:760px;">
+        <span class="eyebrow">So einfach funktioniert die Zusammenarbeit</span>
+        <h2>Du lieferst die Puzzle-Teile. Ich füge sie zu einer fertigen Website zusammen.</h2>
+        <p class="section-lead">Du schickst mir deine Infos, entweder per Sprachnachricht, per E-Mail oder als Google Doc. Gemeinsam mit den Antworten aus dem Onboarding-Dokument gieße ich alles in ein fundiertes Fundament: Texte, Struktur, Headlines. Du musst nichts vorbereiten oder vorformulieren!</p>
+      </div>
+      <div class="process-example">
+        <div class="process-example__card">
+          <span class="process-example__label">So kann dein Input aussehen</span>
+          <div class="process-example__voice">
+            <div class="process-example__voice-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-microphone"></use></svg></div>
+            <div>
+              <div class="process-example__voice-meta">Sprachnachricht · 1:42</div>
+              <p class="process-example__voice-quote">„Also ich bin Coach und helfe Führungskräften, die halt irgendwie gestresst sind und nicht mehr schlafen können, und die merken dass sie eigentlich in allem gut sind aber irgendwie trotzdem nicht zur Ruhe kommen…“</p>
+            </div>
+          </div>
+          <span class="process-example__label" style="margin-top:var(--space-4);">+ Stichpunkte per E-Mail</span>
+          <ul class="process-example__list">
+            <li>12 Jahre Erfahrung als Führungskraft</li>
+            <li>1:1 Coaching, 3 Monate</li>
+            <li>Zielgruppe: 40–55, mittleres Management</li>
+            <li>Kein Burnout-Coach! Eher Prävention</li>
+          </ul>
+        </div>
+        <div class="process-example__arrow-wrap">
+          <div class="process-example__arrow"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></div>
+          <span class="process-example__arrow-label">Ich übernehme</span>
+        </div>
+        <div class="process-example__card" style="padding:0;">
+          <span class="process-example__label" style="padding:var(--space-6) var(--space-6) 0;">Fertige Website-Sektion</span>
+          <div class="process-example__browser" style="margin-top:var(--space-4);border:none;border-top:1px solid var(--border-card);border-radius:0;">
+            <div class="process-example__browser-bar"><span class="process-example__browser-url">www.deinname.de</span></div>
+            <div class="process-example__browser-body">
+              <h4>Endlich wieder schlafen!</h4>
+              <p>Für Führungskräfte im mittleren Management, die in allem gut sind und trotzdem nicht abschalten können. Bevor es zum Problem wird.</p>
+              <ul class="process-example__checks">
+                <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>12 Jahre eigene Führungserfahrung</li>
+                <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>1:1 Coaching über 3 Monate</li>
+                <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Prävention statt Krisenmanagement</li>
+              </ul>
+              <span class="hh-btn hh-btn--primary" style="margin-top:var(--space-5);">Erstgespräch vereinbaren</span>
+            </div>
+          </div>
+        </div>
+        <p class="process-example__note">Kein echtes Kundenprojekt, aber genau so läuft es ab.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Impact-Stats ===== -->
+  <section class="impact-stats">
+    <div class="container impact-stats__grid">
+      <div>
+        <div class="impact-stats__num">1–3</div>
+        <div class="impact-stats__title">Kunden pro Monat, die dich nicht finden</div>
+        <div class="impact-stats__desc">Wenn Kunden dich googeln und keine Website finden, verlierst du sie, noch bevor sie dein Angebot kennen.</div>
+      </div>
+      <div>
+        <div class="impact-stats__num">3 Sek.</div>
+        <div class="impact-stats__title">Für den ersten Eindruck</div>
+        <div class="impact-stats__desc">Eine veraltete oder unprofessionelle Website schadet deiner Reputation mehr, als du denkst.</div>
+      </div>
+      <div>
+        <div class="impact-stats__num">40+</div>
+        <div class="impact-stats__title">Stunden, die du investieren müsstest</div>
+        <div class="impact-stats__desc">Jede Stunde mit Fehlversuchen fehlt dir im eigentlichen Business. Deine Zeit ist zu wertvoll.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Was du bekommst + Paket ===== -->
+  <section class="section section--page" id="paket">
+    <div class="container">
+      <div class="section-head section-head--center" style="max-width:820px;">
+        <span class="eyebrow">Was du bekommst</span>
+        <h2>Website erstellen lassen, eine die wirklich fertig ist und nicht nur gut aussieht!</h2>
+      </div>
+      <div class="grid-3">
+        <div class="step">
+          <span class="eyebrow">01 — Content</span>
+          <h3>Deine Texte sind bereits drin</h3>
+          <p>Du lieferst mir deine fachlichen Informationen und ich übernehme den Rest: Texte schreiben, Struktur festlegen, Headlines und Bullet Points setzen und alles nahtlos ins Design integrieren.</p>
+        </div>
+        <div class="step">
+          <span class="eyebrow">02 — SEO</span>
+          <h3>Basis-SEO von Anfang an</h3>
+          <p>Ich kümmere mich von Anfang an um die Suchmaschinenoptimierung, für ein grundsolides Fundament, auf dem du technisch aufbauen kannst.</p>
+        </div>
+        <div class="step">
+          <span class="eyebrow">03 — Design</span>
+          <h3>Design für deine Zielgruppe</h3>
+          <p>Ich nutze kein fertiges Template, sondern erstelle ein individuelles Webdesign, das visuell stimmig, professionell und gezielt auf die Menschen abgestimmt ist, die du ansprechen willst.</p>
+        </div>
+        <div class="step">
+          <span class="eyebrow">04 — DSGVO</span>
+          <h3>Rechtlich auf der sicheren Seite</h3>
+          <p>Ich achte von Anfang an auf die DSGVO, richte bei Bedarf einen Cookie-Banner ein und erstelle ein individuelles Impressum sowie eine individuelle Datenschutzerklärung.</p>
+        </div>
+        <div class="step">
+          <span class="eyebrow">05 — Klarheit</span>
+          <h3>Ein klares Ende</h3>
+          <p>Mit zwei gezielten Feedbackrunden halten wir den Prozess effizient und vermeiden unnötige Verzögerungen, damit deine Website schnell und reibungslos live geht.</p>
+        </div>
+        <div class="step">
+          <span class="eyebrow">06 — Fokus</span>
+          <h3>Volle Aufmerksamkeit für dich</h3>
+          <p>In der Regel arbeite ich fokussiert an einem Projekt zur Zeit, sodass ich mich vollständig deiner Website widmen kann und somit eine sorgfältige Umsetzung gewährleistet ist.</p>
+        </div>
+      </div>
+
+      <div class="package-grid">
+        <div class="package-box">
+          <span class="eyebrow" style="color:var(--color-accent);">Deine Business-Website zum Festpreis</span>
+          <h3>Deine Website erstellen lassen. Das ist im Paket enthalten:</h3>
+          <ul>
+            <li>Startseite</li>
+            <li>Über mich / Unternehmensdarstellung</li>
+            <li>Kontaktseite</li>
+            <li>Impressum &amp; Datenschutz</li>
+            <li>404-Fehlerseite</li>
+            <li>Eine strategische Zusatzseite</li>
+          </ul>
+          <p>Mit dem Grundpaket erhältst du also genau das, was du brauchst, schlank, effektiv und auf deine Kernbedürfnisse zugeschnitten.</p>
+          <p>Jede Seite mit individuellem Webdesign, Content-Erstellung &amp; Integration und Basis-SEO. Hosting &amp; Domain nicht enthalten (ca. 10–20 € / Monat).</p>
+        </div>
+        <div class="pricing-card">
+          <span class="pricing-card__label">Business-Website</span>
+          <div class="pricing-card__price">ab 3.475 €</div>
+          <div class="pricing-card__sub">zzgl. MwSt. · Ratenzahlung möglich</div>
+          <ul>
+            <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Individuelles Webdesign</li>
+            <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Content-Erstellung &amp; Integration</li>
+            <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Basis-SEO von Beginn an</li>
+            <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Impressum &amp; Datenschutz</li>
+            <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Zwei Feedbackrunden</li>
+            <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>30 Tage E-Mail-Support nach Launch</li>
+            <li><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Responsive für Handy &amp; Tablet</li>
+          </ul>
+          <a class="hh-btn hh-btn--primary" href="/website-anfrage">Jetzt Projekt anfragen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Prozess ===== -->
+  <section class="section section--white">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Ablauf</span>
-        <h2>So läuft dein Projekt ab</h2>
+        <h2>Von der Idee bis zur fertigen Website</h2>
+        <p class="section-lead">Dein Gesamtaufwand: ca. 3–8 Stunden über die gesamte Projektlaufzeit.</p>
       </div>
-      <div class="grid-4">
-        <div class="step">
-          <div class="step__num">1</div>
-          <h3>Briefing</h3>
-          <p>Du schickst mir deine Infos, Texte und Wünsche.</p>
+      <div class="process-line">
+        <div class="process-step">
+          <div class="process-step__num">1</div>
+          <h3>Kostenloses Erstgespräch</h3>
+          <p>Wir lernen uns kennen und klären, ob ich unterstützen kann. Keine Verbindlichkeit, keine Verpflichtung.</p>
+          <span class="process-step__time"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>ca. 15–30 Minuten</span>
         </div>
-        <div class="step">
-          <div class="step__num">2</div>
-          <h3>Design &amp; Texte</h3>
-          <p>Ich erstelle Design, finalisiere Texte und SEO-Struktur.</p>
+        <div class="process-step">
+          <div class="process-step__num">2</div>
+          <h3>Onboarding</h3>
+          <p>Du brauchst keine fertigen Texte, kein Logo und kein Farbkonzept. Ich stelle dir (im Gespräch oder per Fragebogen) gezielte Fragen zu deinem Angebot, deiner Zielgruppe und deinem Stil und mache daraus deine Website. Alles, was du brauchst, ist eine Vorstellung davon, was du anbietest.</p>
+          <span class="process-step__time"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>flexibel, in deinem Tempo</span>
         </div>
-        <div class="step">
-          <div class="step__num">3</div>
-          <h3>Review</h3>
-          <p>Du gibst Feedback, ich setze Anpassungen um.</p>
+        <div class="process-step">
+          <div class="process-step__num">3</div>
+          <h3>Strategie &amp; Rohentwurf</h3>
+          <p>Ich erstelle den vollständigen Entwurf mit allen Seiten, echten Texten und integrierter Basis-SEO. Kein Lorem Ipsum.</p>
+          <span class="process-step__time"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>ca. 30–90 Minuten deinerseits</span>
         </div>
-        <div class="step">
-          <div class="step__num">4</div>
-          <h3>Launch</h3>
-          <p>Deine fertige Website geht live.</p>
+        <div class="process-step">
+          <div class="process-step__num">4</div>
+          <h3>Feedbackrunde 1</h3>
+          <p>Du gibst dein Feedback direkt über eine Kommentarfunktion ein. Ich nehme alle Änderungen vor.</p>
+          <span class="process-step__time"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>ca. 30–90 Minuten</span>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">5</div>
+          <h3>Finale Feedbackrunde &amp; Launch</h3>
+          <p>Ein letztes Feedback, dann geht die Website live. Du bekommst eine fertige digitale Präsenz, die gut aussieht, die richtigen Botschaften sendet und bei Google gefunden wird.</p>
+          <span class="process-step__time"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>ca. 30–90 Minuten</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="cta" id="kontakt">
+  <!-- ===== Portfolio ===== -->
+  <section class="section section--page">
     <div class="container">
-      <h2>Bereit für deine neue Website?</h2>
-      <p>Schick mir deine Infos — ich melde mich mit den nächsten Schritten.</p>
-      <div class="cta__buttons">
-        <a class="hh-btn hh-btn--primary" href="mailto:accounts@hhess.de">Website erstellen lassen</a>
-        <a class="hh-btn hh-btn--secondary" href="mailto:accounts@hhess.de">Fragen stellen</a>
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Referenzen</span>
+        <h2>Website Showroom</h2>
       </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-card" href="#" target="_blank" rel="noopener">
+          <div class="portfolio-card__img"><img src="assets/portfolio/evil-systems-gmbh.avif" alt="Website von Evil Systems GmbH" loading="lazy" width="600" height="450"></div>
+          <div class="portfolio-card__body">
+            <div class="portfolio-card__name">Evil Systems GmbH</div>
+            <div class="portfolio-card__meta">IT Cloud Lösungen</div>
+            <span class="badge portfolio-card__tag">Multi Page</span>
+          </div>
+        </a>
+        <a class="portfolio-card" href="#" target="_blank" rel="noopener">
+          <div class="portfolio-card__img"><img src="assets/portfolio/sabine-falk.avif" alt="Website von Sabine Falk" loading="lazy" width="600" height="450"></div>
+          <div class="portfolio-card__body">
+            <div class="portfolio-card__name">Sabine Falk</div>
+            <div class="portfolio-card__meta">Kultur</div>
+            <span class="badge portfolio-card__tag">Multi Page</span>
+          </div>
+        </a>
+        <a class="portfolio-card" href="#" target="_blank" rel="noopener">
+          <div class="portfolio-card__img"><img src="assets/portfolio/keima-gmbh.avif" alt="Website von keima GmbH" loading="lazy" width="600" height="450"></div>
+          <div class="portfolio-card__body">
+            <div class="portfolio-card__name">keima GmbH</div>
+            <div class="portfolio-card__meta">Unternehmensberatung</div>
+            <span class="badge portfolio-card__tag">Multi Page</span>
+          </div>
+        </a>
+        <a class="portfolio-card" href="#" target="_blank" rel="noopener">
+          <div class="portfolio-card__img"><img src="assets/portfolio/autotransporte-bayern.avif" alt="Website von Autotransporte Bayern" loading="lazy" width="600" height="450"></div>
+          <div class="portfolio-card__body">
+            <div class="portfolio-card__name">Autotransporte Bayern</div>
+            <div class="portfolio-card__meta">Logistik</div>
+            <span class="badge portfolio-card__tag">One Page</span>
+          </div>
+        </a>
+        <a class="portfolio-card" href="#" target="_blank" rel="noopener">
+          <div class="portfolio-card__img"><img src="assets/portfolio/dr-anna-jelen-mauboussin.avif" alt="Website von Dr. Anna Jelen-Mauboussin" loading="lazy" width="600" height="450"></div>
+          <div class="portfolio-card__body">
+            <div class="portfolio-card__name">Dr. Anna Jelen-Mauboussin</div>
+            <div class="portfolio-card__meta">Psychotherapie</div>
+            <span class="badge portfolio-card__tag">One Page</span>
+          </div>
+        </a>
+        <a class="portfolio-card" href="#" target="_blank" rel="noopener">
+          <div class="portfolio-card__img"><img src="assets/portfolio/lukas-fuchs.avif" alt="Website von Lukas Fuchs" loading="lazy" width="600" height="450"></div>
+          <div class="portfolio-card__body">
+            <div class="portfolio-card__name">Lukas Fuchs</div>
+            <div class="portfolio-card__meta">Finanzberatung</div>
+            <span class="badge portfolio-card__tag">One Page</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About (dunkel) ===== -->
+  <section class="about-dark">
+    <div class="container about-dark__grid">
+      <div>
+        <span class="eyebrow">Wer steckt dahinter</span>
+        <h2>Hi, ich bin Hiacynta</h2>
+        <p>Ich mache Webdesign seit über 20 Jahren und habe in dieser Zeit etliche Websites erstellt, bestehende Projekte optimiert und Selbstständige in 1:1-Coachings dabei begleitet, ihre Online-Präsenz selbst weiterzuentwickeln.</p>
+        <p>Mein Stil ist klar und aufgeräumt, aber ich passe mich dir an. Ob minimalistisch-professionell oder mit mehr Persönlichkeit und Verspieltheit: Das Ergebnis soll zu dir und deiner Zielgruppe passen, nicht zu einem Template.</p>
+        <div class="about-dark__points">
+          <div class="about-dark__point">
+            <strong>Nicht nur Design:</strong>
+            <span>Ich übernehme Design, Content-Integration und Basis-SEO in einem Prozess. Du schickst mir deine Infos, ich entscheide die Struktur.</span>
+          </div>
+          <div class="about-dark__point">
+            <strong>Ganzheitlich gedacht:</strong>
+            <span>Webdesign, Texte, SEO, mobile Optimierung, uvm. Ich denke ganzheitlich, nur so entsteht alles aus einem Guss.</span>
+          </div>
+          <div class="about-dark__point">
+            <strong>Das Ergebnis:</strong>
+            <span>Eine fertige Website, die gut aussieht, die richtigen Botschaften sendet und bei Google gefunden wird.</span>
+          </div>
+        </div>
+        <div class="about-dark__rating">
+          <strong>5/5 ★★★★★</strong>
+          <span>SEHR GUT · 90 Bewertungen</span>
+        </div>
+      </div>
+      <div class="about-dark__media">
+        <img src="assets/fotos/hiacynta-hess-autor.avif" alt="Hiacynta Hess" width="600" height="600" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Kundenstimmen</span>
+        <h2>Das sagen meine Kunden</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <div class="testimonial__top">
+            <span class="testimonial__stars">★★★★★</span>
+            <span class="testimonial__quote">"</span>
+          </div>
+          <p class="testimonial__text">Vielen herzlichen Dank für die unkomplizierte und tolle Zusammenarbeit. Ich bin super happy mit dem Ergebnis. Nach langer Suche habe ich hier endlich ein Angebot erhalten, das genau an meine Bedürfnisse angepasst wurde. Super nett, hilfsbereit, kompetent und absolut vom Fach.</p>
+          <div class="testimonial__footer">
+            <div class="testimonial__avatar">VB</div>
+            <div>
+              <div class="testimonial__author">Vanessa Burgbacher</div>
+              <div class="testimonial__role">Naturrauch · Multi Site</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial__top">
+            <span class="testimonial__stars">★★★★★</span>
+            <span class="testimonial__quote">"</span>
+          </div>
+          <p class="testimonial__text">Eine bessere Homepage hätte ich mir nicht wünschen können. Super modernes Design, meine Wünsche wurden zu 100% berücksichtigt und sogar übertroffen. Zu günstig für diese tolle Leistung. Danke!</p>
+          <div class="testimonial__footer">
+            <div class="testimonial__avatar">AS</div>
+            <div>
+              <div class="testimonial__author">Adam Swierkosz</div>
+              <div class="testimonial__role">Autotransporte Bayern · One Page</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial__top">
+            <span class="testimonial__stars">★★★★★</span>
+            <span class="testimonial__quote">"</span>
+          </div>
+          <p class="testimonial__text">Absoluter Top Service! Endlich eine Designerin, der man 100% vertrauen kann. Mit unglaublichem Feingefühl schafft sie den Balanceakt zwischen ästhetischer Darstellung, Funktionalität und dem Wesen unserer Produkte.</p>
+          <div class="testimonial__footer">
+            <div class="testimonial__avatar">BG</div>
+            <div>
+              <div class="testimonial__author">Benno Grossrubatscher</div>
+              <div class="testimonial__role">Grödner Holzschnitzerei · Multi Site</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Deine Website wächst mit dir ===== -->
+  <section class="section section--page">
+    <div class="container">
+      <div class="section-head section-head--center" style="max-width:820px;">
+        <span class="eyebrow">Deine Website wächst mit dir</span>
+        <h2>Dein Business wächst. Deine Website wächst mit.</h2>
+        <p class="section-lead">Das Grundpaket ist vollständig und schlüsselfertig und es braucht nicht mehr. Aber Businesses entwickeln sich. Irgendwann willst du vielleicht Leads sammeln, Expertise zeigen oder ein konkretes Angebot gezielt bewerben. Ob Blog, Lead-Magnet, Landingpage oder etwas ganz anderes, wir besprechen im Erstgespräch ganz individuell, was für dich sinnvoll ist. Ohne dir etwas zu verkaufen.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-handshake"></use></svg></div>
+          <h3>Vertrauen aufbauen</h3>
+          <p>Lass echte Kundenprojekte für dich sprechen und zwar mit Fallstudien oder einer Referenzseite. Besonders wirkungsvoll bei erklärungsbedürftigen Leistungen.</p>
+        </div>
+        <div class="card">
+          <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-user-plus"></use></svg></div>
+          <h3>Leads sammeln</h3>
+          <p>Binde Interessenten, bevor sie bereit sind zu kaufen. So wächst deine Liste mit Menschen, die schon Interesse haben, auch wenn sie noch nicht bereit sind, bei dir zu kaufen.</p>
+        </div>
+        <div class="card">
+          <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-graduation-cap"></use></svg></div>
+          <h3>Expertise zeigen</h3>
+          <p>Zeige durch einen Blog, was du weißt, noch bevor jemand fragt. Du wirst bei Google besser gefunden und baust Vertrauen auf, bevor der erste Kontakt entsteht.</p>
+        </div>
+        <div class="card">
+          <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-bullseye"></use></svg></div>
+          <h3>Gezielt verkaufen</h3>
+          <p>Eine eigene Seite für ein konkretes Angebot und zwar ohne Ablenkung und mit einem klaren Ziel. Ideal wenn du einen Kurs, ein Coaching-Paket oder eine Leistung gezielt bewerben willst.</p>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:var(--space-8);color:#5b6b80;">Du brauchst etwas, das hier nicht steht? Manche Seiten braucht man einfach auch ohne großes strategisches Ziel. Diese Seiten können jederzeit separat hinzugefügt werden.<br>Umsetzung: Individuell nach Absprache · Preis je nach Umfang</p>
+    </div>
+  </section>
+
+  <!-- ===== Passt das zu dir? ===== -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Passt das zu dir?</span>
+        <h2>Für wen dieses Angebot gemacht ist</h2>
+        <p class="section-lead">Keine bestimmte Branche — der Unterschied liegt im Mindset.</p>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card fit-card--yes">
+          <h3>Ja, das passt zu dir</h3>
+          <ul>
+            <li>Du siehst deine Website als Investition und nicht als Kostenpunkt</li>
+            <li>Du willst wirklich Kunden gewinnen, nicht nur „online sein“</li>
+            <li>Du weißt, was du anbietest, aber dir fehlt die Zeit oder das Know-how für die Umsetzung</li>
+            <li>Du hast eine Website, bist nicht zufrieden und willst endlich etwas Professionelles</li>
+          </ul>
+        </div>
+        <div class="fit-card fit-card--no">
+          <h3>Nicht das Richtige für dich</h3>
+          <ul>
+            <li>Du weißt noch nicht, welches Angebot du zeigen willst</li>
+            <li>Du brauchst einen WooCommerce-Shop oder Mitgliederbereich</li>
+            <li>Du hast eine sehr umfangreiche Website, die komplett erneuert werden soll</li>
+            <li>Die Investition würde dich finanziell stark belasten</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Drei Wege ===== -->
+  <section class="compare-band">
+    <div class="container">
+      <div class="section-head section-head--center" style="max-width:760px;">
+        <span class="eyebrow">Drei Wege zu deiner Website</span>
+        <h2>Website erstellen lassen, selbst machen oder Agentur beauftragen, was kostet es wirklich?</h2>
+        <p class="compare-band__lead" style="margin-left:auto;margin-right:auto;">Jede Option hat ihren Preis, aber nicht immer in Euro.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-card__label">Option 1</span>
+          <h3>Selbst machen</h3>
+          <div class="compare-card__price">40–80 Std.</div>
+          <div class="compare-card__sub">+ laufende Frustration</div>
+          <ul>
+            <li>40+ Stunden Einarbeitung in WordPress, Design &amp; SEO</li>
+            <li>Ergebnis sieht oft nicht so aus wie vorgestellt</li>
+            <li>Deine eigentliche Arbeit bleibt liegen</li>
+          </ul>
+          <div class="compare-card__foot">Günstig im Einstieg, aber teuer in der Zeit.</div>
+        </div>
+        <div class="compare-card compare-card--highlight">
+          <span class="badge badge--highlighted compare-card__badge">Empfehlung</span>
+          <span class="compare-card__label">Option 2</span>
+          <h3>Website von Hiacynta</h3>
+          <div class="compare-card__price">ab 3.475 €</div>
+          <div class="compare-card__sub">Festpreis · zzgl. MwSt. · Ratenzahlung möglich</div>
+          <ul>
+            <li>Design, Texte &amp; SEO aus einer Hand</li>
+            <li>Dein Aufwand: ca. 3–8 Stunden gesamt</li>
+            <li>Fertig in 4–8 Wochen, klares Ende</li>
+            <li>Rechtssicher mit Impressum &amp; Datenschutz</li>
+          </ul>
+          <div class="compare-card__foot">Festpreis. Kein Hin und Her. Kein Warten auf sich selbst.</div>
+        </div>
+        <div class="compare-card">
+          <span class="compare-card__label">Option 3</span>
+          <h3>Werbeagentur</h3>
+          <div class="compare-card__price">8.000–15.000 €</div>
+          <div class="compare-card__sub">+ Texte und SEO oft extra</div>
+          <ul>
+            <li>Texte lieferst du selbst, oder zahlst extra</li>
+            <li>Du teilst dir die Aufmerksamkeit mit anderen</li>
+            <li>Komplexe Agenturstrukturen mit starren Wartungsverträgen</li>
+          </ul>
+          <div class="compare-card__foot">Viel Aufwand — nicht immer mehr Ergebnis.</div>
+        </div>
+      </div>
+      <p class="compare-band__note">Selbst machen klingt günstig, kostet dich aber Wochen deiner Zeit. Eine Agentur liefert viel, aber selten alles, und wenn dann zu einem Vielfachen. Mit einem klaren Festpreis, echten Texten und SEO von Anfang an bekommst du hier alles aus einer Hand.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section section--page">
+    <div class="container container--narrow">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Häufige Fragen</span>
+        <h2>Alles was du noch wissen möchtest</h2>
+        <p class="section-lead">Weitere Fragen? Schreib mir an <a href="mailto:website@hhess.de">website@hhess.de</a></p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="faq-list faq-list--grid">
+        <details class="faq-item">
+          <summary>Wie viel Zeit muss ich investieren?</summary>
+          <p>Deutlich weniger als du denkst! Eine Sprachnachricht hier, ein kurzes Feedback dort und mehr auch nicht. Über die gesamte Projektlaufzeit von 6–12 Wochen summiert sich das auf ca. 3–8 Stunden.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Wie lange dauert das Projekt?</summary>
+          <p>Als grobe Orientierung: 4–8 Wochen gesamt. Du hast jeweils drei Wochen pro Feedbackrunde. Im Erstgespräch besprechen wir einen realistischen Zeitplan.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Wann und wie wird bezahlt?</summary>
+          <p>Zahlung in zwei Schritten: Anzahlung zu Projektbeginn, Restzahlung vor dem Launch per Banküberweisung. Auch eine Ratenzahlung ist möglich.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ist die Website DSGVO-konform?</summary>
+          <p>Impressum, Datenschutzerklärung und Cookie-Banner sind inklusive. Für vollständige Rechtsberatung empfehle ich einen Fachanwalt für IT-Recht.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Kann ich die Website später selbst bearbeiten?</summary>
+          <p>Ja, WordPress ermöglicht eigenständiges Anpassen von Texten, Bildern und Inhalten ohne Programmierkenntnisse. Du bist nach dem Projekt vollständig unabhängig.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ist SEO wirklich inklusive?</summary>
+          <p>Ja, Basis-SEO von Anfang an: passendes Keyword pro Seite, Title-Tag, Meta-Description, saubere Struktur. Nicht enthalten: umfassende Keyword-Recherche.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Was passiert, wenn ich mehr Seiten benötige?</summary>
+          <p>Weitere Seiten können jederzeit hinzugefügt und werden separat berechnet. Welche Seiten du benötigst, besprechen wir im Erstgespräch.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Gibt es Support nach dem Launch?</summary>
+          <p>Ja. Bis zu 30 Tage nach der Live-Schaltung bin ich per E-Mail erreichbar. Danach kannst du ein Wartungspaket (ab 49,- Euro netto pro Monat) buchen oder Änderungen selbst vornehmen.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Wie läuft das mit den Feedbackrunden?</summary>
+          <p>Du gibst dein Feedback direkt über eine Kommentarfunktion ein. Nach zwei Runden ist das Projekt abgeschlossen, weitere Änderungen werden separat berechnet.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Brauche ich bereits Hosting und Domain?</summary>
+          <p>Idealerweise hast du beides, falls nicht, helfe ich dir im Erstgespräch. Hosting- &amp; Domain-Kosten (ca. 10–20 € / Monat) sind nicht im Paketpreis enthalten.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Welche Voraussetzungen muss ich erfüllen?</summary>
+          <p>Eine grundlegende Vorstellung davon, welches Angebot du zeigen möchtest. Fertige Texte brauchst du nicht, alles Weitere klären wir gemeinsam.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Was mache ich, wenn ich noch kein Logo habe?</summary>
+          <p>Ich erstelle dir ein Textlogo, einfach deinen Namen oder Firmennamen in einem stimmigen Schriftbild passend zu deinem Markenstil. Das Logo kannst du später noch austauschen.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ich habe bereits eine Website, ist ein Relaunch möglich?</summary>
+          <p>Ja, für kleinere bis mittelgroße Websites ist das gut umsetzbar. Bei sehr umfangreichen Projekten besprechen wir im Erstgespräch, was realistisch ist.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Abschluss-CTA ===== -->
+  <section class="cta-band cta-band--gradient" id="kontakt">
+    <div class="cta-band__inner">
+      <h2>Jetzt deine Website erstellen lassen, schlüsselfertig, zum Festpreis.</h2>
+      <p>In einem kostenlosen Erstgespräch klären wir, ob und wie ich dich unterstützen kann. Unverbindlich. Ca. 30–45 Minuten.</p>
+      <a class="hh-btn hh-btn--primary hh-btn--shine" href="/website-anfrage">Jetzt Projekt anfragen →</a>
+      <p class="cta-band__note">Nächster freier Slot: September 2026 · Limitierte Plätze</p>
     </div>
   </section>
 
