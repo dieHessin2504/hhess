@@ -35,21 +35,41 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero hero--centered" id="newsletter-hero">
+  <section class="hero" id="newsletter-hero">
     <div class="hero__grid container">
       <div class="hero__content">
+        <span class="eyebrow">Kostenloser Newsletter</span>
         <h1>Mach deine Website zu deinem besten Mitarbeiter!</h1>
         <p class="hero__lead">Mache es wie die anderen Online-Unternehmer und erhalte wöchentlich praxiserprobte Impulse, wie du deine Website technisch und inhaltlich so aufstellst, dass sie dir zuverlässig neue Kunden bringt. Verständlich, umsetzbar und ganz ohne Technik-Chaos oder Marketing-Chinesisch. Kostenlos & jederzeit abbestellbar.</p>
         <div class="hero__cta">
-          <div class="newsletter-cta__embed">
-            <script type="text/javascript" class="encharge-form-embed-script" src="https://resources-app.encharge.io/embed-production.min.js"></script>
-            <div class="encharge-form-embed" data-encharge-form-id="41b24ff7-57ea-4ba3-9f3e-e5f8538ff719"></div>
-          </div>
+          <button type="button" class="hh-btn hh-btn--primary hh-btn--shine" data-open-modal="newsletter-modal">Jetzt Newsletter abonnieren</button>
         </div>
-        <p class="hero__legal">Weitere Informationen findest du in meinen <a href="/datenschutz">Datenschutzhinweisen</a>.</p>
+        <div class="hero__reassure">
+          <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Kostenlos</span>
+          <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Kein Spam</span>
+          <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Jederzeit abbestellbar</span>
+        </div>
+      </div>
+      <div class="hero__media hero__media--small">
+        <div class="hero__photo-wrap">
+          <div class="hero__photo"><img src="assets/fotos/hiacynta-hess.avif" alt="Hiacynta Hess" width="600" height="600" fetchpriority="high"></div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ===== Newsletter-Formular (Pop-up) ===== -->
+  <dialog id="newsletter-modal" class="modal">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Schließen">&times;</button>
+      <h2 class="modal__title">Jetzt Newsletter abonnieren!</h2>
+      <p class="modal__lead">Trage dich hier mit deiner E-Mail Adresse ein, um meinen Newsletter zu abonnieren. Der Newsletter kostet 0,- Euro und kann jederzeit abbestellt werden.</p>
+      <div class="newsletter-cta__embed">
+        <div class="encharge-form-embed" data-encharge-form-id="41b24ff7-57ea-4ba3-9f3e-e5f8538ff719"></div>
+      </div>
+      <p class="modal__legal">Weitere Informationen findest du in meinen <a href="/datenschutz">Datenschutzhinweisen</a></p>
+    </div>
+  </dialog>
 
   <!-- ===== Newsletter-Inhalte (6 Karten) ===== -->
   <section class="section section--page">
@@ -233,6 +253,34 @@
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
+
+    // Newsletter-Formular im Pop-up: Encharge-Script erst laden, wenn das Modal
+    // zum ersten Mal geöffnet wird (nicht schon beim Seitenaufruf im Hero).
+    (function () {
+      var openBtn = document.querySelector('[data-open-modal="newsletter-modal"]');
+      var dialog = document.getElementById('newsletter-modal');
+      if (!openBtn || !dialog) return;
+      var closeBtn = dialog.querySelector('.modal__close');
+      var loaded = false;
+
+      function loadEncharge() {
+        if (loaded) return;
+        loaded = true;
+        var script = document.createElement('script');
+        script.className = 'encharge-form-embed-script';
+        script.src = 'https://resources-app.encharge.io/embed-production.min.js';
+        document.body.appendChild(script);
+      }
+
+      openBtn.addEventListener('click', function () {
+        dialog.showModal();
+        loadEncharge();
+      });
+      if (closeBtn) closeBtn.addEventListener('click', function () { dialog.close(); });
+      dialog.addEventListener('click', function (e) {
+        if (e.target === dialog) dialog.close();
+      });
+    })();
   </script>
 </body>
 </html>

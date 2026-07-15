@@ -843,6 +843,35 @@ img { max-width: 100%; }
 .hero__legal a { color: rgba(255, 255, 255, 0.9); transition: color var(--transition-fast); }
 .hero__legal a:hover { color: var(--color-accent); }
 
+/* ---- Modal (natives <dialog>, z. B. Newsletter-Formular im Pop-up) ---- */
+.modal { border: none; border-radius: var(--radius-lg); padding: 0; max-width: 460px; width: 90%; box-shadow: 0 24px 64px rgba(20, 47, 78, 0.25); }
+.modal::backdrop { background: rgba(20, 47, 78, 0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.modal__inner { position: relative; padding: var(--space-10) var(--space-8) var(--space-8); }
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-body);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.modal__close:hover { color: var(--color-accent); }
+.modal__title { margin-bottom: var(--space-4); }
+.modal__lead { font-size: 1rem; color: var(--text-body); margin-bottom: var(--space-6); }
+.modal .newsletter-cta__embed { margin: 0; max-width: none; }
+.modal__legal { margin-top: var(--space-4); font-size: 0.8125rem; color: #5b6b80; }
+.modal__legal a { color: var(--color-primary); }
+.modal__legal a:hover { color: var(--color-accent); }
+
 /* ---- FAQ-Akkordeon (native <details>/<summary>) -------------- */
 .faq-list { max-width: 760px; margin: var(--space-8) auto 0; display: flex; flex-direction: column; gap: var(--space-4); }
 .faq-item { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--card-padding); background: var(--surface-card); }
