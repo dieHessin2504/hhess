@@ -8,7 +8,7 @@
 - Sprache: **Deutsch, „du"**, warm, direkt, empathisch-expertig. Keine Emojis im Kundentext.
 - Flächen: nur **zwei Hintergründe** (Off-White-Seite + weiße Cards). Keine Verläufe (Ausnahme: Hero, Newsletter-CTA, Trust-Bar — je eigener, bewusst unterschiedlicher Verlauf, siehe unten).
 - Cards: flach, nur Border (keine Schatten im Ruhezustand).
-- Animation: minimal, nur Hover-Übergänge (0.2s ease).
+- Animation: minimal, nur Hover-Übergänge (0.2s ease). Bewusste **Ausnahme seit 15.07.2026:** ein dezenter Glanz-Sweep auf einzelnen Haupt-CTA-Buttons ist erlaubt (`.hh-btn--shine`, siehe `wiki/components.md`) — sparsam einsetzen, keine Hintergrund-/Flächen-Bewegung (die Regel „keine Bewegung im Hintergrund" für Hero/Newsletter-CTA/Trust-Bar bleibt unverändert bestehen).
 
 ## Farben (Tokens)
 | Token | Wert | Verwendung |
@@ -66,11 +66,13 @@ Card-Padding: `1.25rem` · Button-Padding: `10px 24px`.
 - **Card** — Icon-Tile → Eyebrow → Titel → Body → Badge. Hover: Border wird `--color-ink`.
 - **IconTile** — 64×64px, Radius 14px, pale-blue BG, Icon in Primary-Blau.
 - **FitCheck** — zweispaltige Grün/Rot-Checkliste (Selbst-Qualifizierung). *Noch nicht auf einer Seite verwendet.*
+- **Modal** (`.modal`, seit 15.07.2026) — natives `<dialog>`, Blur-Backdrop (`backdrop-filter`), kein pill-/kartenartiger Stil-Bruch zum restlichen Design. Details: `wiki/components.md`.
+- **FAQ-Akkordeon** (`.faq-item`, seit 15.07.2026) — natives `<details>/<summary>`, kein JS. Details: `wiki/components.md`.
 
 ## Iconografie
 - Stil: **Outline**, stroke-width 1.8, runde Caps/Joins.
 - Farbe: Primary-Blau auf pale-blue Tile.
-- System: seit 14.07.2026 **selbst gehostetes SVG-Sprite** (`assets/icons/sprite.svg`) statt Font-Awesome-CDN — inhaltlich weiterhin die Font-Awesome-Solid/Brands-Glyphen (nur die ~21 tatsächlich genutzten, kein externer Request mehr). Bleibt weiterhin eine **Substitution** — das eigentliche finale Icon-Set (im o. g. Outline-Stil) ist noch nicht bestätigt, siehe Offene Punkte. Details/Anleitung für neue Icons: `wiki/components.md`.
+- System: seit 14.07.2026 **selbst gehostetes SVG-Sprite** (`assets/icons/sprite.svg`) statt Font-Awesome-CDN — inhaltlich weiterhin die Font-Awesome-Solid/Brands-Glyphen (nur die ~26 tatsächlich genutzten, kein externer Request mehr). Bleibt weiterhin eine **Substitution** — das eigentliche finale Icon-Set (im o. g. Outline-Stil) ist noch nicht bestätigt, siehe Offene Punkte. Details/Anleitung für neue Icons: `wiki/components.md`.
 
 ## Hover-Konventionen (Cards)
 - Standard-Card (`.card`, z. B. "Drei Lösungswege", 3 Karten): Hover-Rahmen wird `--color-ink` (volle Stärke), kein Schatten.

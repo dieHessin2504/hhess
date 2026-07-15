@@ -538,6 +538,7 @@ img { max-width: 100%; }
 .site-header .logo { height: 38px; }
 .main-nav {
   display: flex;
+  align-items: center;
   gap: 30px;
   font-size: 1.125rem;
   font-weight: 600;
@@ -630,6 +631,10 @@ img { max-width: 100%; }
 .hero__reassure { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; font-size: 0.8125rem; color: #fff; }
 .hero__reassure span { display: inline-flex; align-items: center; gap: 7px; }
 .hero__reassure .icon { color: #fff; font-size: 0.75rem; }
+/* Button + Reassurance-Zeile auf exakt gleiche Breite bringen (schrumpft auf die breiteste der beiden, z. B. newsletter.html) */
+.hero__cta-group { display: inline-flex; flex-direction: column; align-items: stretch; }
+.hero__cta-group .hero__cta .hh-btn { width: 100%; }
+.hero__cta-group .hero__reassure { justify-content: space-between; flex-wrap: nowrap; }
 .hero__media {
   position: relative;
   display: flex;

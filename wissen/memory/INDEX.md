@@ -16,13 +16,17 @@
 - **Karten-Fließtext:** `<p>` in jeder Karten-Komponente ist 1rem/16px, nie die Standard-Body-Größe. Details: `wiki/design-system.md`.
 - **Performance:** Inter (`assets/fonts/`) und Icons (`assets/icons/sprite.svg`) sind selbst gehostet — NIE wieder Google-Fonts-`<link>`/`@import` oder Font-Awesome-CDN einbinden. Neues Icon: SVG von jsdelivr holen und als `<symbol>` in `sprite.svg` ergänzen. Details: `wiki/architecture.md`, `wiki/components.md`.
 - **Doku-Routing:** Wissen/Konventionen → `wiki/`; Aussehen/Design → `wiki/design-system.md`; Entscheidungen/Verlauf → `memory/`. (siehe `CLAUDE.md`)
+- **Encharge-Formular-IDs:** jede Formular-Stelle hat ihre EIGENE `data-encharge-form-id` (User trackt Anmeldequelle) — bei neuer Stelle immer erst beim User nachfragen, nie eine bestehende ID wiederverwenden. Details: `wiki/components.md` „Newsletter-CTA".
+- **Animation-Ausnahme:** `.hh-btn--shine` (Schatten + Glanz-Sweep) auf einzelnen Haupt-CTAs ist erlaubt, Hintergrund-/Flächen-Bewegung (Hero/Newsletter-CTA/Trust-Bar) bleibt tabu. Details: `wiki/design-system.md`.
 
 ## Offene Punkte / aktueller Fokus (Stand 2026-07-15)
 - Website **live** (GitHub `dieHessin2504/hhess` → Vercel, Root Directory `website`).
-- Seiten: Homepage, Service, Kundenstimmen, `youtube.html` (Hero-Seiten), Impressum + Datenschutz (Standardseiten). Alle mit normalem Footer, „YouTube"-Footer-Link site-weit auf `youtube.html`.
-- Neu: drei Pre-Confirmation-Seiten (`du-bist-fast-fertig.html`, `du-bist-fast-fertig-yt.html`, `lead-magnet-landingpage-vorlagen-fast-fertig.html`) — inhaltlich identische 1:1-Kopien für verschiedene Double-Opt-in-Flows, `noindex`. Erste echte Umsetzung der reduzierten Header-/Footer-Varianten aus `CLAUDE.md`, siehe `wiki/components.md`. Dazu die erste Dankeseite `danke-newsletter.html` (nach der Bestätigung, gleicher reduzierter Header/Footer, ohne Schritt-Karten).
-- Kundenstimmen: Filter-Tabs (Community/Onlinekurse/1:1), zweispaltiger Hero mit Foto + kompaktem ratedo-Siegel (berechtigtes Interesse, siehe decisions). `.newsletter-cta`-Sektion jetzt auf `kundenstimmen.html` UND `youtube.html`, Rollout auf Homepage/Service noch offen. Lokale Vorschau: `npx serve` via `.claude/launch.json` (kein Python vorhanden).
-- `youtube.html`: Hero (wie Kundenstimmen, ohne Siegel) → Themen-Grid (3×2, `.step`, statt des zunächst gebauten Klick-Sliders) → Trust-Bar (Kennzahlen, eigener Navy→Blau-Verlauf, dezente Trennlinien nur Desktop) → Kundenstimmen-Wand (echte YouTube-Kommentare, gegenläufiger CSS-Marquee) → Video-Grid (3 Videos, horizontale Ein-Spalten-Karten mit Themen-Badge, Content-Blocker, Platzhalter-IDs, Abschluss-CTA) → Newsletter-CTA.
+- **Hero-Seiten:** Homepage, Service, Kundenstimmen, `youtube.html`, `newsletter.html`. **Standardseiten:** Impressum, Datenschutz. Alle mit normalem Footer + Header (dessen „Newsletter abonnieren"-Button site-weit auf `/newsletter` verlinkt, siehe `wiki/components.md`).
+- **Pre-Confirmation-Seiten** (reduzierter Header/Footer, `noindex`): `du-bist-fast-fertig.html`, `du-bist-fast-fertig-yt.html`, `lead-magnet-landingpage-vorlagen-fast-fertig.html`.
+- **Dankeseiten** (reduzierter Header/Footer, `noindex`): `danke-newsletter.html`, `danke-newsletter-youtube.html`, `freebie-lead-magnet-landingpage-vorlagen-dankeseite.html`, `divi-masterclass-danke-fuer-deinen-kauf.html`, `website-audit-kaufbestaetigung.html`, `allgemeine-bestaetigung.html`, `website-anfrage.html`.
+- `newsletter.html`: Hero (2-spaltig wie `youtube.html`, Formular als Pop-up statt Inline-Embed) → 6 Themen-Karten → echtes Newsletter-Beispiel-Bild → FAQ-Akkordeon → Abschluss-CTA. Details: `wiki/components.md` „newsletter.html — Seitenstruktur".
+- Kundenstimmen: Filter-Tabs (Community/Onlinekurse/1:1), zweispaltiger Hero mit Foto + kompaktem ratedo-Siegel (berechtigtes Interesse, siehe decisions). Lokale Vorschau: `npx serve` via `.claude/launch.json` (kein Python vorhanden).
+- `youtube.html`: Hero → Themen-Grid (3×2, `.step`) → Trust-Bar → Kundenstimmen-Wand (Marquee) → Video-Grid (Content-Blocker, Platzhalter-IDs) → Newsletter-CTA.
 - Nächste Schritte:
   - **Echte YouTube-Video-IDs** für das Video-Grid auf `youtube.html` eintragen (aktuell Platzhalter, siehe `wiki/components.md`).
   - `.newsletter-cta` bei Bedarf auf Homepage/Service ausrollen.

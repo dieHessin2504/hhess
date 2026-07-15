@@ -100,3 +100,17 @@ Format: Datum - was gebaut/geaendert - betroffene Dateien.
 - Testimonial-Karten: mehr Abstand zwischen Zitat-Text und Trennlinie, Hover mit abgeschwächter blauer Rahmenfarbe + leichtem Schatten.
 - Lokaler Vorschau-Server `.claude/launch.json` ergänzt (`npx serve`, da kein Python installiert ist).
 - Betrifft: `website/kundenstimmen.html`, `website/index.html`, `website/css/styles.css`, `.claude/launch.json`, `wissen/**`
+
+## 2026-07-15 - Reduzierter Header/Footer, 8 neue Pre-Confirmation-/Dankeseiten
+- Erste Umsetzung von `.site-header--reduced` (nur Logo + „« Zur Startseite") und `.site-footer--reduced` (nur blaue Abschlussleiste), plus `.page-fill-height` (Footer bleibt bei wenig Inhalt am Bildschirmrand statt mittig zu schweben).
+- Neue Pre-Confirmation-Seiten: `du-bist-fast-fertig.html`, `du-bist-fast-fertig-yt.html`, `lead-magnet-landingpage-vorlagen-fast-fertig.html` (3-Schritte-Anleitung, `.step`-Karten).
+- Neue Dankeseiten: `danke-newsletter.html`, `danke-newsletter-youtube.html`, `freebie-lead-magnet-landingpage-vorlagen-dankeseite.html` (mit Produkt-Mockup-Bild `.confirm-visual`), `divi-masterclass-danke-fuer-deinen-kauf.html`, `website-audit-kaufbestaetigung.html`, `allgemeine-bestaetigung.html`, `website-anfrage.html` (mit eingebettetem deftform-Formular `.confirm-form`).
+- Alle `noindex, nofollow` (mit User abgestimmt), neue Icons `envelope`/`envelope-open`/`user-check` im Sprite.
+- Betrifft: alle oben genannten Dateien (neu), `website/css/styles.css`, `website/assets/icons/sprite.svg`, `wissen/**`
+
+## 2026-07-15 - Neue Seite `newsletter.html`, Formular-Pop-up, CTA-Feinschliff site-weit
+- Neue Hero-Seite `newsletter.html`: Inhalt 1:1 von der alten Live-Seite `hhess.de/newsletter` übernommen (Hero, 6 Themen-Karten, echtes Newsletter-Beispiel-Bild, FAQ-Akkordeon (neu, natives `<details>`), Abschluss-CTA). Hero-Formular läuft über ein neues Pop-up (`.modal`, natives `<dialog>`, Blur-Backdrop, Formular lädt erst beim Öffnen) statt Inline-Embed.
+- Header-Button „Newsletter abonnieren" verlinkt jetzt site-weit auf `/newsletter` statt auf Seiten-eigene Anker — auf `newsletter.html` selbst optisch identisch, aber funktionslos.
+- Neuer Button-Modifier `.hh-btn--shine` (Schatten + Glanz-Sweep, `prefers-reduced-motion`-sicher) auf den Haupt-CTAs von `newsletter.html` und `youtube.html`; neuer Karten-Modifier `.step--top-accent` (2px blauer Top-Rahmen) auf beiden Seiten; `.hero__cta-group` sorgt für gleich breiten Button + Reassurance-Zeile.
+- `.main-nav` bekommt explizit `align-items: center`. Icons `user`/`lightbulb` neu im Sprite.
+- Betrifft: `website/newsletter.html` (neu), `website/youtube.html`, `website/index.html`, `website/kundenstimmen.html`, `website/impressum.html`, `website/datenschutz.html`, `website/css/styles.css`, `website/assets/icons/sprite.svg`, `website/assets/fotos/hiacynta-hess-newsletter-beispiel.png` (neu), `wissen/**`

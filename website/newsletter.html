@@ -30,7 +30,7 @@
       <a href="/kundenstimmen">Kundenstimmen</a>
       <a href="/#kontakt">Kontakt</a>
     </nav>
-    <a class="hh-btn hh-btn--primary" href="#newsletter-hero">Newsletter abonnieren</a>
+    <button type="button" class="hh-btn hh-btn--primary" aria-disabled="true">Newsletter abonnieren</button>
     </div>
   </header>
 
@@ -41,13 +41,15 @@
         <span class="eyebrow">Kostenloser Newsletter</span>
         <h1>Mach deine Website zu deinem besten Mitarbeiter!</h1>
         <p class="hero__lead">Mache es wie die anderen Online-Unternehmer und erhalte wöchentlich praxiserprobte Impulse, wie du deine Website technisch und inhaltlich so aufstellst, dass sie dir zuverlässig neue Kunden bringt. Verständlich, umsetzbar und ganz ohne Technik-Chaos oder Marketing-Chinesisch. Kostenlos & jederzeit abbestellbar.</p>
-        <div class="hero__cta">
-          <button type="button" class="hh-btn hh-btn--primary hh-btn--shine" data-open-modal="newsletter-modal">Jetzt Newsletter abonnieren</button>
-        </div>
-        <div class="hero__reassure">
-          <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Kostenlos</span>
-          <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Kein Spam</span>
-          <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Jederzeit abbestellbar</span>
+        <div class="hero__cta-group">
+          <div class="hero__cta">
+            <button type="button" class="hh-btn hh-btn--primary hh-btn--shine" data-open-modal="newsletter-modal">Jetzt wöchentliche Tipps erhalten</button>
+          </div>
+          <div class="hero__reassure">
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Kostenlos</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Kein Spam</span>
+            <span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Jederzeit abbestellbar</span>
+          </div>
         </div>
       </div>
       <div class="hero__media hero__media--small">
@@ -74,9 +76,9 @@
   <!-- ===== Newsletter-Inhalte (6 Karten) ===== -->
   <section class="section section--page">
     <div class="container">
-      <div class="section-head section-head--center">
+      <div class="section-head section-head--center" style="max-width:910px;">
         <h2>Wissen das dich weiterbringt, statt dein Postfach zu verstopfen!</h2>
-        <p class="section-lead">In meinem Newsletter erwartet dich (fast) jeden Mittwoch eine selbst geschriebene E-Mail – persönlich verfasst und nur ganz selten automatisiert. Jede E-Mail ist so persönlich gestaltet, als würde ich einem guten Freund schreiben, nämlich authentisch, nahbar und ohne Marketing-Floskeln.</p>
+        <p class="section-lead" style="max-width:910px;margin-left:auto;margin-right:auto;">In meinem Newsletter erwartet dich (fast) jeden Mittwoch eine selbst geschriebene E-Mail – persönlich verfasst und nur ganz selten automatisiert. Jede E-Mail ist so persönlich gestaltet, als würde ich einem guten Freund schreiben, nämlich authentisch, nahbar und ohne Marketing-Floskeln.</p>
       </div>
       <p style="text-align:center; font-weight:600; margin-bottom: var(--space-12);">Diese Inhalte erwartet dich in meinem Newsletter:</p>
       <div class="grid-3">

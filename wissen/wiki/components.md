@@ -13,7 +13,9 @@ Feste Benennung, damit klar ist, wovon wir sprechen:
 - **Pre-Confirmation-Seite** (`<body class="page-standard page-fill-height">`): Standardseite mit **reduziertem Header** (`.site-header--reduced`) und **reduziertem Footer** (`.site-footer--reduced`), `noindex, nofollow`. Für den Schritt **vor** der Double-Opt-in-Bestätigung (Hinweis „bitte E-Mail bestätigen"), nicht zu verwechseln mit einer Dankeseite **nach** der Bestätigung. Details zu den reduzierten Komponenten und `.page-fill-height` unten.
 - **Dankeseite** (`<body class="page-standard page-fill-height">`): gleicher Aufbau wie die Pre-Confirmation-Seite (reduzierter Header/Footer, `noindex, nofollow`) — aber für **nach** der Double-Opt-in-Bestätigung: Foto + Erfolgs-Headline + Fließtext-Absätze (`section-lead`, mehrfach verwendet), **keine** Schritt-Karten mehr.
 - **Footer:** Hero-/Standardseiten nutzen den gleichen „normalen" Footer (siehe unten); Pre-Confirmation- und Dankeseiten den reduzierten.
-- Stand: Homepage, Service, Kundenstimmen und `youtube.html` sind Hero-Seiten; `impressum.html` und `datenschutz.html` sind Standardseiten; `du-bist-fast-fertig.html`, `du-bist-fast-fertig-yt.html` und `lead-magnet-landingpage-vorlagen-fast-fertig.html` sind Pre-Confirmation-Seiten (inhaltlich identische 1:1-Kopien für unterschiedliche Anmelde-Flows); `danke-newsletter.html` ist die erste Dankeseite.
+- Stand: Homepage, Service, Kundenstimmen, `youtube.html` und `newsletter.html` sind Hero-Seiten; `impressum.html` und `datenschutz.html` sind Standardseiten.
+- Pre-Confirmation-Seiten (alle `noindex`, inhaltlich identische 1:1-Kopien für unterschiedliche Anmelde-Flows): `du-bist-fast-fertig.html`, `du-bist-fast-fertig-yt.html`, `lead-magnet-landingpage-vorlagen-fast-fertig.html`.
+- Dankeseiten (alle `noindex`): `danke-newsletter.html` (erste, Foto + 3 Absätze), `danke-newsletter-youtube.html` (1:1-Kopie davon), `freebie-lead-magnet-landingpage-vorlagen-dankeseite.html` (Produkt-Mockup-Bild statt Foto, `.confirm-visual`), `divi-masterclass-danke-fuer-deinen-kauf.html` (Kaufbestätigung), `website-audit-kaufbestaetigung.html` (1:1-Kopie davon), `allgemeine-bestaetigung.html` (generische Rückmeldungsbestätigung), `website-anfrage.html` (kein Foto, stattdessen eingebettetes Formular, `.confirm-form` — siehe unten).
 
 ## Header (`.site-header`)
 - Zweck: Sticky-Kopf mit Logo, Hauptnavigation, primärem CTA.
@@ -25,6 +27,8 @@ Feste Benennung, damit klar ist, wovon wir sprechen:
   - Linien-Farbe: Marken-Orange `--color-accent`.
 - Dropdown „Service" (nur Homepage): `.has-dropdown`, öffnet bei Hover/Focus (`focus-within`).
 - Mobil (≤760px): Hamburger-Button (`.nav-toggle`) toggelt `.main-nav.open` (kleiner Inline-JS).
+- `.main-nav` hat seit 15.07.2026 explizit `align-items: center` (defensive Absicherung, damit die Menüpunkte immer sauber vertikal mittig zur Header-Leiste stehen, auch wenn sich Logo-/Button-Höhe mal ändert).
+- **Primärer CTA-Button „Newsletter abonnieren":** verlinkt seit 15.07.2026 site-weit (Homepage, Kundenstimmen, `youtube.html`, Impressum, Datenschutz) auf die eigene Landingpage `/newsletter` — vorher zeigte er auf einen Anker zur Seiten-eigenen Inline-Anmeldung. **Ausnahme `newsletter.html` selbst:** dort ist der Header-Button ein normal aussehender, aber **funktionsloser** `<button>` (`aria-disabled="true"`, kein `disabled`-Attribut, damit er optisch **exakt gleich** bleibt wie auf allen anderen Seiten — kein Ausgrauen). Grund: Man ist ja schon auf der Seite, der Button soll nichts tun, aber auch nicht anders aussehen als sonst.
 - Verwendet in: `index.html`, `website-erstellen-lassen.html`. (Andere Seiten haben eigene Header-Varianten ohne Dropdown, siehe jeweilige Datei.)
 
 ### Header reduziert (`.site-header.site-header--reduced`)
@@ -52,11 +56,17 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - Zweck: Bei kurzen Seiten (z. B. Pre-Confirmation-Seiten) bleibt der Footer auf **jeder** Bildschirmhöhe (auch 4K) am unteren Rand, statt bei viel Restplatz mittig zu „schweben". Header-Position/-Reihenfolge bleibt unangetastet (steht normal oben, sticky) — **kein** `position: sticky/fixed` am Footer, rein Flexbox-Wachstum von `main`.
 - Verwendet in: allen Pre-Confirmation-Seiten (siehe oben).
 
+### `.section-head--center` / `--wide` — zentrierter Intro-Block auf Pre-Confirmation-/Dankeseiten
+- `.section-head--center`: `text-align:center; max-width:640px; margin:auto` — Standard für Foto/Headline/Lead auf den reduzierten Seiten.
+- `.section-head--center.section-head--wide`: verbreitert auf `820px` (inkl. `.section-lead` darin) für textlastigere Varianten (z. B. `danke-newsletter.html`, `danke-newsletter-youtube.html`, `freebie-lead-magnet-landingpage-vorlagen-dankeseite.html`).
+- `.confirm-visual`: breiteres Produkt-/Mockup-Bild **statt** Foto-Kreis vor einem `.section-head--center` (`max-width:640px`, `display:block`, zentriert). Verwendet in `freebie-lead-magnet-landingpage-vorlagen-dankeseite.html` (Mockup-Bild `lead-magnet-vorlagen-divi-theme-mockup.avif`, vom User bereitgestellt).
+- `.confirm-form`: zentrierter Wrapper (`max-width:720px`) für eine Formular-Einbettung unter einem `.section-head--center`, z. B. `website-anfrage.html` (deftform-Qualifizierungsformular, echtes externes Embed-Script + `data-form-id`).
+
 ## Icon (`.icon`, SVG-Sprite)
 - Seit 14.07.2026 der **einzige** Weg, Icons einzubinden — ersetzt Font Awesome komplett (siehe `architecture.md` „Tech-Stand" für die Begründung).
 - Markup: `<svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-NAME"></use></svg>`.
 - `.icon { width: 1em; height: 1em; fill: currentColor; vertical-align: -0.125em; }` — verhält sich wie vorher die Font-Awesome-Icon-Fonts: Größe über `font-size`, Farbe über `color` des umgebenden Elements vererbt. Bestehende Stellen, die früher ein bloßes `i`-Element gestylt haben (`.icon-tile i`, `.hero__reassure i`), zielen jetzt auf `.icon-tile .icon` / `.hero__reassure .icon`.
-- Sprite liegt in `assets/icons/sprite.svg`, enthält nur die ~21 tatsächlich verwendeten Icons als `<symbol id="icon-NAME">`. **Neues Icon nötig:** Roh-SVG von `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/svgs/<solid|brands>/<name>.svg` holen, als neuen `<symbol>` in die `sprite.svg` einfügen (viewBox + path übernehmen, `id="icon-<name>"`).
+- Sprite liegt in `assets/icons/sprite.svg`, enthält nur die ~26 tatsächlich verwendeten Icons als `<symbol id="icon-NAME">` (Stand 15.07.2026, zuletzt ergänzt: `envelope`, `envelope-open`, `user-check`, `user`, `lightbulb` für die Pre-Confirmation-/Dankeseiten und `newsletter.html`). **Neues Icon nötig:** Roh-SVG von `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/svgs/<solid|brands>/<name>.svg` holen, als neuen `<symbol>` in die `sprite.svg` einfügen (viewBox + path übernehmen, `id="icon-<name>"`).
 
 ## Button (`.hh-btn`)
 - Varianten: `--primary` (solid Orange, Text weiß) / `--secondary` (Outline Blau).
@@ -64,6 +74,16 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - Hover **invertiert**: primary → weißer BG + oranger Text/Border; secondary → füllt mit `#E6EEF7`.
 - Im Hero größeres vertikales Padding (`.hero .hh-btn { padding: 16px 26px; }`).
 - `gap: 10px` zwischen Icon und Text, falls ein `.icon` im Button steckt (z. B. YouTube-Icon + „Jetzt Kanal abonnieren").
+
+### Button-Glanz-Effekt (`.hh-btn--shine`)
+- Seit 15.07.2026: Modifier für **einzelne, besonders hervorzuhebende CTAs** — dezenter Schatten (`box-shadow` in Akzent-Orange) + langsamer diagonaler Glanz-Sweep (`::after`, `@keyframes hh-btn-shine`, 3,2s Loop, respektiert `prefers-reduced-motion`).
+- **Ausnahme von der Grundregel „keine Bewegung im Hintergrund"** (siehe `memory/decisions.md` „Keine Hero-Animation"): Diese Regel betrifft ruhige Hintergrund-/Sektionsflächen (Hero, Newsletter-CTA), nicht gezielte Mikro-Interaktionen auf einzelnen Haupt-CTA-Buttons. Bewusst sparsam einsetzen, nicht auf jedem Button.
+- Verwendet auf: Hero-CTA + Themen-Grid-CTA + Video-Grid-Abschluss-Button (`youtube.html`), Hero-Button (`newsletter.html`).
+
+### Hero-CTA-Gruppe (`.hero__cta-group`)
+- Wrapper um `.hero__cta` (Button) + `.hero__reassure` (Reassurance-Zeile), wenn beide **exakt gleich breit** sein sollen: `display:inline-flex; flex-direction:column; align-items:stretch` (schrumpft auf die Breite des breiteren Kindes) + `.hero__cta .hh-btn { width:100% }` + `.hero__reassure { justify-content:space-between; flex-wrap:nowrap }`.
+- Grund: Ohne Wrapper ist der Button intrinsisch breit (Text+Padding), während `.hero__reassure` als Block-Flex-Container die volle Spaltenbreite einnimmt — dadurch wirkten beide Elemente unterschiedlich breit/unausgerichtet.
+- Verwendet in: `newsletter.html` (Hero).
 
 ## Card (`.card`)
 - Icon-Tile → Eyebrow → Titel → Body → Badge. Border-only, Hover: Border wird `--color-ink`.
@@ -103,13 +123,31 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - Nach jedem Filter-Klick scrollt die Seite per JS sanft zum Anfang von `.ks-panels` (unterhalb des Sticky-Headers), falls weiter unten gescrollt war.
 
 ## Newsletter-CTA (`.newsletter-cta`) — wiederkehrende Sektion über dem Footer
-- Zweck: Newsletter-Anmeldung, direkt über dem Footer. **Wiederkehrende Komponente**, verwendet auf `kundenstimmen.html` (Anchor `#newsletter`) und `youtube.html` (Anchor `#newsletter-abonnieren` — dorthin verlinkt auch der Header-CTA-Button dieser Seite). Rollout auf Homepage/Service noch offen — siehe `memory/INDEX.md`.
+- Zweck: Newsletter-Anmeldung, direkt über dem Footer. **Wiederkehrende Komponente**, verwendet auf `kundenstimmen.html` (Anchor `#newsletter`), `youtube.html` (Anchor `#newsletter-abonnieren`) und `newsletter.html` (Anchor `#newsletter-final`, Abschluss-CTA der Seite selbst).
 - Hintergrund: linearer Verlauf `to right, #1A293E → #234B79` (Text komplett weiß) — **anderer Verlauf als der Hero** (der ist radial, siehe oben). Bewusst kein pill-/kartenartiges Element, volle Sektionsbreite.
 - Aufbau: `.newsletter-cta__title` (H2, `max-width: 860px` → erzwingt exakt 2 Zeilen), `.newsletter-cta__lead` (`max-width: 760px` → exakt 3 Zeilen, Farbe volles Weiß), `.newsletter-cta__embed` (Formular-Einbettung), `.newsletter-cta__legal` (Datenschutz-Hinweis, Link-Hover in `--color-accent`).
 - **Formular:** eingebunden per Encharge-Embed-Script (`embed-production.min.js`) + `<div class="encharge-form-embed" data-encharge-form-id="…">`. Das Script ersetzt den Div zur Laufzeit durch ein `<iframe>` mit dem eigentlichen Formular — Höhe wird von Encharge selbst per `postMessage` gesetzt.
-- **Lazy-Loaded (seit 14.07.2026):** Das `<script src="…embed-production.min.js">` steht NICHT mehr fest im HTML — es wird per `IntersectionObserver` (Inline-JS am Seitenende, `rootMargin: 600px`) erst erzeugt, wenn die Sektion sich dem Viewport nähert. Grund: Das Script zieht selbst wieder eine Ressourcen-Kette nach sich (Formular-Daten von `forms.encharge.io` + Google Fonts Open Sans/Roboto im Encharge-iFrame) — die stand laut Lighthouse-Report im kritischen Ladepfad ganz oben auf der Seite, obwohl die Sektion erst ganz unten sichtbar wird. Bei einer neuen Seite mit dieser Komponente: den `<div class="encharge-form-embed">` OHNE festes Script einbauen und den IntersectionObserver-Block aus `youtube.html`/`kundenstimmen.html` übernehmen.
+- ⚠️ **Wichtige Regel: Jede Formular-Position hat ihre EIGENE, unterschiedliche `data-encharge-form-id`.** Der User trackt darüber bewusst, über welches Formular/welche Seite die meisten Anmeldungen reinkommen — **niemals** eine ID von einer anderen Seite/Stelle wiederverwenden oder selbst „erfinden". Aktuell vergebene IDs: `kundenstimmen.html` = `703aa64e-d759-416d-b8d4-7e774f34c794`, `youtube.html` = `a36be4b5-69eb-4925-b297-295990f6190b`, `newsletter.html` Hero-Pop-up = `41b24ff7-57ea-4ba3-9f3e-e5f8538ff719`, `newsletter.html` Abschluss-CTA = `7b8a9b29-9280-46b7-9c88-9ade9fcfdc18`. Bei einer neuen Formular-Stelle: **immer erst beim User nach der zu verwendenden ID fragen**, nie raten.
+- **Lazy-Loaded (seit 14.07.2026):** Das `<script src="…embed-production.min.js">` steht NICHT mehr fest im HTML — es wird per `IntersectionObserver` (Inline-JS am Seitenende, `rootMargin: 600px`) erst erzeugt, wenn die Sektion sich dem Viewport nähert. Grund: Das Script zieht selbst wieder eine Ressourcen-Kette nach sich (Formular-Daten von `forms.encharge.io` + Google Fonts Open Sans/Roboto im Encharge-iFrame) — die stand laut Lighthouse-Report im kritischen Ladepfad ganz oben auf der Seite, obwohl die Sektion erst ganz unten sichtbar wird. Bei einer neuen Seite mit dieser Komponente: den `<div class="encharge-form-embed">` OHNE festes Script einbauen und den IntersectionObserver-Block aus `youtube.html`/`kundenstimmen.html` übernehmen. **Ausnahme:** Steht das Formular schon oberhalb des Folds (z. B. im Hero), lohnt sich Lazy-Load nicht — dort Script direkt einbinden (siehe `newsletter.html`-Hero bzw. Pop-up unten).
 - **Bekannte Einschränkung:** Der Innenabstand unterhalb des Formular-Buttons kommt aus Enchargeʼs eigenem Formular-Design (Cross-Origin-iFrame — von unserer Seite aus nicht stylebar). `.newsletter-cta__legal` nutzt aktuell einen **negativen `margin-top`** (`-40px`) als Annäherung, um den Hinweistext näher an den Button zu ziehen. Sauberer wäre, den unteren Abstand direkt im Encharge-Formular-Editor zu verkleinern. Siehe `memory/decisions.md`.
 - **Verworfen:** Eine dezente CSS-Wellen-Animation im Hintergrund (zwei SVG-Wellen, per `translateX`-Loop bewegt) wurde gebaut, aber auf Wunsch wieder entfernt — gleiche Linie wie beim Hero: **keine Bewegung im Hintergrund**, siehe `memory/decisions.md`.
+
+## Modal (`.modal`, natives `<dialog>`) — z. B. Newsletter-Formular im Pop-up
+- Seit 15.07.2026 erstes Modal im Projekt. Bewusst natives `<dialog>` statt eigener JS-Bibliothek: Fokus-Falle, ESC-zum-Schließen und Backdrop kommen kostenlos vom Browser.
+- Aufbau: `<dialog class="modal"><div class="modal__inner"><button class="modal__close">×</button><h2 class="modal__title">…</h2><p class="modal__lead">…</p>…Inhalt…<p class="modal__legal">…</p></div></dialog>`.
+- JS (minimal, kein Framework): Button mit `data-open-modal="<dialog-id>"` ruft `dialog.showModal()`; `.modal__close` ruft `dialog.close()`; Klick auf den Backdrop (`e.target === dialog`) schließt ebenfalls.
+- **Blur-Effekt auf dem Hintergrund** (nicht auf dem Modal selbst): `.modal::backdrop { backdrop-filter: blur(4px) }` — betrifft nur, was hinter dem `::backdrop` liegt (die Seite), das Modal selbst bleibt scharf. Kein JS nötig.
+- **Lazy-Load des Formulars:** Das Encharge-Script wird erst per JS injiziert, wenn das Modal zum ersten Mal geöffnet wird (nicht schon beim Seitenaufruf) — spart den Formular-Request komplett, falls der User das Pop-up nie öffnet.
+- Verwendet in: `newsletter.html` (Hero-Button „Jetzt wöchentliche Tipps erhalten" öffnet das Formular-Pop-up, Formular-ID `41b24ff7-…`, siehe Newsletter-CTA oben).
+
+## FAQ-Akkordeon (`.faq-list`/`.faq-item`, natives `<details>`/`<summary>`)
+- Seit 15.07.2026 erstes FAQ-Element im Projekt. Bewusst **kein JS** — natives `<details>`/`<summary>` liefert Aufklappen/Zuklappen, Tastatur-Bedienbarkeit und korrekte Screenreader-Semantik ohne eigenen Code.
+- Aufbau: `.faq-item` = `<details>` mit `<summary>Frage</summary><p>Antwort</p>`. `+`/`−`-Indikator per `summary::after` (CSS-`content`, kein Icon), `summary::-webkit-details-marker { display:none }` entfernt den nativen Browser-Pfeil.
+- Verwendet in: `newsletter.html` (4 Fragen, unter „Beispiel für einen Newsletter").
+
+## Karten-Top-Akzent (`.step--top-accent`)
+- Modifier für `.step`: 2px blaue Linie oben (`border-top: 2px solid var(--color-primary)`), auf User-Wunsch „einfach zum Test" eingeführt.
+- Verwendet auf: allen `.step`-Karten in `youtube.html` (Themen-Grid, inkl. CTA-Karte) und `newsletter.html` (6 Themen-Karten).
 
 ## Themen-Grid (`.step`, wiederverwendet für dichte Karten-Grids)
 - Herkunft: ursprünglich für den 4-Schritte-Prozess auf `website-erstellen-lassen.html` gebaut (`.step` + `.step__num` mit Zahl). Auf `youtube.html` wiederverwendet für ein **3×2-Grid** (6 Karten: 5 Themen-Karten mit Icon in `.step__num` statt Zahl + 1 leere CTA-Karte, siehe unten) — Layout einfach über `class="grid-3 topic-grid"` (bestehende `.grid-3`-Utility, kein neues Grid-CSS).
@@ -117,6 +155,7 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - Hover: **dezent**, siehe „Hover-Konventionen" in `design-system.md` — `.step` zählt als dichtes Grid, nicht als lockere `.card`.
 - CTA-Karte (`.topic-grid__cta`): Inhalt vertikal zentriert (kein Icon, keine Beschreibung) — Headline + `.hh-btn--primary` Button, der zur externen Kanal-URL verlinkt (`link.hhess.de/youtubeabonnieren`).
 - **Verworfen:** Ursprünglich als Klick-Slider gebaut (3 von 5 Karten sichtbar, Pfeil-Button rückt eine Karte weiter, endlose Schleife über dreifach geklonte Karten). Auf Wunsch durch das statische 3×2-Grid ersetzt, kompletter Slider-Code (CSS + JS) entfernt.
+- Zweite Verwendung seit 15.07.2026: `newsletter.html` (6 Themen-Karten „Wissen das dich weiterbringt…", ohne CTA-Karte, alle mit `.step--top-accent`, siehe oben).
 
 ## Trust-Bar (`.trust-bar`) — Kennzahlen-Leiste
 - Zweck: drei Kanal-Kennzahlen nebeneinander (z. B. Abonnenten/Aufrufe/Wiedergabezeit), volle Sektionsbreite, dunkler Hintergrund.
@@ -149,3 +188,13 @@ Der Footer der **Startseite** ist der **normale Footer**. Er wird auf **allen Se
 - ⚠️ **Platzhalter:** Alle drei `data-video-id`/Thumbnail-/Link-Werte nutzen aktuell dieselbe Demo-ID (`YE7VzlLtp-4`, Big Buck Bunny) — vor Launch durch die echten YouTube-Video-IDs ersetzen (Kommentar im HTML markiert das).
 - **Verworfen:** Das ursprüngliche 3-spaltige Karten-Raster (Thumbnail randlos oben → Titel → Text → Trennlinie → Foto+Name links/CTA-Link rechts, mit Border+Hover je Karte) wurde auf User-Wunsch durch das obige horizontale Ein-Spalten-Layout ersetzt (Autor-Zeile mit Foto+Name entfällt dabei komplett zugunsten des Themen-Badges).
 - Verwendet in: `youtube.html`, zwischen Kundenstimmen-Wand und Newsletter-CTA.
+
+## `newsletter.html` — Seitenstruktur (neue Hero-Seite, 15.07.2026)
+1:1 inhaltlich von der alten Live-Seite `hhess.de/newsletter` übernommen, aber mit unseren bestehenden Komponenten statt WordPress-Markup nachgebaut. Aufbau:
+1. **Hero** (`.hero`, 2-spaltig wie `youtube.html`: Eyebrow „Kostenloser Newsletter" + H1 + Lead + Foto rechts). CTA ist ein **Button, der ein Modal öffnet** (siehe „Modal" oben), keine Inline-Formular-Einbettung mehr — darunter `.hero__cta-group` (Button + Reassurance-Zeile „Kostenlos · Kein Spam · Jederzeit abbestellbar" exakt gleich breit, siehe oben).
+2. **6 Themen-Karten** (`.step`, wie `youtube.html`-Themen-Grid, siehe oben) + zentrierter Button „Jetzt Newsletter abonnieren" (Anchor zu `#newsletter-final`).
+3. **„Beispiel für einen Newsletter"** — `.newsletter-example` (`max-width:420px`, weißer Rahmen, Radius): zeigt einen **echten** Newsletter-Screenshot (`assets/fotos/hiacynta-hess-newsletter-beispiel.png`, ~62 KB, von der alten Live-Seite heruntergeladen — bewusst als Bild, nicht als Text nachgebaut, da es ein Screenshot einer echten E-Mail ist).
+4. **FAQ-Akkordeon** (siehe oben) — 4 Fragen 1:1 von der alten Seite übernommen.
+5. **Abschluss-CTA** (`.newsletter-cta`, Anchor `#newsletter-final`, Formular-ID `7b8a9b29-…`).
+- **Encharge-Formulare:** zwei unterschiedliche IDs auf derselben Seite (Hero-Pop-up vs. Abschluss-CTA) — bewusst nicht dieselbe, siehe Formular-ID-Regel bei „Newsletter-CTA" oben.
+- **Header-CTA-Sonderfall:** siehe „Header" oben — auf dieser Seite selbst ist der Header-Button funktionslos (man ist ja schon da), sieht aber genauso aus wie überall sonst.
