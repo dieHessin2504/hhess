@@ -507,6 +507,7 @@ img { max-width: 100%; }
 .section--page { background: var(--surface-page); }
 .section--white { background: #fff; }
 
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
 
@@ -1174,6 +1175,15 @@ img { max-width: 100%; }
 .compare-card--highlight .compare-card__foot { border-top-color: var(--border-card); color: #5b6b80; }
 .compare-band__note { margin-top: var(--space-8); text-align: center; color: rgba(255, 255, 255, 0.7); max-width: 760px; margin-left: auto; margin-right: auto; }
 
+/* Wachstums-Karten (2x2-Grid, breite Karten mit kleiner Icon-Kachel) */
+.growth-card { padding: var(--space-8); }
+.growth-card .icon-tile { width: 44px; height: 44px; border-radius: 10px; color: var(--color-ink); margin-bottom: var(--space-4); }
+.growth-card .icon-tile .icon { font-size: 1.125rem; }
+.growth-card h3 { font-size: 1.25rem; }
+.growth-card p { font-size: 1.0625rem; }
+/* Dichte Kartengruppe -> dezenter Hover (siehe design-system.md "Hover-Konventionen") */
+.growth-card:hover { border-color: rgba(43, 96, 157, 0.7); box-shadow: 0 8px 24px rgba(20, 47, 78, 0.08); }
+
 /* FAQ, 2-spaltige Variante (viele Fragen) */
 .faq-list--grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); max-width: none; align-items: start; }
 
@@ -1233,6 +1243,7 @@ img { max-width: 100%; }
     color: var(--color-ink);
     cursor: pointer;
   }
+  .grid-2 { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: 1fr; }
   .trust-bar__item + .trust-bar__item::before { display: none; }
