@@ -490,6 +490,9 @@ img { max-width: 100%; }
 /* Breiteres Produkt-/Mockup-Bild vor einer .section-head--center (statt Foto-Kreis), z. B. Dankeseite eines Freebies */
 .confirm-visual { display: block; max-width: 640px; width: 100%; height: auto; margin: 0 auto var(--space-8); }
 
+/* Formular-Einbettung (z. B. deftform) unter einer .section-head--center */
+.confirm-form { max-width: 720px; margin: var(--space-8) auto 0; }
+
 /* ---- Header / Nav ------------------------------------------- */
 .site-header {
   padding: 16px var(--section-x);
