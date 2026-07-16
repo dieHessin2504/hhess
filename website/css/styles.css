@@ -610,10 +610,9 @@ img { max-width: 100%; }
 .dropdown a { display: block; padding: 8px; font-size: 0.875rem; font-weight: 500; }
 
 .nav-toggle { display: none; }
-/* Desktop: Drawer-Hülle „löst sich auf" — Nav + Newsletter-Button bleiben
-   normale Flex-Kinder des Headers; Drawer-Kopf + Backdrop bleiben unsichtbar. */
-.site-drawer { display: contents; }
-.site-drawer__head { display: none; }
+/* Desktop: Drawer + Backdrop existieren im DOM (am body), bleiben aber
+   unsichtbar — die normale Header-Navigation wird genutzt. */
+.site-drawer { display: none; }
 .drawer-backdrop { display: none; }
 
 /* Reduzierter Header: gleiche Leiste, ohne Menü — statt Button ein Textlink zurück zur Startseite */
@@ -1249,6 +1248,11 @@ img { max-width: 100%; }
     padding: 6px;
     margin: -6px;
   }
+
+  /* Mobil: echte Header-Navigation + Header-Button ausblenden
+     (beide sind in den Drawer geklont). */
+  .site-header__inner > .main-nav,
+  .site-header__inner > .hh-btn--primary { display: none; }
 
   /* Off-Canvas-Drawer: schiebt von rechts herein, 2/3 der Breite,
      volle Höhe. Links bleibt ein Spalt frei (Website sichtbar). */

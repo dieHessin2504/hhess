@@ -8,14 +8,15 @@
   'use strict';
 
   var toggle = document.querySelector('.nav-toggle');
-  var nav = document.querySelector('.main-nav');
   var inner = document.querySelector('.site-header__inner');
+  var nav = inner && inner.querySelector(':scope > .main-nav');
   if (!toggle || !nav || !inner) return; // reduzierter Header: kein Menü
 
   var doc = document.documentElement;
 
-  // --- Drawer-Hülle ---
-  var drawer = document.createElement('div');
+  // Drawer wird AM BODY aufgebaut (nicht im Header) — sonst läge er im
+  // Stacking-Kontext des Headers und würde vom Backdrop mit abgedunkelt.
+  var drawer = document.createElement('aside');
   drawer.className = 'site-drawer';
 
   // Kopf: Logo (Klon) + Schließen-Button
@@ -39,11 +40,11 @@
   head.appendChild(closeBtn);
   drawer.appendChild(head);
 
-  // Vorhandene Navigation + Newsletter-Button in den Drawer verschieben
+  // Navigation + Newsletter-Button KLONEN (Original bleibt für Desktop im Header)
+  drawer.appendChild(nav.cloneNode(true));
   var cta = inner.querySelector(':scope > .hh-btn--primary');
-  drawer.appendChild(nav);
-  if (cta) drawer.appendChild(cta);
-  inner.appendChild(drawer);
+  if (cta) drawer.appendChild(cta.cloneNode(true));
+  document.body.appendChild(drawer);
 
   // Backdrop (abgedunkelt + Blur über dem sichtbaren Website-Rest)
   var backdrop = document.createElement('div');
@@ -70,9 +71,9 @@
     setOpen(false);
   });
 
-  // Klick auf einen Menü-Link schließt den Drawer
-  nav.addEventListener('click', function (e) {
-    if (e.target.closest('a')) setOpen(false);
+  // Klick auf einen Menü-Link im Drawer schließt ihn
+  drawer.addEventListener('click', function (e) {
+    if (e.target.closest('.main-nav a')) setOpen(false);
   });
 
   document.addEventListener('keydown', function (e) {
