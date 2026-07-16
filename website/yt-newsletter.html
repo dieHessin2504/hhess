@@ -246,16 +246,8 @@
     </div>
   </footer>
 
+  <script src="js/site.js" defer></script>
   <script>
-    var toggle = document.querySelector('.nav-toggle');
-    var nav = document.querySelector('.main-nav');
-    if (toggle && nav) {
-      toggle.addEventListener('click', function () {
-        var open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
-
     // Newsletter-Formular im Pop-up: Encharge-Script erst laden, wenn das Modal
     // zum ersten Mal geöffnet wird (nicht schon beim Seitenaufruf im Hero).
     (function () {
