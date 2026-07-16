@@ -1235,19 +1235,30 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 760px) {
-  /* Hamburger rechts oben im Header */
+  /* Hamburger rechts oben im Header — drei zarte 1,5-px-Linien (per CSS
+     gezeichnet, damit die Striche filigran sind; Sprite-Icon ausgeblendet). */
   .nav-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
+    display: block;
+    box-sizing: content-box;
+    width: 24px;
+    height: 15px;
+    padding: 10px;
+    margin: -10px;
     border: none;
-    font-size: 1.5rem;
-    color: var(--color-ink);
     cursor: pointer;
-    padding: 6px;
-    margin: -6px;
+    color: var(--color-ink);
+    background-color: transparent;
+    background-image:
+      linear-gradient(currentColor, currentColor),
+      linear-gradient(currentColor, currentColor),
+      linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-size: 100% 1.5px;
+    background-position: left top, left center, left bottom;
+    background-origin: content-box;
+    background-clip: content-box;
   }
+  .nav-toggle .icon { display: none; }
 
   /* Mobil: echte Header-Navigation + Header-Button ausblenden
      (beide sind in den Drawer geklont). */
@@ -1308,7 +1319,7 @@ img { max-width: 100%; }
     gap: 2px;
     width: 100%;
     padding-top: 20px;
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
   .main-nav > a,
   .main-nav > .has-dropdown > a {
@@ -1330,11 +1341,11 @@ img { max-width: 100%; }
     padding: 0 0 8px 16px;
     width: auto;
   }
-  .dropdown a { font-size: 1.0625rem; padding: 8px 0; }
+  .dropdown a { font-size: 0.9375rem; padding: 8px 0; }
 
-  /* Newsletter-Button ganz unten im Drawer */
+  /* Newsletter-Button direkt unter dem letzten Menüpunkt (Kontakt) */
   .site-drawer .hh-btn--primary {
-    margin-top: auto;
+    margin-top: 20px;
     width: 100%;
     justify-content: center;
   }
